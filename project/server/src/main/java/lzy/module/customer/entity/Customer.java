@@ -27,5 +27,6 @@ public class Customer extends PersonEntity {
     @GenericGenerator(name = "idGenerator", strategy = "lzy.common.entity.IdGenerator")
     @GeneratedValue(generator = "idGenerator")
     private Long customerId;
+    private String bazi;
 
 }

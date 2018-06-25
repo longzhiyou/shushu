@@ -12,6 +12,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+
 
 @SpringBootApplication
 @EnableJpaAuditing
@@ -30,7 +33,16 @@ public class Application {
         return builder.build();
     }
 
+    @Bean
+    public ScriptEngineManager getScriptEngineManager(){
+        return new ScriptEngineManager();
+    }
 
+    @Bean
+    public ScriptEngine getScriptEngine(ScriptEngineManager scriptEngineManager){
+        return scriptEngineManager.getEngineByName("groovy");
+
+    }
 
     public static void main(String[] args) {
 

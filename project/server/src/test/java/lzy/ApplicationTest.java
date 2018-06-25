@@ -5,8 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import static org.junit.Assert.*;
-
 /**
  * User: longzhiyou
  * Date: 2017/11/16
@@ -26,5 +24,15 @@ public class ApplicationTest {
         logger.info("BCryptPasswordEncoder:"+encode);
 
     }
+    @Test
+    public void demo(){
+        String strBaZi = "甲 乙 丙 丁";
+        strBaZi = strBaZi.replace(" ", "");//去掉所有空格，包括首尾、中间
+        String[] split = strBaZi.split("");
+
+        logger.info("八字:"+split.length);
+    }
+
+
 
 }
