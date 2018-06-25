@@ -1,0 +1,200 @@
+@font-face {font-family: "bsp-iconfont";
+  src: url('#{$fonts-root}iconfont/iconfont.eot?t=1492587886883'); /* IE9*/
+  src: url('#{$fonts-root}/iconfont/iconfont.eot?t=1492587886883#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('#{$fonts-root}/iconfont/iconfont.woff?t=1492587886883') format('woff'), /* chrome, firefox */
+  url('#{$fonts-root}/iconfont/iconfont.ttf?t=1492587886883') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('#{$fonts-root}/iconfont/iconfont.svg?t=1492587886883#bsp-iconfont') format('svg'); /* iOS 4.1- */
+  font-weight: normal;
+  font-style: normal;
+}
+
+//.bsp-iconfont {
+//  font-family:"bsp-iconfont" !important;
+//  display: inline-block;
+//  //font: normal normal normal 14px/1 bsp-iconfont;
+//  font-size: 18px;
+//  text-rendering: auto;
+//  -webkit-font-smoothing: antialiased;
+//  -moz-osx-font-smoothing: grayscale;
+//}
+
+/* makes the font 33% larger relative to the icon container */
+.bsp-lg {
+  font-size: 1.8em !important;
+  line-height: 0.75em !important;
+  //vertical-align: -15% !important;
+}
+.bsp-2x {
+  font-size: 2em;
+}
+.bsp-3x {
+  font-size: 3em;
+}
+.bsp-4x {
+  font-size: 4em;
+}
+.bsp-5x {
+  font-size: 5em;
+}
+.bsp-fw {
+  width: 1.28571429em;
+  text-align: center;
+}
+
+[class^="bsp-"], [class*=" bsp-"] {
+  font-family: 'bsp-iconfont';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  min-width: 1em;
+  display: inline-block;
+  text-align: center;
+  font-size: 18px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.bsp-friend:before { content: "\e651"; }
+
+.bsp-taiyang:before { content: "\e674"; }
+
+.bsp-guowangbingshi:before { content: "\e60c"; }
+
+.bsp-yinshui:before { content: "\e69d"; }
+
+.bsp-wenhuayule:before { content: "\e610"; }
+
+.bsp-jibing:before { content: "\e618"; }
+
+.bsp-yundong:before { content: "\e600"; }
+
+.bsp-jkgh:before { content: "\e61c"; }
+
+.bsp-bingshi:before { content: "\e630"; }
+
+.bsp-xiaolian:before { content: "\e7a6"; }
+
+.bsp-blood-pressure:before { content: "\e667"; }
+
+.bsp-blood-oxygen:before { content: "\e668"; }
+
+.bsp-temperature:before { content: "\e60b"; }
+
+.bsp-home-page:before { content: "\e612"; }
+
+.bsp-family:before { content: "\e613"; }
+
+.bsp-shouye8:before { content: "\e616"; }
+
+.bsp-inquiry:before { content: "\e617"; }
+
+.bsp-shop:before { content: "\e61a"; }
+
+.bsp-shopping-cart:before { content: "\e61b"; }
+
+.bsp-shouye12:before { content: "\e61d"; }
+
+.bsp-doctor:before { content: "\e61e"; }
+
+.bsp-shouye14:before { content: "\e625"; }
+
+.bsp-shouye16:before { content: "\e62a"; }
+
+.bsp-medicine-chest:before { content: "\e62d"; }
+
+.bsp-shouye5:before { content: "\e62e"; }
+
+.bsp-shouye6:before { content: "\e62f"; }
+
+.bsp-shouye21:before { content: "\e633"; }
+
+.bsp-medicine-bottle:before { content: "\e634"; }
+
+.bsp-shouye23:before { content: "\e635"; }
+
+.bsp-shouye7:before { content: "\e637"; }
+
+.bsp-vaccine:before { content: "\e638"; }
+
+.bsp-zhongyiyao:before { content: "\e639"; }
+
+.bsp-wait-visit:before { content: "\e642"; }
+
+.bsp-in-service:before { content: "\e644"; }
+
+.bsp-icon:before { content: "\e661"; }
+
+.bsp-icon1:before { content: "\e662"; }
+
+.bsp-icon2:before { content: "\e663"; }
+
+.bsp-icon3:before { content: "\e665"; }
+
+.bsp-icon4:before { content: "\e666"; }
+
+.bsp-icon5:before { content: "\e66c"; }
+
+.bsp-feature:before { content: "\e66d"; }
+
+.bsp-diet:before { content: "\e66e"; }
+
+.bsp-blood-glucose:before { content: "\e622"; }
+
+.bsp-icon8:before { content: "\e683"; }
+
+.bsp-icon9:before { content: "\e684"; }
+
+.bsp-dermatology:before { content: "\e685"; }
+
+.bsp-refund:before { content: "\e686"; }
+
+.bsp-woman:before { content: "\e68b"; }
+
+.bsp-man:before { content: "\e68d"; }
+
+.bsp-yongyao:before { content: "\e626"; }
+
+.bsp-tizhong:before { content: "\e62c"; }
+
+.bsp-icon14:before { content: "\e68e"; }
+
+.bsp-cupping:before { content: "\e690"; }
+
+.bsp-blood-fat:before { content: "\e691"; }
+
+.bsp-sleep:before { content: "\e692"; }
+
+.bsp-weight:before { content: "\e696"; }
+
+.bsp-breathing:before { content: "\e67d"; }
+
+.bsp-health-document:before { content: "\e60d"; }
+
+.bsp-shuimian:before { content: "\e604"; }
+
+.bsp-sirenyisheng:before { content: "\e673"; }
+
+.bsp-icon-chemistry:before { content: "\e69e"; }
+
+.bsp-yingyangshanshi:before { content: "\e671"; }
+
+.bsp-shenghuozhaoliao:before { content: "\e672"; }
+
+.bsp-chufang:before { content: "\e609"; }
+
+.bsp-hulixue:before { content: "\e602"; }
+
+.bsp-happy:before { content: "\e631"; }
+
+.bsp-pulse:before { content: "\e63a"; }
+
+.bsp-heart:before { content: "\e6e9"; }
+

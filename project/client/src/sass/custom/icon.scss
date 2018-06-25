@@ -1,0 +1,128 @@
+.icon-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  line-height: 1;
+  font-size: 0
+}
+
+.icon-list>li {
+  position: relative;
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 13px
+}
+
+.icon-list>li:first-child {
+  margin-left: 0
+}
+
+.icon-list>li>a {
+  color: inherit;
+  display: block;
+  opacity: 1
+}
+
+.icon-list>li>a:focus,
+.icon-list>li>a:hover {
+  opacity: .75
+}
+
+.icon-list>li>a>i {
+  top: 0
+}
+
+.icon-list>li>a>.caret {
+  margin-top: 0;
+  margin-bottom: 0
+}
+
+.icon-list-extended>li {
+  margin-left: 10px
+}
+
+
+.icon-wrap {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 2px
+}
+
+.icon-wrap i {
+  display: block;
+  line-height: 1em;
+  text-align: center;
+  position: relative;
+  width: 1em;
+  padding-top: 1em;
+  vertical-align: middle
+}
+
+.icon-wrap i:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0
+}
+
+.icon-wrap .icon-txt {
+  display: block;
+  line-height: 1em;
+  text-align: center;
+  position: relative;
+  width: 1em;
+  vertical-align: top
+}
+
+.icon-wrap-lg {
+  padding: 20px
+}
+
+.icon-wrap-md {
+  padding: 17px
+}
+
+.icon-wrap-sm {
+  padding: 12px
+}
+
+.icon-wrap-xs {
+  padding: 7px
+}
+
+.icon-circle {
+  border-radius: 50%
+}
+
+.icon-fw {
+  width: 1.33em;
+  margin-right: 4px;
+  text-align: center
+}
+
+.icon-lg {
+  font-size: 1.333em;
+  line-height: 1.095em;
+  vertical-align: middle
+}
+
+.icon-2x {
+  font-size: 2em;
+  line-height: 1em
+}
+
+.icon-3x {
+  font-size: 3em;
+  line-height: 1em
+}
+
+.icon-4x {
+  font-size: 4em;
+  line-height: 1em
+}
+
+.icon-5x {
+  font-size: 5em;
+  line-height: 1em
+}

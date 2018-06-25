@@ -1,0 +1,183 @@
+.text-black {
+  font-weight: 900
+}
+
+.text-bold {
+  font-weight: 700
+}
+
+
+.text-regular {
+  font-weight: 400
+}
+
+.text-light {
+  font-weight: 300
+}
+
+.text-thin {
+  font-weight: 100
+}
+
+.text-italic {
+  font-style: italic
+}
+
+.text-highlight {
+  padding: 4px 6px
+}
+
+.text-size-large {
+  font-size: 14px
+}
+
+.text-size-base {
+  font-size: 13px
+}
+
+.text-size-small {
+  font-size: 12px
+}
+
+.text-size-mini {
+  font-size: 11px
+}
+.text-thin {
+  font-weight: 300
+}
+
+.text-normal {
+  font-weight: normal
+}
+
+.text-semibold {
+  font-weight: 600
+}
+
+.text-bold {
+  font-weight: 700
+}
+
+.text-5x,
+.text-4x,
+.text-5x,
+.text-2x,
+.text-lg,
+.text-sm,
+.text-xs {
+  line-height: 1.25;
+  font-size: 4em
+}
+
+.text-4x {
+  font-size: 4em
+}
+
+.text-3x {
+  font-size: 3em
+}
+
+.text-2x {
+  font-size: 2em
+}
+
+.text-lg {
+  font-size: 1.2em
+}
+
+.text-sm {
+  font-size: .9em
+}
+
+.text-xs {
+  font-size: .8em
+}
+
+.text-overflow {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+.text-unit {
+  font-size: 15px;
+  vertical-align: top;
+  line-height: 1.5em
+}
+
+.unselectable {
+  cursor: default;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none
+}
+
+.unselectable ::selection {
+  background-color: transparent;
+  color: inherit
+}
+
+.unselectable ::-moz-selection {
+  background-color: transparent;
+  color: inherit
+}
+
+.text-justify {
+  text-align: justify
+}
+
+.text-justify:after {
+  content: '';
+  display: inline-block;
+  width: 100%
+}
+
+@media(min-width:1200px) {
+  .text-lg-right {
+    text-align: right
+  }
+  .text-lg-center {
+    text-align: center
+  }
+  .text-lg-left {
+    text-align: left
+  }
+}
+
+@media(min-width:992px) and (max-width:1200px) {
+  .text-md-right {
+    text-align: right
+  }
+  .text-md-center {
+    text-align: center
+  }
+  .text-md-left {
+    text-align: left
+  }
+}
+
+@media(min-width:768px) and (max-width:992px) {
+  .text-sm-right {
+    text-align: right
+  }
+  .text-sm-center {
+    text-align: center
+  }
+  .text-sm-left {
+    text-align: left
+  }
+}
+
+@media(max-width:760px) {
+  .text-xs-right {
+    text-align: right
+  }
+  .text-xs-center {
+    text-align: center
+  }
+  .text-xs-left {
+    text-align: left
+  }
+}

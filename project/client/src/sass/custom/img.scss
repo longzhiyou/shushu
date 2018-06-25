@@ -1,0 +1,37 @@
+
+.img-mar {
+  margin: 5px
+}
+
+.img-border {
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1)
+}
+
+.img-border-light {
+  box-shadow: 0 0 0 4px #fff
+}
+
+.img-xs {
+  width: 32px;
+  height: 32px
+}
+
+.img-md {
+  width: 64px;
+  height: 64px
+}
+
+.img-sm {
+  width: 46px;
+  height: 46px
+}
+
+.img-lg {
+  width: 96px;
+  height: 96px
+}
+
+.img-holder img {
+  max-width: 100%;
+  border-radius: 0
+}

@@ -1,0 +1,52 @@
+
+.widget-header {
+  padding: 15px 15px 50px 15px;
+  min-height: 125px;
+  position: relative;
+  overflow: hidden
+}
+
+.widget-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%
+}
+
+.widget-title {
+  position: relative
+}
+
+.widget-body {
+  padding: 50px 15px 15px;
+  position: relative
+}
+
+.widget-img {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  left: 50%;
+  margin-left: -32px;
+  top: -32px
+}
+
+.widget-summary {
+  width: 100%;
+  display: inline-flex;
+}
+.widget-summary .w-left {
+  float: left;
+  text-align: left;
+}
+.widget-summary .w-center {
+  float: left;
+}
+.widget-summary .w-right {
+  float: left;
+  text-align: right;
+}
+.widget-summary .w-right span {
+  font-size: 20px;
+}
