@@ -1,0 +1,81 @@
+
+server:
+  port: ${port:8081}
+
+management:
+  context-path: /admin
+  security:
+    enabled: false
+
+
+#mysql
+spring:
+  data:
+    rest:
+      basePath: /api
+  output:
+    ansi:
+      enabled: detect
+
+  datasource:
+
+      url: jdbc:mysql://localhost:3306/shushu?useUnicode=true&characterEncoding=UTF-8&useSSL=false&zeroDateTimeBehavior=convertToNull
+      username: admin
+      password: 123456
+      driverClassName:  com.mysql.jdbc.Driver
+      tomcat:
+            test-while-idle: true
+            validation-query: SELECT 1
+  jpa:
+    properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL5Dialect
+#          dialect: org.hibernate.dialect.H2Dialect
+
+    hibernate:
+          naming:
+            strategy: org.hibernate.cfg.ImprovedNamingStrategy
+          ddl-auto: update
+    show-sql: true
+
+# Set the file size limit (default 1Mb). If you want to specify that files be
+# unlimited set the multipart.maxFileSize property to -1.
+
+  http:
+    multipart:
+      maxFileSize: 10MB
+      # Set the total request size for a multipart/form-data (default 10Mb)
+      maxRequestSize: 30MB
+
+mybatis:
+  configuration:
+    mapUnderscoreToCamelCase: true
+    defaultFetchSize: 100
+    defaultStatementTimeout: 30
+
+logging:
+    level:
+#        root: DEBUG
+        com:
+          spring:
+            ibatis: DEBUG
+        org:
+            hibernate:
+#                SQL: DEBUG
+                type:
+                    descriptor:
+                        sql:
+                            BasicBinder: TRACE
+    #如果只配置 logging.file，会在项目的当前路径下生成一个 xxx.log 日志文件。
+#    file: ddd.log
+
+cron:
+  cron1: 0 * * * * MON-FRI
+  cron2: 0 */2 * * * *
+
+# JWT
+jwt:
+  tokenHeader: Authorization
+  secret: longzhiyou
+  expiration: 31536000
+  devToken: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImNyZWF0ZWQiOjE1Mjk5MDI2MDYxMTQsImV4cCI6MTU2MTQzODYwNn0.o0RYhFP7uz1JJheUW_kRactmAEv9XgWvrKASqaMHS0oFP8lLF5Znci-3TtQQplbpXW87WNcqwwDLGX77K0AM7Q
