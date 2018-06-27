@@ -1,13 +1,12 @@
 package lzy.module.customer.service;
 
-import lzy.module.customer.bazi.BaZiAlgorithm;
+import lzy.module.bazi.BaZiAlgorithm;
 import lzy.module.customer.domain.BaZi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.script.Bindings;
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;

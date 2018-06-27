@@ -19,10 +19,14 @@
                 }
                 return null;
             },
+            getEmbedded: function (name,hal) {
+                // set the id from the self link
+                return hal._embedded[name];
+            },
             getId: function (item) {
                 // set the id from the self link
                 if (item._links && item._links.self.href.match(/\d+$/)) {
-                   return parseInt(item._links.self.href.match(/\d+$/)[0]);
+                   return item._links.self.href.match(/\d+$/)[0];
                 }
                 return 0;
             }

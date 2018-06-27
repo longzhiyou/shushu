@@ -9,7 +9,7 @@
       .controller('customersIndexCtrl', indexCtrl);
 
   /** @ngInject */
-  function indexCtrl($state, Restangular, DTOptionsBuilder,
+  function indexCtrl($state,$http, $uibModal, Restangular, DTOptionsBuilder,
                      DTColumnDefBuilder,defaultOptionsDom,warningModalService
                      ,halService,promptService
 
@@ -23,8 +23,16 @@
     vm.loadData = loadData;
 
 
+      vm.multipleSelectItems = [];
+      // vm.multipleSelectItems = [
+      //     {title: '年禄', value: '1011153728809467904'},
+      //     {title: '天乙贵人', value: '1011154965567111168'},
+      //     {title: '纳音五行正印', value: '1011155031212163072'}
+      // ];
 
-    vm.customers = [];
+      vm.rules=[];
+
+      vm.customers = [];
     vm.dtOptions = DTOptionsBuilder.newOptions()
         .withPaginationType('full_numbers')
         .withDOM(defaultOptionsDom)
@@ -37,9 +45,29 @@
                     $state.go('customers.new');
                 }
             },
-          'copy',
-          'csv',
-          'print'
+            {
+                text: '过滤',
+                className: 'btn btn-info',
+                key: '2',
+                action: function (e, dt, node, config) {
+
+                    if (vm.multipleSelectItems.length>0) {
+                        var ids=[];
+
+                        for(var i  = 0; i < vm.multipleSelectItems.length; i++) {
+                            var select = halService.getId(vm.multipleSelectItems[i]);
+                            ids.push(select);
+                        }
+
+                        var search  = ids.join(",");
+
+
+                    }
+
+
+
+                }
+            }
         ])
     ;
     vm.dtColumnDefs = [
@@ -55,10 +83,18 @@
 
         //customGET
         Restangular.all('customers').customGET().then(function(hal) {
-            vm.customers = hal._embedded.customers;
+            // vm.customers = hal._embedded["customers"];
+            vm.customers = halService.getEmbedded("customers",hal);
+
+            Restangular.all('rules').customGET().then(function(hal) {
+                // vm.customers = hal._embedded["customers"];
+                vm.rules = halService.getEmbedded("rules",hal);
+
+            }, function(error) {
+
+            });
 
         }, function(error) {
-            promptService.failure(setting.getDataError);
 
         });
 
@@ -69,6 +105,7 @@
 
         // var id = halService.getId(item);
       $state.go('customers.edit',{
+          selfLink:halService.getSelfLink(item),
           id:halService.getId(item)
           // ,selfLink:halService.getSelfLink(item)
       });

@@ -13,6 +13,7 @@
 
     var vm = this;
     vm.id=$stateParams.id>0?$stateParams.id:0;
+    vm.self=$stateParams.selfLink;
     // vm.selfLink=$stateParams.selfLink;
     // vm._links =null;
 
@@ -28,7 +29,8 @@
 
       }
 
-    vm.save=save;
+
+      vm.save=save;
     function save() {
         setSelect();
         // vm.customer.id = vm.id;

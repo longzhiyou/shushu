@@ -52,9 +52,9 @@
         // })
         .state('customers.edit', {
             url: '/:id/edit',
-            // params:{
-            //     selfLink:null
-            // },
+            params:{
+                selfLink:null
+            },
             templateUrl: 'app/pages/customers/modify.html',
             controller: 'customersModifyCtrl',
             controllerAs: 'vm',

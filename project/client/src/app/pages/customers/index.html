@@ -1,5 +1,26 @@
 
+
 <div class="row">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <ui-select multiple ng-model="vm.multipleSelectItems"
+                   ng-disabled="false"
+                   search-enabled="true"
+                   append-to-body="true"
+                   class="form-control">
+          <ui-select-match placeholder="规则">
+            {{$item.title}}
+          </ui-select-match>
+          <ui-select-choices repeat="multipleItem in vm.rules | filter: $select.search">
+            {{multipleItem.title}}
+          </ui-select-choices>
+        </ui-select>
+      </div>
+    </div>
+
+  </div>
+
   <table class="table table-bordered table-hover table-condensed"
          datatable="ng"
          dt-column-defs="vm.dtColumnDefs"
