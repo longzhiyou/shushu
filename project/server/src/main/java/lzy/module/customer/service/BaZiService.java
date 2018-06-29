@@ -33,11 +33,6 @@ public class BaZiService {
     public Object parseRule(BaZi baZi, String ruleAlgorithm) {
 
         Object result = null;
-//        Bindings binding = scriptEngine.createBindings();
-//        binding.put("baZi", baZi);
-//        binding.put("baZiAlgorithm",baZiAlgorithm);
-
-        BaZiAlgorithm algorithm = new BaZiAlgorithm();
 
         try {
             scriptEngine.eval(ruleAlgorithm);

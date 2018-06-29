@@ -1,10 +1,4 @@
 package lzy.module.customer.domain
-
-import lombok.Data
-
-import java.util.Arrays
-import java.util.List
-
 /**
  * User: longzhiyou
  * Date: 2016/11/28
@@ -97,9 +91,9 @@ class BaZi {
          this.riZhu = riGan+riZhi
          this.shiZhu = shiGan+shiZhi
 
-         this.listMingGan = Arrays.asList(nianGan, yueGan,riGan,shiGan)
-         this.listMingZhi = Arrays.asList(nianZhi, yueZhi,riZhi,shiZhi)
-         this.listMingZhu = Arrays.asList(nianZhu, yueZhu,riZhu,shiZhu)
+         this.listMingGan = [nianGan, yueGan,riGan,shiGan]
+         this.listMingZhi = [nianZhi, yueZhi,riZhi,shiZhi]
+         this.listMingZhu = [nianZhu, yueZhu,riZhu,shiZhu]
 
          if (split.length>8){
            this.taiGan = split[8]

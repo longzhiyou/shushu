@@ -16,6 +16,8 @@
   ) {
 
     var vm = this;
+    var idName = "customerId";
+
     vm.halService = halService;
 
     vm.edit = edit;
@@ -91,7 +93,7 @@
         //customGET
         Restangular.all('customers').customGET().then(function(hal) {
             // vm.customers = hal._embedded["customers"];
-            vm.customers = halService.getList("customers",hal);
+            vm.customers = halService.getList("customers",hal,idName);
 
             Restangular.all('rules').customGET().then(function(hal) {
                 // vm.customers = hal._embedded["customers"];
@@ -110,11 +112,8 @@
 
     function edit(item){
 
-        // var id = halService.getId(item);
       $state.go('customers.edit',{
-          selfLink:halService.getSelfLink(item),
-          id:item.id
-          // ,selfLink:halService.getSelfLink(item)
+          id:halService.getId(item,idName)
       });
     }
 
@@ -122,13 +121,12 @@
 
         warningModalService.open(item).result.then(function(item) {
             //以后直接复制
-            Restangular.oneUrl('hal',halService.getSelfLink(item)).remove().then(function(hal) {
-                vm.loadData();
+            Restangular.one('customers',halService.getId(item,idName)).remove().then(
+                function(hal) {
+                    vm.loadData();
             });
+
         });
-
-
-
 
     }
 

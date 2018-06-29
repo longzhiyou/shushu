@@ -10,13 +10,43 @@
     <div class="row">
 
         <div class="form-group">
-            <label class="control-label">标题</label>
+            <label class="control-label">姓名</label>
             <input type="text" class="form-control"  placeholder=""
                    ng-model="vm.customer.name"
                    name="commonName"
                    required>
         </div>
 
+        <div class="form-group">
+            <label >性别</label>
+            <ui-select ng-model="vm.selectedGender"
+                       class="btn-group bootstrap-select form-control"
+            >
+                <ui-select-match  >
+                    <span> {{$select.selected.title}}</span>
+                </ui-select-match>
+                <ui-select-choices
+                        repeat="item in vm.genderList"
+                >
+                    <span ng-bind-html="item.title"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">八字</label>
+            <input type="text" class="form-control"  placeholder=""
+                   ng-model="vm.customer.bazi"
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">描述</label>
+            <textarea  class="form-control"  placeholder=""
+                   ng-model="vm.customer.description">
+
+            </textarea>
+        </div>
 
         <div class="form-group">
             <div ng-if="vm.id===0">

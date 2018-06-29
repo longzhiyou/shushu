@@ -34,12 +34,17 @@
                 }
                 return list;
             },
-            getId: function (item) {
-                // set the id from the self link
-                if (item._links && item._links.self.href.match(/\d+$/)) {
-                   return item._links.self.href.match(/\d+$/)[0];
+            getId: function (item,idName) {
+                if (idName) {
+                    return  item[idName];
+                }else {
+                    // set the id from the self link
+                    if (item._links && item._links.self.href.match(/\d+$/)) {
+                        return item._links.self.href.match(/\d+$/)[0];
+                    }
+                    return 0;
                 }
-                return 0;
+
             }
         };
     }

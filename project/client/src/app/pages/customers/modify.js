@@ -13,10 +13,25 @@
 
     var vm = this;
     vm.id=$stateParams.id>0?$stateParams.id:0;
-    vm.self=$stateParams.selfLink;
-    // vm.selfLink=$stateParams.selfLink;
-    // vm._links =null;
 
+    // 性别
+    vm.genderList = [
+        {title: '男', value: '1'},
+        {title: '女', value: '2'}
+    ];
+
+      //选择后的厂家
+      vm.selectedGender =vm.genderList[0];
+
+      function getSelectedGender(value) {
+          for(var i=0;i<vm.genderList.length;i++){
+
+              if (vm.genderList[i].value===value) {
+                  return vm.selectedGender[i];
+              }
+          }
+
+      }
       vm.customer={};
 
 
@@ -26,25 +41,18 @@
       }
 
       function setSelect() {
-
+          vm.customer.gender = vm.selectedGender.value;
       }
 
 
       vm.save=save;
     function save() {
         setSelect();
-        // vm.customer.id = vm.id;
-        // vm.customer.put().then(function(hal) {
-        //     // $state.go('customers.index');
-        // });
 
         Restangular.one("customers",vm.id).customPUT(vm.customer).then(function(hal) {
             $state.go('customers.index');
         });
 
-        // Restangular.oneUrl("customers",vm.id).customPUT(vm.customer).then(function(hal) {
-        //     // $state.go('customers.index');
-        // });
 
     }
 
@@ -70,22 +78,12 @@
     function init(){
         if (vm.id>0) {
             Restangular.one("customers",vm.id).get().then(function(hal) {
-                // vm._links = hal._links;
-                // vm.customer.id = vm.id;
                 vm.customer = hal;
-                // delete vm.customer._links;
-
             }, function(error) {
                 promptService.failure(setting.getDataError);
 
             });
-            //
-            // Restangular.oneUrl("hal",vm.selfLink).get().then(function(hal) {
-            //     vm.customer = hal;
-            // }, function(error) {
-            //     promptService.failure(setting.getDataError);
-            //
-            // });
+
         }
 
     }
