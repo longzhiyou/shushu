@@ -1,10 +1,24 @@
 package lzy.module.customer.controller;
 
+import lzy.module.customer.entity.Customer;
+import lzy.module.customer.repository.CustomerRepository;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.data.rest.webmvc.support.RepositoryEntityLinks;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.LinkBuilder;
+import org.springframework.hateoas.Links;
+import org.springframework.hateoas.Resource;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 设备管理控制器
@@ -16,10 +30,11 @@ import javax.transaction.Transactional;
 public class CustomerController {
 
     private static Logger logger = Logger.getLogger(CustomerController.class);
-//    @Autowired
-//    RepositoryEntityLinks repositoryEntityLinks;
-//    @Autowired
-//    private CustomerRepository customerRepository;
+    @Autowired
+    RepositoryEntityLinks repositoryEntityLinks;
+
+    @Autowired
+    private CustomerRepository customerRepository;
 //
 //    @Autowired
 //    private RuleRepository ruleRepository;
@@ -30,37 +45,37 @@ public class CustomerController {
 //    @Autowired
 //    JsonMapper jsonMapper;
 
-//    @GetMapping(value = "/filter")
-//    public @ResponseBody ResponseEntity<?> filterByRule(@RequestParam(value="filter", required = false) String filter) {
+    @GetMapping(value = "/filter")
+    public @ResponseBody ResponseEntity<?> filterByRule(@RequestParam(value="filter", required = false) String filter) {
 //
-////        List<Customer> customers = customerRepository.findAll();
-////        if (filter!=null) {
-////            List<Long> ids = jsonMapper.json2JavaCollection(filter, List.class, Long.class);
-////            List<Rule> rules = ruleRepository.findAll(ids);
-////            for (Customer customer : customers){
-////                BaZiNew baZi = new BaZiNew(customer.getBazi());
-////
-////                for (Rule rule : rules){
-////
-////                    baZiService.parseRule(baZi,rule.getAlgorithm())
-////
-////                }
-////            }
-////        }
-////
+        List<Customer> customers = customerRepository.findAll();
+        List<Resource> list = new ArrayList<>();
+
+        Links links = repositoryEntityLinks.linksToSearchResources(Customer.class);
+        Link link1 = repositoryEntityLinks.linkToCollectionResource(Customer.class);
+
+        for (Customer customer:customers){
+            Resource resource = new Resource<>(customer);
+
+            Link link = repositoryEntityLinks.linkToSingleResource(Customer.class, customer.getCustomerId());
+            LinkBuilder linkBuilder = repositoryEntityLinks.linkForSingleResource(Customer.class, customer.getCustomerId());
+            resource.add(link);
+
+            Link self = new Link(link.getHref(), Link.REL_SELF);
+            resource.add(self);
+
+            list.add(resource);
+        }
+
+        return ResponseEntity.ok(list);
+
 //
 ////        String uriString = ServletUriComponentsBuilder.fromCurrentRequest().build().toUriString();
 ////
 ////
 //////        links.linkToSearchResource()
 ////
-////        List<Resource> list = new ArrayList<>();
-////        for (Customer customer:all){
-////            Resource resource = new Resource<>(customer);
-////            repositoryEntityLinks.linksToSearchResources()
-////            resource.add(repositoryEntityLinks.linkToSingleResource(Customer.class, customer.getCustomerId()));
-////            list.add(resource);
-////        }
+
 ////
 ////        Resources resources = new Resources<>(list);
 //
@@ -88,8 +103,8 @@ public class CustomerController {
 //
 //        // add other links as needed
 //
-//        return ResponseEntity.ok();
-//    }
+
+    }
 
 
 //    @RequestMapping(method= RequestMethod.POST,consumes = "application/json")
