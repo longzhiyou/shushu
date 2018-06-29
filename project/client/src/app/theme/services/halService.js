@@ -19,9 +19,20 @@
                 }
                 return null;
             },
-            getEmbedded: function (name,hal) {
+            getList: function (listName,hal,idName) {
                 // set the id from the self link
-                return hal._embedded[name];
+                if (!idName) {
+                    idName= "id";
+                }
+                var list =  hal._embedded[listName];
+                for(var i = 0; i < list.length; i++) {
+
+                    var item = list[i];
+                    item[idName] = this.getId(item);
+
+
+                }
+                return list;
             },
             getId: function (item) {
                 // set the id from the self link

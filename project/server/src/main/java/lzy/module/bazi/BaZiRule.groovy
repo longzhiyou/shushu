@@ -27,6 +27,7 @@ class BaZiRule {
        def shiZhu = bazi.getShiZhu()
         //填写内容
 
+       mapResult["年禄测试"]="年禄"
 
        if (mapResult.size()>0) {
            mapResult

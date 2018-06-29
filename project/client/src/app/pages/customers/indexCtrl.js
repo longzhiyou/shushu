@@ -59,7 +59,14 @@
                             ids.push(select);
                         }
 
-                        var search  = ids.join(",");
+                        var filter  = JSON.stringify(ids);
+                        // filter = ids.join(",");
+
+                        Restangular.all('bazis').getList({filter: filter}).then(function(accounts) {
+
+                            var allAccounts = accounts;
+                        });
+
 
 
                     }
@@ -84,11 +91,11 @@
         //customGET
         Restangular.all('customers').customGET().then(function(hal) {
             // vm.customers = hal._embedded["customers"];
-            vm.customers = halService.getEmbedded("customers",hal);
+            vm.customers = halService.getList("customers",hal);
 
             Restangular.all('rules').customGET().then(function(hal) {
                 // vm.customers = hal._embedded["customers"];
-                vm.rules = halService.getEmbedded("rules",hal);
+                vm.rules = halService.getList("rules",hal);
 
             }, function(error) {
 
@@ -106,7 +113,7 @@
         // var id = halService.getId(item);
       $state.go('customers.edit',{
           selfLink:halService.getSelfLink(item),
-          id:halService.getId(item)
+          id:item.id
           // ,selfLink:halService.getSelfLink(item)
       });
     }
