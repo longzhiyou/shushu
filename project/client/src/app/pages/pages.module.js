@@ -7,6 +7,7 @@
 
   angular.module('BlurAdmin.pages', [
 
+      'BlurAdmin.pages.rules',
       'BlurAdmin.pages.customers'
 
   ])
