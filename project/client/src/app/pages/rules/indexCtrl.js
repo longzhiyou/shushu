@@ -9,14 +9,14 @@
       .controller('rulesIndexCtrl', indexCtrl);
 
   /** @ngInject */
-  function indexCtrl($state,$http, $uibModal, Restangular, DTOptionsBuilder,
+  function indexCtrl($state, Restangular, DTOptionsBuilder,
                      DTColumnDefBuilder,defaultOptionsDom,warningModalService
                      ,halService,promptService
 
   ) {
 
     var vm = this;
-    var idName = "customerId";
+    var idName = "id";
 
     vm.halService = halService;
 
@@ -24,13 +24,6 @@
     vm.destroy = destroy;
     vm.loadData = loadData;
 
-
-      vm.multipleSelectItems = [];
-      // vm.multipleSelectItems = [
-      //     {title: '年禄', value: '1011153728809467904'},
-      //     {title: '天乙贵人', value: '1011154965567111168'},
-      //     {title: '纳音五行正印', value: '1011155031212163072'}
-      // ];
 
       vm.rules=[];
 
@@ -45,36 +38,6 @@
                 key: '1',
                 action: function (e, dt, node, config) {
                     $state.go('rules.new');
-                }
-            },
-            {
-                text: '过滤',
-                className: 'btn btn-info',
-                key: '2',
-                action: function (e, dt, node, config) {
-
-                    if (vm.multipleSelectItems.length>0) {
-                        var ids=[];
-
-                        for(var i  = 0; i < vm.multipleSelectItems.length; i++) {
-                            var select = halService.getId(vm.multipleSelectItems[i]);
-                            ids.push(select);
-                        }
-
-                        var filter  = JSON.stringify(ids);
-                        // filter = ids.join(",");
-
-                        Restangular.all('bazis').getList({filter: filter}).then(function(accounts) {
-
-                            var allAccounts = accounts;
-                        });
-
-
-
-                    }
-
-
-
                 }
             }
         ])
@@ -94,14 +57,6 @@
         Restangular.all('rules').customGET().then(function(hal) {
             // vm.rules = hal._embedded["rules"];
             vm.rules = halService.getList("rules",hal,idName);
-
-            Restangular.all('rules').customGET().then(function(hal) {
-                // vm.rules = hal._embedded["rules"];
-                vm.rules = halService.getList("rules",hal);
-
-            }, function(error) {
-
-            });
 
         }, function(error) {
 

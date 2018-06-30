@@ -42,16 +42,19 @@ class BaZiController {
 
         if (filter!=null) {
             List<Long> ids = jsonMapper.json2JavaCollection(filter, List.class, Long.class)
+            if(ids.size()<=0)
+                return customers
+
             def rules = ruleRepository.findAll(ids)
             def customersFilter=[]
             for (customer in customers){
                 BaZi baZi = new BaZi(customer.getBazi())
 
-                def count=1
+                def count=0
                 for (rule in rules){
 
                     def result = baZiService.parseRule(baZi, rule.getAlgorithm())
-                    if (result!=null&&result.length>0) {
+                    if (result!=null&&result.size()>0) {
                         count++
                     }
 
@@ -59,8 +62,9 @@ class BaZiController {
                 if (count==rules.size()) {
                     customersFilter.push(customer)
                 }
-                return customersFilter
+
             }
+            return customersFilter
         }else {
             return  customers
         }

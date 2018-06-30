@@ -26,11 +26,6 @@
 
 
       vm.multipleSelectItems = [];
-      // vm.multipleSelectItems = [
-      //     {title: '年禄', value: '1011153728809467904'},
-      //     {title: '天乙贵人', value: '1011154965567111168'},
-      //     {title: '纳音五行正印', value: '1011155031212163072'}
-      // ];
 
       vm.rules=[];
 
@@ -48,30 +43,29 @@
                 }
             },
             {
-                text: '过滤',
+                text: '匹配规则',
                 className: 'btn btn-info',
                 key: '2',
                 action: function (e, dt, node, config) {
 
+                    var ids=[];
                     if (vm.multipleSelectItems.length>0) {
-                        var ids=[];
+
 
                         for(var i  = 0; i < vm.multipleSelectItems.length; i++) {
                             var select = halService.getId(vm.multipleSelectItems[i]);
                             ids.push(select);
                         }
 
-                        var filter  = JSON.stringify(ids);
-                        // filter = ids.join(",");
-
-                        Restangular.all('bazis').getList({filter: filter}).then(function(accounts) {
-
-                            var allAccounts = accounts;
-                        });
-
-
-
                     }
+
+                    var filter  = JSON.stringify(ids);
+                    // filter = ids.join(",");
+
+                    Restangular.all('bazis').getList({filter: filter}).then(function(accounts) {
+
+                        vm.customers = accounts;
+                    });
 
 
 
@@ -109,6 +103,13 @@
 
     }
 
+
+  function detail(item){
+
+      $state.go('customers.detail',{
+          id:halService.getId(item,idName)
+      });
+  }
 
     function edit(item){
 

@@ -1,6 +1,7 @@
 package lzy.module.bazi
 
 import lzy.module.customer.domain.BaZi
+import sun.tools.tree.IfStatement
 
 /**
  *  滴天髓规则
@@ -8,7 +9,7 @@ import lzy.module.customer.domain.BaZi
  */
 class BaZiRule {
 
-   def matchRule(BaZi  bazi, BaZiAlgorithm algorithm) {
+   def matchRule(BaZi  bazi, BaZiAlgorithm baZiAlgorithm) {
        def mapResult = [:]
        def  nianGan = bazi.getNianGan()
        def nianZhi = bazi.getNianZhi()
@@ -25,13 +26,32 @@ class BaZiRule {
        def shiGan = bazi.getShiGan()
        def shiZhi = bazi.getShiZhi()
        def shiZhu = bazi.getShiZhu()
+
+
         //填写内容
 
-       mapResult["年禄测试"]="年禄"
 
-       if (mapResult.size()>0) {
-           mapResult
+
+       def lu = baZiAlgorithm.ganLu.get(nianGan)
+       if(lu==riZhi){
+           mapResult["年禄"]="日支"
        }
+
+       if(lu==shiZhi){
+           mapResult["年禄"]="时支"
+       }
+
+       def  tianyi= baZiAlgorithm.tianyi.get(nianGan)
+
+       if(tianyi.contains(riZhi)){
+           mapResult["年tianyi"]="日支"
+       }
+
+       if(tianyi.contains(shiZhi)){
+           mapResult["年tianyi"]="时支"
+       }
+
+       return mapResult
 
    }
 }

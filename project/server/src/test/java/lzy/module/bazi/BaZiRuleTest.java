@@ -1,7 +1,10 @@
 package lzy.module.bazi;
 
+import lzy.ApplicationTest;
 import lzy.module.customer.domain.BaZi;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * User: longzhiyou
@@ -9,14 +12,16 @@ import org.junit.Test;
  * Time: 20:57
  */
 public class BaZiRuleTest {
+    private Logger logger = LoggerFactory.getLogger(ApplicationTest.class);
     @Test
     public void matchRule() throws Exception {
 
         BaZiRule baZiRule = new BaZiRule();
         BaZiAlgorithm algorithm = new BaZiAlgorithm();
-        BaZi bazi = new BaZi(" 甲子 丙子 丙戌 庚寅");
+        BaZi bazi = new BaZi("己卯 丁丑 庚午 庚申");
 
         Object o = baZiRule.matchRule(bazi, algorithm);
+        logger.info("matchRule:"+o);
     }
 
 }

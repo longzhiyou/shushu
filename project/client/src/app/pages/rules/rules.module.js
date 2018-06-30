@@ -42,26 +42,15 @@
             }
 
         })
-        // .state('rules.detail', {
-        //     url: '/:id',
-        //     templateUrl: 'app/pages/rules/detail.html',
-        //     controller: 'detailCtrl',
-        //     controllerAs: 'vm',
-        //     title: '详情床垫'
-        //
-        // })
         .state('rules.edit', {
             url: '/:id/edit',
-            params:{
-                selfLink:null
-            },
+
             templateUrl: 'app/pages/rules/modify.html',
             controller: 'rulesModifyCtrl',
             controllerAs: 'vm',
             title: '编辑规则'
 
         })
-
 
 
     ;

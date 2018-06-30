@@ -13,43 +13,16 @@
 
     var vm = this;
     vm.id=$stateParams.id>0?$stateParams.id:0;
+      
+    
+      vm.rule={};
 
-    // 性别
-    vm.genderList = [
-        {title: '男', value: '1'},
-        {title: '女', value: '2'}
-    ];
-
-      //选择后的厂家
-      vm.selectedGender =vm.genderList[0];
-
-      function getSelectedGender(value) {
-          for(var i=0;i<vm.genderList.length;i++){
-
-              if (vm.genderList[i].value===value) {
-                  return vm.selectedGender[i];
-              }
-          }
-
-      }
-      vm.customer={};
-
-
-      function uiInit() {
-
-
-      }
-
-      function setSelect() {
-          vm.customer.gender = vm.selectedGender.value;
-      }
 
 
       vm.save=save;
     function save() {
-        setSelect();
 
-        Restangular.one("rules",vm.id).customPUT(vm.customer).then(function(hal) {
+        Restangular.one("rules",vm.id).customPUT(vm.rule).then(function(hal) {
             $state.go('rules.index');
         });
 
@@ -57,10 +30,10 @@
     }
 
     vm.add= function(goIndex) {
-        setSelect();
-        // vm.customer.customerId = 1;
-          Restangular.all('rules').post(vm.customer).then(function(hal) {
-              // console.log( customer );
+
+
+          Restangular.all('rules').post(vm.rule).then(function(hal) {
+              // console.log( rule );
               if (goIndex) {
                   $state.go('rules.index');
               }else {
@@ -78,7 +51,7 @@
     function init(){
         if (vm.id>0) {
             Restangular.one("rules",vm.id).get().then(function(hal) {
-                vm.customer = hal;
+                vm.rule = hal;
             }, function(error) {
                 promptService.failure(setting.getDataError);
 

@@ -30,7 +30,10 @@
     <thead>
       <tr>
         <th></th>
-        <th>客户名称</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>出生日期</th>
+        <th>八字</th>
         <th></th>
       </tr>
     </thead>
@@ -39,9 +42,18 @@
 
         <td>{{ $index+1 }}</td>
         <td>
-          <a>
+          <a ui-sref="customers.detail({id:item.customerId})">
             {{ item.name }}
           </a>
+        </td>
+        <td>
+          {{ item.gender | genderFilter}}
+        </td>
+        <td>
+          {{ item.birth }}
+        </td>
+        <td>
+          {{ item.bazi }}
         </td>
 
         <td>
