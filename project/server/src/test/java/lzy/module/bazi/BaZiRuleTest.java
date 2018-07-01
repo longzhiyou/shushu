@@ -18,7 +18,7 @@ public class BaZiRuleTest {
 
         BaZiRule baZiRule = new BaZiRule();
         BaZiAlgorithm algorithm = new BaZiAlgorithm();
-        BaZi bazi = new BaZi("己卯 丁丑 庚午 庚申");
+        BaZi bazi = new BaZi("甲子 乙巳 戊寅 庚寅");
 
         Object o = baZiRule.matchRule(bazi, algorithm);
         logger.info("matchRule:"+o);
