@@ -30,6 +30,15 @@ public class BaZiService {
     }
     private static final Logger logger = LoggerFactory.getLogger(BaZiService.class);
 
+
+    public BaZi getBaZi(String strBaZi) {
+        strBaZi = strBaZi.replace(" ", "");//去掉所有空格，包括首尾、中间
+        String[] split = strBaZi.split("");
+        if (split.length>7) {
+            return new BaZi(split);
+        }else
+            return null;
+    }
     public Object parseRule(BaZi baZi, String ruleAlgorithm) {
 
         Object result = null;

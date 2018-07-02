@@ -1,7 +1,6 @@
 package lzy.module.bazi
 
 import lzy.module.customer.domain.BaZi
-import sun.tools.tree.IfStatement
 
 /**
  *  滴天髓规则
@@ -143,7 +142,7 @@ class BaZiRule {
            def zhu=""
            def temp = []
 
-           if(i==0){
+           if(zhi==riZhi){
 
                zhu = riZhu
                mapResult["日"]=temp
@@ -268,16 +267,16 @@ class BaZiRule {
 
 
 
-//       //年天乙
-//       def  tianyi= baZiAlgorithm.tianyi.get(nianGan)
-//
-//       if(tianyi.contains(riZhi)){
-//           mapResult["年天乙-日支"]=""
-//       }
-//
-//       if(tianyi.contains(shiZhi)){
-//           mapResult["年天乙-时支"]=""
-//       }
+       //年天乙
+       def  tianyi= baZiAlgorithm.tianyi.get(nianGan)
+
+       if(tianyi.contains(riZhi)){
+           mapResult["年天乙-日支"]=""
+       }
+
+       if(tianyi.contains(shiZhi)){
+           mapResult["年天乙-时支"]=""
+       }
 //
 //
 //       //年五行正印

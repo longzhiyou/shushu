@@ -71,10 +71,10 @@ class BaZi {
      * 八字字符串,如果是10个则对应最后面是胎柱
      * [2018-06-25 add by longzhiyou]
      */
-     BaZi(String strBaZi){
+     BaZi( String[] split){
 
-        strBaZi = strBaZi.replace(" ", "")//去掉所有空格，包括首尾、中间
-        String[] split = strBaZi.split("")
+//        strBaZi = strBaZi.replace(" ", "")//去掉所有空格，包括首尾、中间
+//        String[] split = strBaZi.split("")
 
 
          this.nianGan = split[0]

@@ -20,6 +20,8 @@ angular.module('BlurAdmin', [
   'datatables',
   'datatables.buttons',
   'w5c.validator',
+   'platypus.jsonviewer',
+   'jsonFormatter',
   'BlurAdmin.theme',
   'BlurAdmin.pages'
 ]);

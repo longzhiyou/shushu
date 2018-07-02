@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lzy.common.entity.BaseIdEntity;
 import org.hibernate.annotations.Where;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
@@ -24,6 +25,10 @@ public class Rule extends BaseIdEntity {
    private String title;
    private String subject;
    private String description;
+
+//   @Lob
+   @Column(columnDefinition = "TEXT")
    private String algorithm;
    private boolean enable;
+
 }
