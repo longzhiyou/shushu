@@ -6,9 +6,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import org.springframework.data.rest.core.annotation.RestResource;
+
+import java.util.List;
 
 @RepositoryRestResource()
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
@@ -17,6 +17,25 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     @Query("update Customer t set t.deleteFlag = 1 where t.customerId = ?1")
     @Override
     void delete(Long id);
+
+//    @RestResource(exported = false)
+//    @Query("select name,gender from Customer c")
+//    List<CustomerGrid> findAllGridBy();
+
+    @Query(value = "select new Customer(c.customerId, c.bazi, c.name, c.gender, c.birth) " +
+            "from Customer c ")
+    List<Customer> grid();
+
+    @Query(value = "select new Customer(c.customerId, c.bazi, c.name, c.gender, c.birth) " +
+            "from Customer c ")
+    Page gridPage(Pageable p);
+
+//    @Query(value = "select new Customer(c.customerId, c.bazi, c.name, c.gender, c.birth) " +
+//            "from Customer c ")
+//    List<Customer> findAll();
+
+//    @Query
+//    public Page<Customer> findByType(String type, Pageable pageable);
 
 //    @RestResource(path = "nameStartsWith", rel = "nameStartsWithRel")
 //    Page findByNameStartsWith(@Param("name") String name, Pageable p);

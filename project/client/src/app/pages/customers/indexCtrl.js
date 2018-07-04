@@ -78,12 +78,12 @@
     function loadData(){
 
         //customGET
-        Restangular.all('customers').customGET().then(function(customers) {
+        Restangular.all('customers/search/grid').customGET().then(function(customers) {
             // vm.customers = hal._embedded["customers"];
-            vm.customers = halService.getList("customers",customers,idName);
+            vm.customers =halService.getList("customers",customers);
 
-            Restangular.all('rules/combox').customGET().then(function(rules) {
-                vm.rules = rules;
+            Restangular.all('rules/search/combox').customGET().then(function(rules) {
+                vm.rules = halService.getList("rules",rules);
 
             }, function(error) {
 

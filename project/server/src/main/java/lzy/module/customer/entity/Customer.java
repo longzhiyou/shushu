@@ -33,4 +33,12 @@ public class Customer extends PersonEntity {
     @Column(length=4096)
     private String description;
 
+    public Customer(Long customerId,String bazi,
+                    String name,String gender,String birth) {
+        this.customerId = customerId;
+        this.bazi = bazi;
+        this.setName(name);
+        this.setGender(gender);
+        this.setBirth(birth);
+    }
 }

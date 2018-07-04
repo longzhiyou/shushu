@@ -50,8 +50,8 @@ function config($httpProvider
 
 ) {
 
-    // RestangularProvider.setBaseUrl('http://59.110.12.232:3001/api');
-    RestangularProvider.setBaseUrl('http://localhost:3001/api');
+    // RestangularProvider.setBaseUrl('http://59.110.12.232:3000/api');
+    RestangularProvider.setBaseUrl('http://localhost:3002/api');
 
 
 
@@ -210,6 +210,8 @@ var oLanguage=
     }
     };
     DTDefaultOptions.setLanguage(oLanguage);
+    //每页显示行数
+    DTDefaultOptions.setDisplayLength(50);
 
 
     authManager.redirectWhenUnauthenticated();

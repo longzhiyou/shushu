@@ -177,78 +177,11 @@ class BaZiRule {
 
            }
 
-
-           if (listMingGan.contains(zhenluValue[0])&&listMingZhi.contains(zhenluValue[1])) {
+           if (zhu[0]==zhenluValue[0]&&listMingZhi.contains(zhenluValue[1])) {
                temp.push(zhenlustr)
            }
 
        }
-
-//       if(lu==riZhi){
-//
-//           def temp = [luqi.get(nianGan).get(riZhu)]
-//           mapResult["日"]=temp
-//           matchStr = nianGan+riZhu
-//
-//           if (mingweilu.contains(matchStr)) {
-//               temp.push(mingweilustr)
-//
-//           }
-//
-//           if (shengchenglu.contains(matchStr)) {
-//               temp.push(shengchenglustr)
-//
-//           }
-//
-//
-//           if (lutoucai.contains(matchStr)) {
-//               temp.push(lutoucaistr)
-//
-//           }
-//
-//           if (lutougui.contains(matchStr)) {
-//               temp.push(lutouguistr)
-//
-//           }
-//
-//
-//           if (listMingGan.contains(zhenluValue[0])&&listMingZhi.contains(zhenluValue[1])) {
-//               temp.push(zhenlustr)
-//           }
-//
-//       }
-//
-//       if(lu==shiZhi){
-//           def temp = [luqi.get(nianGan).get(shiZhu)]
-//           mapResult["时"]=temp
-//           matchStr = nianGan+shiZhu
-//
-//           if (mingweilu.contains(matchStr)) {
-//               temp.push(mingweilustr)
-//
-//           }
-//
-//           if (shengchenglu.contains(matchStr)) {
-//               temp.push(shengchenglustr)
-//
-//           }
-//
-//
-//           if (lutoucai.contains(matchStr)) {
-//               temp.push(lutoucaistr)
-//
-//           }
-//
-//           if (lutougui.contains(matchStr)) {
-//               temp.push(lutouguistr)
-//
-//           }
-//
-//
-//           if (listMingGan.contains(zhenluValue[0])&&listMingZhi.contains(zhenluValue[1])) {
-//               temp.push(zhenlustr)
-//           }
-//       }
 
        //【暗禄格】五虎遁禄双六合
        mapRule=["甲":"辛亥","乙":"甲戌","丙":"戊申","丁":"辛未"

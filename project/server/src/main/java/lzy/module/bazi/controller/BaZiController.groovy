@@ -1,18 +1,13 @@
 package lzy.module.bazi.controller
 
-import lzy.module.bazi.entity.ComboxRule
 import lzy.module.bazi.repository.RuleRepository
+import lzy.module.customer.controller.CustomerResourceAssembler
 import lzy.module.customer.domain.BaZi
-import lzy.module.customer.entity.Customer
 import lzy.module.customer.repository.CustomerRepository
 import lzy.module.customer.service.BaZiService
 import lzy.utils.JsonMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.rest.webmvc.support.RepositoryEntityLinks
-import org.springframework.hateoas.Link
-import org.springframework.hateoas.LinkBuilder
-import org.springframework.hateoas.Links
-import org.springframework.hateoas.Resource
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -36,6 +31,9 @@ class BaZiController {
 
     @Autowired
     RepositoryEntityLinks entityLinks
+
+    @Autowired
+    private CustomerResourceAssembler customerResourceAssembler
 
     @Autowired
     JsonMapper jsonMapper
@@ -105,14 +103,16 @@ class BaZiController {
             }
 
         }
+//
+//        List<Resource> list = new ArrayList<>()
+//        for (item in customers){
+//            Resource resource = new Resource<>(item)
+//            resource.add(entityLinks.linkToSingleResource(Customer.class, item.getCustomerId()))
+//            list.add(resource)
+//        }
 
-        List<Resource> list = new ArrayList<>()
-        for (item in customers){
-            Resource resource = new Resource<>(item)
-            resource.add(entityLinks.linkToSingleResource(Customer.class, item.getCustomerId()))
-            list.add(resource)
-        }
-        return  list
+        return ResponseEntity.ok(customerResourceAssembler.toResources(customers))
+//        return  list
 
 
 

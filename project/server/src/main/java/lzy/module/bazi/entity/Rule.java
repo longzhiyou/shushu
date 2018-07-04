@@ -31,4 +31,8 @@ public class Rule extends BaseIdEntity {
    private String algorithm;
    private boolean enable;
 
+   public Rule(Long id,String title) {
+      this.setId(id);
+      this.title = title;
+   }
 }
