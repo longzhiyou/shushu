@@ -57,8 +57,7 @@ public class CustomerController {
         for (Customer customer:customers){
             Resource resource = new Resource<>(customer);
 
-            Link link = repositoryEntityLinks.linkToSingleResource(Customer.class, customer.getCustomerId());
-            LinkBuilder linkBuilder = repositoryEntityLinks.linkForSingleResource(Customer.class, customer.getCustomerId());
+            Link link = repositoryEntityLinks.linkToSingleResource(customer.getClass(), customer.getCustomerId());
             resource.add(link);
 
             Link self = new Link(link.getHref(), Link.REL_SELF);
@@ -69,54 +68,6 @@ public class CustomerController {
 
         return ResponseEntity.ok(list);
 
-//
-////        String uriString = ServletUriComponentsBuilder.fromCurrentRequest().build().toUriString();
-////
-////
-//////        links.linkToSearchResource()
-////
-
-////
-////        Resources resources = new Resources<>(list);
-//
-//
-//        //
-//        // do some intermediate processing, logging, etc. with the producers
-//        //
-//
-//
-//
-////        resources.add(new Link(uriString, "self"));
-////        resources.add(linkTo(CustomerRepository.class).all);
-////        add(linkTo(methodOn(GymMembershipController.class).all(id)).withRel("memberships"));
-////        add(linkTo(methodOn(PersonController.class).get(id)).withSelfRel());
-//
-////        resources.add(links.linkToSearchResource(Customer.class,"").withSelfRel());
-//
-//
-//
-////        resources.add(linkTo(methodOn(CustomerRepository.class)).slash(Id));
-//
-////        resources.add(linkTo(methodOn(CustomerRepository.class).getOne()).withSelfRel());
-//
-////        resources.add(linkTo(Customer.class).withSelfRel());
-//
-//        // add other links as needed
-//
-
     }
-
-
-//    @RequestMapping(method= RequestMethod.POST,consumes = "application/json")
-//    public ResponseEntity create(@RequestBody CustomerController one) {
-//
-//
-//
-//        return new ResponseEntity<>( HttpStatus.CREATED);
-//
-//
-//    }
-
-
 
 }

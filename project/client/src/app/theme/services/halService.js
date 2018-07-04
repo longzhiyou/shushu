@@ -35,13 +35,15 @@
                 return list;
             },
             getId: function (item,idName) {
-                if (idName) {
+                // set the id from the self link
+                if (item._links && item._links.self.href.match(/\d+$/)) {
+                    return item._links.self.href.match(/\d+$/)[0];
+                }else  if (item.links && item.links[0].href.match(/\d+$/)) {
+                    return item.links[0].href.match(/\d+$/)[0];
+                }
+                else if (idName) {
                     return  item[idName];
                 }else {
-                    // set the id from the self link
-                    if (item._links && item._links.self.href.match(/\d+$/)) {
-                        return item._links.self.href.match(/\d+$/)[0];
-                    }
                     return 0;
                 }
 

@@ -18,8 +18,8 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     @Override
     void delete(Long id);
 
-    @RestResource(path = "nameStartsWith", rel = "nameStartsWithRel")
-    Page findByNameStartsWith(@Param("name") String name, Pageable p);
+//    @RestResource(path = "nameStartsWith", rel = "nameStartsWithRel")
+//    Page findByNameStartsWith(@Param("name") String name, Pageable p);
 
 
 }

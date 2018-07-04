@@ -71,7 +71,7 @@ class BaZi {
      * 八字字符串,如果是10个则对应最后面是胎柱
      * [2018-06-25 add by longzhiyou]
      */
-     BaZi( String[] split){
+     BaZi(List<String> split){
 
 //        strBaZi = strBaZi.replace(" ", "")//去掉所有空格，包括首尾、中间
 //        String[] split = strBaZi.split("")
@@ -95,7 +95,7 @@ class BaZi {
          this.listMingZhi = [nianZhi, yueZhi,riZhi,shiZhi]
          this.listMingZhu = [nianZhu, yueZhu,riZhu,shiZhu]
 
-         if (split.length>8){
+         if (split.size()>8){
            this.taiGan = split[8]
              this.taiZhi = split[9]
              this.taiZhu =  taiGan+taiZhi

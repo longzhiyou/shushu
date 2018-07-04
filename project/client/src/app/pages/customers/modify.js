@@ -14,6 +14,8 @@
     var vm = this;
     vm.id=$stateParams.id>0?$stateParams.id:0;
 
+
+
     // 性别
     vm.genderList = [
         {title: '男', value: '1'},
@@ -22,7 +24,9 @@
 
       //选择后
       vm.selectedGender =vm.genderList[0];
-      vm.customer={};
+      vm.customer={
+          bazi:""
+      };
       function getSelectedGender(value) {
           for(var i=0;i<vm.genderList.length;i++){
 
@@ -36,7 +40,9 @@
 
 
       function uiInit() {
-
+          vm.customer={
+              bazi:""
+          };
 
       }
 
@@ -90,10 +96,26 @@
 
     }
 
+
       vm.back = back;
       function back() {
           $state.go('customers.index');
       }
+
+      vm.analyze = function () {
+          var filter  = {
+              gender:vm.customer.gender,
+              bazi:vm.customer.bazi
+          };
+          Restangular.one("bazis","analyze").get(filter).then(function(result) {
+              vm.result = result;
+
+          }, function(error) {
+              promptService.failure(setting.getDataError);
+
+          });
+
+      };
 
     init();
 

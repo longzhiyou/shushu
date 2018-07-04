@@ -36,8 +36,8 @@
         <th></th>
         <th>姓名</th>
         <th>性别</th>
-        <th>出生日期</th>
         <th>八字</th>
+        <th>出生日期</th>
         <th></th>
       </tr>
     </thead>
@@ -54,11 +54,12 @@
           {{ item.gender | genderFilter}}
         </td>
         <td>
-          {{ item.birth }}
-        </td>
-        <td>
           {{ item.bazi }}
         </td>
+        <td>
+          {{ item.birth }}
+        </td>
+
 
         <td>
           <button type="button" ng-click="vm.edit(item)"

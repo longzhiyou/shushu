@@ -49,22 +49,15 @@
                 action: function (e, dt, node, config) {
 
                     var ids=[];
-                    if (vm.multipleSelectItems.length>0) {
-
-
-                        for(var i  = 0; i < vm.multipleSelectItems.length; i++) {
-                            var select = halService.getId(vm.multipleSelectItems[i]);
-                            ids.push(select);
-                        }
-
+                    for(var i  = 0; i < vm.multipleSelectItems.length; i++) {
+                        ids.push(halService.getId(vm.multipleSelectItems[i]));
                     }
-
                     var filter  = JSON.stringify(ids);
                     // filter = ids.join(",");
 
-                    Restangular.all('bazis').getList({filter: filter}).then(function(accounts) {
+                    Restangular.all('bazis').getList({filter: filter}).then(function(customers) {
 
-                        vm.customers = accounts;
+                        vm.customers = customers;
                     });
 
 
@@ -85,13 +78,12 @@
     function loadData(){
 
         //customGET
-        Restangular.all('customers').customGET().then(function(hal) {
+        Restangular.all('customers').customGET().then(function(customers) {
             // vm.customers = hal._embedded["customers"];
-            vm.customers = halService.getList("customers",hal,idName);
+            vm.customers = halService.getList("customers",customers,idName);
 
-            Restangular.all('rules').customGET().then(function(hal) {
-                // vm.customers = hal._embedded["customers"];
-                vm.rules = halService.getList("rules",hal);
+            Restangular.all('rules/combox').customGET().then(function(rules) {
+                vm.rules = rules;
 
             }, function(error) {
 

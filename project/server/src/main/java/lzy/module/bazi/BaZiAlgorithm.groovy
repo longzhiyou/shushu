@@ -12,10 +12,10 @@ class BaZiAlgorithm {
     static  infoYinYang = ["阴", "阳"]
 
     //天干
-    static  infoTianGan = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"]
+    def infoTianGan = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"]
 
     //地支
-    static  infoDiZhi = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"]
+    def  infoDiZhi = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"]
 
     //五行
     static  infoWuXing = ["木", "火", "土", "金", "水"]

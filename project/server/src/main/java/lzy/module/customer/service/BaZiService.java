@@ -6,10 +6,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * User: longzhiyou
@@ -32,10 +35,32 @@ public class BaZiService {
 
 
     public BaZi getBaZi(String strBaZi) {
-        strBaZi = strBaZi.replace(" ", "");//去掉所有空格，包括首尾、中间
-        String[] split = strBaZi.split("");
-        if (split.length>7) {
-            return new BaZi(split);
+        if (StringUtils.isEmpty(strBaZi)) {
+            return null;
+        }
+
+        List<String> tianGanList = (List<String>) baZiAlgorithm.getInfoTianGan();
+        List<String> diZhiList = (List<String>) baZiAlgorithm.getInfoDiZhi();
+        List<String> sizhu =  new ArrayList<>();
+
+        for (int i=0;i<strBaZi.length();i++){
+            String s = strBaZi.substring(i,i+1);
+            boolean b = false;
+            if (tianGanList.contains(s)) {
+                b=true;
+            }else if (diZhiList.contains(s)) {
+                b=true;
+            }
+
+            if (b) {
+                sizhu.add(s);
+            }
+
+        }
+//        strBaZi = strBaZi.replace(" ", "");//去掉所有空格，包括首尾、中间
+//        String[] split = strBaZi.split("");
+        if (sizhu.size()>7) {
+            return new BaZi(sizhu);
         }else
             return null;
     }

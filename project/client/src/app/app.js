@@ -50,7 +50,8 @@ function config($httpProvider
 
 ) {
 
-    RestangularProvider.setBaseUrl('http://localhost:8081/api');
+    // RestangularProvider.setBaseUrl('http://59.110.12.232:3001/api');
+    RestangularProvider.setBaseUrl('http://localhost:3001/api');
 
 
 

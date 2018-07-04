@@ -7,6 +7,7 @@
 >
     <form novalidate name="validateForm" w5c-form-validate >
 
+
     <div class="row">
 
         <div class="form-group">
@@ -37,6 +38,7 @@
             <label class="control-label">八字</label>
             <input type="text" class="form-control"  placeholder=""
                    ng-model="vm.customer.bazi"
+                   name="commonName"
                    required>
         </div>
 
@@ -49,7 +51,12 @@
         </div>
 
         <div class="form-group">
+
+
             <div ng-if="vm.id===0">
+                <button class="btn btn-primary" ng-click="vm.analyze()">
+                    分析已知因
+                </button>
                 <button class="btn btn-primary"
                         ng-disabled="validateForm.$invalid"
                         ng-click="vm.add()"
@@ -68,6 +75,9 @@
 
             </div>
             <div ng-if="vm.id>0">
+                <button class="btn btn-primary" ng-click="vm.analyze()">
+                    分析已知因
+                </button>
                 <button class="btn btn-primary"
                         ng-disabled="validateForm.$invalid"
                         ng-click="vm.save()">保存</button>
@@ -80,6 +90,11 @@
     </div>
 
     </form>
+
+    <div class="row">
+        <div json-viewer="vm.result"></div>
+
+    </div>
 </div>
 
 
