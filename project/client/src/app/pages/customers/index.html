@@ -1,37 +1,33 @@
-<!--<div class="row">-->
-  <!--<json-formatter json="vm.obj" open="1"></json-formatter>-->
-<!--</div>-->
 
-
-
-<div class="row">
+<div ba-panel  ba-panel-class="with-scroll">
   <div class="row">
-    <div class="col-md-3">
-      <div class="form-group">
-        <ui-select multiple ng-model="vm.multipleSelectItems"
-                   ng-disabled="false"
-                   search-enabled="true"
-                   append-to-body="true"
-                   class="form-control">
-          <ui-select-match placeholder="规则">
-            {{$item.title}}
-          </ui-select-match>
-          <ui-select-choices repeat="multipleItem in vm.rules | filter: $select.search">
-            {{multipleItem.title}}
-          </ui-select-choices>
-        </ui-select>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <ui-select multiple ng-model="vm.multipleSelectItems"
+                     ng-disabled="false"
+                     search-enabled="true"
+                     append-to-body="true"
+                     class="form-control">
+            <ui-select-match placeholder="规则">
+              {{$item.title}}
+            </ui-select-match>
+            <ui-select-choices repeat="multipleItem in vm.rules | filter: $select.search">
+              {{multipleItem.title}}
+            </ui-select-choices>
+          </ui-select>
+        </div>
       </div>
+
     </div>
 
-  </div>
-
-  <table class="table table-bordered table-hover table-condensed"
-         datatable="ng"
-         dt-column-defs="vm.dtColumnDefs"
-         dt-options="vm.dtOptions"
-         dt-disable-deep-watchers="true"
-  >
-    <thead>
+    <table class="table table-bordered table-hover table-condensed"
+           datatable="ng"
+           dt-column-defs="vm.dtColumnDefs"
+           dt-options="vm.dtOptions"
+           dt-disable-deep-watchers="true"
+    >
+      <thead>
       <tr>
         <th></th>
         <th>姓名</th>
@@ -40,8 +36,8 @@
         <th>出生日期</th>
         <th></th>
       </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
       <tr ng-repeat="item in vm.customers">
 
         <td>{{ $index+1 }}</td>
@@ -75,8 +71,9 @@
         </td>
 
       </tr>
-    </tbody>
+      </tbody>
 
-  </table>
+    </table>
 
+  </div>
 </div>

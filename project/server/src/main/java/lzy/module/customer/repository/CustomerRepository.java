@@ -10,7 +10,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
-@RepositoryRestResource()
+//@RepositoryRestResource()
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     @Modifying
@@ -23,7 +23,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 //    List<CustomerGrid> findAllGridBy();
 
     @Query(value = "select new Customer(c.customerId, c.bazi, c.name, c.gender, c.birth) " +
-            "from Customer c ")
+            "from Customer c order by c.updatedAt Desc")
     List<Customer> grid();
 
     @Query(value = "select new Customer(c.customerId, c.bazi, c.name, c.gender, c.birth) " +

@@ -54,9 +54,9 @@
     function loadData(){
 
         //customGET
-        Restangular.all('rules').customGET().then(function(hal) {
+        Restangular.all('rules/search/combox').customGET().then(function(hal) {
             // vm.rules = hal._embedded["rules"];
-            vm.rules = halService.getList("rules",hal,idName);
+            vm.rules = halService.getList("rules",hal);
 
         }, function(error) {
 

@@ -26,6 +26,14 @@ public class CustomerController {
     private CustomerRepository customerRepository;
 
 
+//    @GetMapping()
+//    public ResponseEntity index() {
+//
+//        List<Customer> customers = customerRepository.findAll();
+//
+//        return ResponseEntity.ok(customers);
+//
+//    }
 
 
 //    @GetMapping(value = "/filter")
