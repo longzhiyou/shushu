@@ -1,21 +1,21 @@
 
+<div ba-panel  ba-panel-class="with-scroll">
+  <div class="row">
 
-<div class="row">
-
-  <table class="table table-bordered table-hover table-condensed"
-         datatable="ng"
-         dt-column-defs="vm.dtColumnDefs"
-         dt-options="vm.dtOptions"
-         dt-disable-deep-watchers="true"
-  >
-    <thead>
+    <table class="table table-bordered table-hover table-condensed"
+           datatable="ng"
+           dt-column-defs="vm.dtColumnDefs"
+           dt-options="vm.dtOptions"
+           dt-disable-deep-watchers="true"
+    >
+      <thead>
       <tr>
         <th></th>
         <th>名称</th>
         <th></th>
       </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
       <tr ng-repeat="item in vm.rules">
 
         <td>{{ $index+1 }}</td>
@@ -39,8 +39,10 @@
         </td>
 
       </tr>
-    </tbody>
+      </tbody>
 
-  </table>
+    </table>
 
+  </div>
 </div>
+

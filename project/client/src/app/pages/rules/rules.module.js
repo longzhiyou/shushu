@@ -18,7 +18,7 @@
           abstract: true,
           title: '规则管理',
           sidebarMeta: {
-            icon: 'fa fa-bed',
+            icon: 'fa  fa-magic',
             order: 1
           }
         }).state('rules.index', {

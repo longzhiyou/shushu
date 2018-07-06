@@ -18,7 +18,7 @@
           abstract: true,
           title: '客户管理',
           sidebarMeta: {
-            icon: 'fa fa-bed',
+            icon: 'fa fa-user',
             order: 1
           }
         }).state('customers.index', {

@@ -1,7 +1,12 @@
 package lzy.sys.auth.repository;
 
 import lzy.sys.auth.entity.User;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.rest.core.annotation.RestResource;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 /**
  * User: longzhiyou
@@ -9,10 +14,22 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * Time: 20:04
  */
 //@CacheConfig(cacheNames = "users")
-public interface UserRepository extends PagingAndSortingRepository<User, Integer> {
+//@RepositoryRestResource(exported = false)
+//@PreAuthorize("hasRole('ROLE_ADMIN')")
+public interface UserRepository extends PagingAndSortingRepository<User, Long> {
+
+    @Modifying
+    @Query("update User t set t.deleteFlag = 1 where t.userId = ?1")
+    @Override
+    void delete(Long id);
+
+    @Override
+    @RestResource(exported = false)
+    void delete(User entity);
 
     //将缓存保存进andCache，并使用参数中的bid加上一个字符串(这里使用方法名称)作为缓存的key
 //    @Cacheable(value="findFirstByUsername")
+//    @RestResource(exported = false)
     User findFirstByUsername(String username);
 
 }

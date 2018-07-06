@@ -15,6 +15,8 @@ import org.springframework.web.client.RestTemplate;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 
+//@EnableWebSecurity
+//@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 
 @SpringBootApplication
 @EnableJpaAuditing
