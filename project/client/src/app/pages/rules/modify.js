@@ -18,12 +18,21 @@
       vm.rule={};
 
 
+      function uiInit() {
+          vm.rule={
+
+          };
+
+      }
 
       vm.save=save;
     function save() {
 
-        Restangular.one("rules",vm.id).customPUT(vm.rule).then(function(hal) {
-            $state.go('rules.index');
+        Restangular.one("rules",vm.id).customPUT(vm.rule).then(function(response) {
+            promptService.success(setting.saveSuccess);
+        }, function(error) {
+            promptService.failure(setting.saveError);
+
         });
 
 
@@ -38,8 +47,8 @@
                   $state.go('rules.index');
               }else {
                   //清空
+                  uiInit();
                   promptService.success(setting.saveSuccess);
-                 uiInit();
               }
 
           }, function(error) {

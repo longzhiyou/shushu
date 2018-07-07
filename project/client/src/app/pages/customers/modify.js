@@ -24,9 +24,7 @@
 
       //选择后
       vm.selectedGender =vm.genderList[0];
-      vm.customer={
-          bazi:""
-      };
+      vm.customer={}
       function getSelectedGender(value) {
           for(var i=0;i<vm.genderList.length;i++){
 
@@ -41,6 +39,7 @@
 
       function uiInit() {
           vm.customer={
+              name:"无名",
               bazi:""
           };
 
@@ -55,8 +54,11 @@
     function save() {
         setSelect();
 
-        Restangular.one("customers",vm.id).customPUT(vm.customer).then(function(hal) {
-            $state.go('customers.index');
+        Restangular.one("customers",vm.id).customPUT(vm.customer).then(function(response) {
+            promptService.success(setting.saveSuccess);
+        }, function(error) {
+            promptService.failure(setting.saveError);
+
         });
 
 
@@ -65,7 +67,7 @@
     vm.add= function(goIndex) {
         setSelect();
         // vm.customer.customerId = 1;
-          Restangular.all('customers').post(vm.customer).then(function(hal) {
+          Restangular.all('customers').post(vm.customer).then(function(response) {
               // console.log( customer );
               if (goIndex) {
                   $state.go('customers.index');
@@ -82,6 +84,7 @@
       };
 
     function init(){
+        uiInit();
         if (vm.id>0) {
             Restangular.one("customers",vm.id).get().then(function(hal) {
                 vm.customer = hal;
@@ -103,6 +106,7 @@
       }
 
       vm.analyze = function () {
+          setSelect();
           var filter  = {
               gender:vm.customer.gender,
               bazi:vm.customer.bazi

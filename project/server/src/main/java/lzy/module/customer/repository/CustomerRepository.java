@@ -22,9 +22,12 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 //    @Query("select name,gender from Customer c")
 //    List<CustomerGrid> findAllGridBy();
 
-    @Query(value = "select new Customer(c.customerId, c.bazi, c.name, c.gender, c.birth) " +
-            "from Customer c order by c.updatedAt Desc")
+    @Query(value = "select c from Customer c order by c.updatedAt Desc")
     List<Customer> grid();
+
+//    @Query(value = "select new Customer(c.customerId, c.bazi, c.name, c.gender, c.birth) " +
+//            "from Customer c order by c.updatedAt Desc")
+//    List<Customer> grid();
 
     @Query(value = "select new Customer(c.customerId, c.bazi, c.name, c.gender, c.birth) " +
             "from Customer c ")

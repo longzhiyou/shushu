@@ -69,21 +69,26 @@
     vm.dtColumnDefs = [
       // DTColumnDefBuilder.newColumnDef(0).withClass('select-checkbox').renderWith(function() {return '';}),
       DTColumnDefBuilder.newColumnDef(0).withClass('text-danger'),
-      DTColumnDefBuilder.newColumnDef(1),
-      DTColumnDefBuilder.newColumnDef(2).notSortable()
+      // DTColumnDefBuilder.newColumnDef(1),
+      // DTColumnDefBuilder.newColumnDef(2),
+      // DTColumnDefBuilder.newColumnDef(3),
+      // DTColumnDefBuilder.newColumnDef(4),
+      DTColumnDefBuilder.newColumnDef(5).notVisible()
 
     ];
 
 
     function loadData(){
 
-        //customGET
-        Restangular.all('customers/search/grid').customGET().then(function(customers) {
-            // vm.customers = hal._embedded["customers"];
-            vm.customers =halService.getList("customers",customers);
 
-            Restangular.all('rules/search/combox').customGET().then(function(rules) {
-                vm.rules = halService.getList("rules",rules);
+        //customGET
+        Restangular.all('customers/search/grid').customGET().then(function(response) {
+
+            vm.customers =halService.getList("customers",response);
+
+
+            Restangular.all('rules/search/combox').customGET().then(function(response) {
+                vm.rules = halService.getList("rules",response);
 
             }, function(error) {
 
@@ -99,14 +104,14 @@
   function detail(item){
 
       $state.go('customers.detail',{
-          id:halService.getId(item,idName)
+          id:halService.getId(item)
       });
   }
 
     function edit(item){
 
       $state.go('customers.edit',{
-          id:halService.getId(item,idName)
+          id:halService.getId(item)
       });
     }
 
@@ -114,7 +119,7 @@
 
         warningModalService.open(item).result.then(function(item) {
             //以后直接复制
-            Restangular.one('customers',halService.getId(item,idName)).remove().then(
+            Restangular.one('customers',halService.getId(item)).remove().then(
                 function(hal) {
                     vm.loadData();
             });
@@ -125,6 +130,7 @@
 
 
     function init(){
+
       loadData();
     }
     init();
