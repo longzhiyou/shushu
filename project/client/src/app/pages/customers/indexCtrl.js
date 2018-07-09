@@ -84,7 +84,7 @@
         //customGET
         Restangular.all('customers/search/grid').customGET().then(function(response) {
 
-            vm.customers =halService.getList("customers",response);
+            vm.customers =halService.getList("customers",response,"customerId");
 
 
             Restangular.all('rules/search/combox').customGET().then(function(response) {

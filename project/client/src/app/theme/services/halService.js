@@ -19,19 +19,19 @@
                 }
                 return null;
             },
-            getList: function (listName,hal) {
+            getList: function (listName,hal,idName) {
                 // set the id from the self link
-                // if (!idName) {
-                //     idName= "id";
-                // }
+
                 var list =  hal._embedded[listName];
-                // for(var i = 0; i < list.length; i++) {
-                //
-                //     var item = list[i];
-                //     item[idName] = this.getId(item);
-                //
-                //
-                // }
+                if (list&&idName) {
+                    for(var i = 0; i < list.length; i++) {
+
+                        var item = list[i];
+                        item[idName] = this.getId(list[i]);
+                    }
+                }
+
+
                 return list;
             },
             getId: function (item,idName) {

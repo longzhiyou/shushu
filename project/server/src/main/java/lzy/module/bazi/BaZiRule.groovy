@@ -1,7 +1,6 @@
 package lzy.module.bazi
 
 import lzy.module.customer.domain.BaZi
-import sun.tools.tree.IfStatement
 
 /**
  *  滴天髓规则

@@ -42,14 +42,7 @@
             }
 
         })
-        .state('customers.detail', {
-            url: '/:id/detail',
-            templateUrl: 'app/pages/customers/detail.html',
-            controller: 'customersModifyCtrl',
-            controllerAs: 'vm',
-            title: '详情'
 
-        })
         .state('customers.edit', {
             url: '/:id/edit',
             templateUrl: 'app/pages/customers/modify.html',
@@ -58,7 +51,14 @@
             title: '编辑客户'
 
         })
+        .state('customers.detail', {
+            url: '/:id/detail',
+            templateUrl: 'app/pages/customers/detail.html',
+            controller: 'customersDetailCtrl',
+            controllerAs: 'vm',
+            title: '详情'
 
+        })
 
 
     ;
