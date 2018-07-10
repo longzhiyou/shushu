@@ -18,7 +18,7 @@ public class ApplicationTest {
     @Test
     public void generatePassword(){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(PASSWORD_ENCODER_STRENGTH);
-        String encode = passwordEncoder.encode("123456");
+        String encode = passwordEncoder.encode("12345678");
 
         boolean matches = passwordEncoder.matches("123456", encode);
         logger.info("BCryptPasswordEncoder:"+encode);

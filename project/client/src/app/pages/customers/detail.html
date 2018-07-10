@@ -12,31 +12,145 @@
             <div class="col-xs-2">
               <h2>年</h2>
               <p>
-                  <span class="text-info">甲</span>
+                  <span class="text-info">{{vm.bazi.niangan}}</span>
               </p>
-              <p>子</p>
+                <p>
+                    <span class="text-info">vm.bazi.nianzhi</span>
+                </p>
             </div>
             <div class="col-xs-2">
-                <h3>年</h3>
-                <p>甲</p>
-                <p>子</p>
+                <h2>月</h2>
+                <p>
+                    <span class="text-info">vm.bazi.yuegan</span>
+                </p>
+                <p>
+                    <span class="text-info">vm.bazi.yuezhi</span>
+                </p>
             </div>
             <div class="col-xs-2">
-                <h3>年</h3>
-                <p>甲</p>
-                <p>子</p>
+                <h2>日</h2>
+                <p>
+                    <span class="text-info">vm.bazi.rigan</span>
+                </p>
+                <p>
+                    <span class="text-info">vm.bazi.rizhi</span>
+                </p>
             </div>
             <div class="col-xs-2">
-                <h3>年</h3>
-                <p>甲</p>
-                <p>子</p>
+                <h2>时</h2>
+                <p>
+                    <span class="text-info">vm.bazi.shigan</span>
+                </p>
+                <p>
+                    <span class="text-info">vm.bazi.shizhi</span>
+                </p>
             </div>
             <div class="col-xs-2">
-                <h3>年</h3>
-                <p>甲</p>
-                <p>子</p>
+                <h2>胎</h2>
+                <p>
+                    <span class="text-info">vm.bazi.taigan</span>
+                </p>
+                <p>
+                    <span class="text-info">vm.bazi.taizhi</span>
+                </p>
             </div>
         </div>
+
+        <div class="row">
+            <uib-accordion>
+                <uib-accordion-group heading="行年-传统算法" panel-class="panel-primary bootstrap-panel accordion-panel">
+                    <div class="panel-body11">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon3">出生年</span>
+                                    <input type="number" class="form-control"
+                                           aria-describedby="basic-addon3"
+                                           ng-model="vm.year"
+                                    >
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <span class="input-group-addon">计算年</span>
+                                    <input type="number" class="form-control"
+                                           aria-describedby="basic-addon3"
+                                           ng-model="vm.year"
+                                    >
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-info" ng-click="vm.calculateXingNian()">计算</button>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table">
+
+                        <tbody>
+                        <tr ng-repeat="item in vm.xingnian" ng-init="outerIndex = $index">
+                            <td ng-repeat="item_data in item">
+                                <p>{{ outerIndex*10+$index+vm.year }}年</p>
+                                <p>{{ outerIndex*10+$index+1 }}岁</p>
+                                <p>{{item_data}}</p>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </uib-accordion-group>
+                <uib-accordion-group heading="Success" panel-class="panel-success bootstrap-panel accordion-panel">
+                    Success <i class="ion-checkmark-round"></i>
+                </uib-accordion-group>
+
+            </uib-accordion>
+
+        </div>
+
+
+        <div class="row">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseXingNianShiChen">
+                            行年-时辰算法
+                        </a>
+                    </h4>
+
+                </div>
+                <div  id="collapseXingNianShiChen" class="panel-collapse collapse ">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon" >出生年</span>
+                                    <input type="number" class="form-control"
+                                           ng-model="vm.year"
+                                    >
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-info" ng-click="vm.calculateXingNianShiZhu()">计算</button>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table">
+
+                        <tbody>
+                        <tr ng-repeat="item in vm.xingnianShiZhu" ng-init="outerIndex = $index">
+                            <td ng-repeat="item_data in item">
+                                <p>{{ outerIndex*10+$index+year }}年</p>
+                                <p>{{ outerIndex*10+$index+1 }}岁</p>
+                                <p>{{item_data}}</p>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </div>
 
