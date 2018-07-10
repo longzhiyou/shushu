@@ -14,7 +14,12 @@
     var vm = this;
     vm.id=$stateParams.id>0?$stateParams.id:0;
 
+      vm.dayun = "甲子";
+      vm.liunian="甲子";
+      vm.xiaoyun = "甲子";
+
       vm.bazi = {
+          birth:1984,
           "gender":"女",
           "niangan":"丙",
           "nianzhi":"子",
@@ -40,6 +45,7 @@
           "xingnianzhi":"亥"
       };
       vm.year = 1984;
+
       vm.xingnian=[[],[],[],[],[],[],[],[],[],[]];
       vm.xingnianShiZhu=[[],[],[],[],[],[],[],[],[],[]];
 
