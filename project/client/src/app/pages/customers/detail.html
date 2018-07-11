@@ -55,58 +55,20 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2">
-                <div class="input-group">
-                    <span class="input-group-addon">大运</span>
-                    <input  class="form-control"
-                            ng-model="vm.dayun"
-                    >
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="input-group">
-                    <span class="input-group-addon">行年</span>
-                    <input  class="form-control"
-                            ng-model="vm.xiaoyun"
-                    >
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="input-group">
-                    <span class="input-group-addon">流年</span>
-                    <input  class="form-control"
-                            ng-model="vm.liunian"
-                    >
-                </div>
-            </div>
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-info" ng-click="vm.calculateXingNian()">分析</button>
-            </div>
-        </div>
-        <div class="row">
             <uib-accordion>
-
 
                 <uib-accordion-group heading="行年-传统算法" panel-class="panel-primary bootstrap-panel accordion-panel">
                     <div class="row">
                         <div class="col-md-2">
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon3">出生年</span>
+                                <span class="input-group-addon">出生年</span>
                                 <input type="number" class="form-control"
-                                       aria-describedby="basic-addon3"
-                                       ng-model="vm..bazi.birth"
+
+                                       ng-model="vm.bazi.birth"
                                 >
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <div class="input-group">
-                                <span class="input-group-addon">计算年</span>
-                                <input type="number" class="form-control"
-                                       aria-describedby="basic-addon3"
-                                       ng-model="vm.year"
-                                >
-                            </div>
-                        </div>
+
                         <div class="col-md-2">
                             <button type="submit" class="btn btn-info" ng-click="vm.calculateXingNian()">计算</button>
                         </div>
@@ -116,7 +78,7 @@
                         <tbody>
                         <tr ng-repeat="item in vm.xingnian" ng-init="outerIndex = $index">
                             <td ng-repeat="item_data in item">
-                                <p>{{ outerIndex*10+$index+vm.year }}年</p>
+                                <p>{{ outerIndex*10+$index+vm.bazi.birth }}年</p>
                                 <p>{{ outerIndex*10+$index+1 }}岁</p>
                                 <p>{{item_data}}</p>
                             </td>
@@ -125,38 +87,18 @@
                         </tbody>
                     </table>
                 </uib-accordion-group>
-                <uib-accordion-group heading="大运行年流年" panel-class="panel-success bootstrap-panel accordion-panel">
-
-                </uib-accordion-group>
-            </uib-accordion>
-
-        </div>
-
-
-        <div class="row">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseXingNianShiChen">
-                            行年-时辰算法
-                        </a>
-                    </h4>
-
-                </div>
-                <div  id="collapseXingNianShiChen" class="panel-collapse collapse ">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="input-group">
-                                    <span class="input-group-addon" >出生年</span>
-                                    <input type="number" class="form-control"
-                                           ng-model="vm.year"
-                                    >
-                                </div>
+                <uib-accordion-group heading="行年-时辰算法" panel-class="panel-success bootstrap-panel accordion-panel">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <span class="input-group-addon" >出生年</span>
+                                <input type="number" class="form-control"
+                                       ng-model="vm.bazi.birth"
+                                >
                             </div>
-                            <div class="col-md-2">
-                                <button class="btn btn-info" ng-click="vm.calculateXingNianShiZhu()">计算</button>
-                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-info" ng-click="vm.calculateXingNianShiZhu()">计算</button>
                         </div>
                     </div>
                     <table class="table">
@@ -164,7 +106,7 @@
                         <tbody>
                         <tr ng-repeat="item in vm.xingnianShiZhu" ng-init="outerIndex = $index">
                             <td ng-repeat="item_data in item">
-                                <p>{{ outerIndex*10+$index+year }}年</p>
+                                <p>{{ outerIndex*10+$index+ vm.bazi.birth }}年</p>
                                 <p>{{ outerIndex*10+$index+1 }}岁</p>
                                 <p>{{item_data}}</p>
                             </td>
@@ -172,10 +114,18 @@
 
                         </tbody>
                     </table>
-                </div>
-            </div>
+                </uib-accordion-group>
+            </uib-accordion>
 
         </div>
+
+
+        <div class="row">
+            <button class="btn btn-default" ng-click="vm.back()">
+                返回
+            </button>
+        </div>
+
 
     </div>
 </div>

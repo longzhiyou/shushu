@@ -20,7 +20,7 @@
 
       vm.bazi = {
           birth:1984,
-          "gender":"女",
+          "gender":"男",
           "niangan":"丙",
           "nianzhi":"子",
           "yuegan":"丙",
