@@ -42,6 +42,17 @@
             }
 
         })
+        .state('customers.study', {
+            url: '/study',
+            templateUrl: 'app/pages/customers/study.html',
+            controller: 'customersStudyCtrl',
+            controllerAs: 'vm',
+            title: '学习',
+            sidebarMeta: {
+                order: 2
+            }
+
+        })
 
         .state('customers.edit', {
             url: '/:id/edit',

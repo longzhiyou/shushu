@@ -6,10 +6,10 @@
   'use strict';
 
   angular.module('BlurAdmin.pages.customers')
-      .controller('customersDetailCtrl', DetailCtrl);
+      .controller('customersStudyCtrl', StudyCtrl);
 
   /** @ngInject */
-  function DetailCtrl($stateParams, $state,Restangular,promptService,setting) {
+  function StudyCtrl($stateParams, $state,Restangular,promptService,setting) {
 
     var vm = this;
     vm.id=$stateParams.id>0?$stateParams.id:0;
