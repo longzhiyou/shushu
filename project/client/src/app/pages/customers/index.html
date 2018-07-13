@@ -44,7 +44,7 @@
 
         <td>{{ $index+1 }}</td>
         <td>
-          <a ui-sref="customers.detail({id:item.customerId})">
+          <a href ng-click="vm.detail(item)">
             {{ item.name }}
           </a>
         </td>

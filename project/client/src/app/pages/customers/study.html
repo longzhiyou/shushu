@@ -1,6 +1,52 @@
 
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12"
+             ba-panel
+             ba-panel-title="基础信息"
+             ba-panel-class="with-scroll">
+            <div class="col-md-2">
+                <div class="input-group">
+                    <span class="input-group-addon">姓名</span>
+                    <input class="form-control">
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <div class="form-group">
+                    <ui-select ng-model="vm.selectedGender"
+                               class="btn-group bootstrap-select form-control"
+                    >
+                        <ui-select-match  placeholder="性别">
+                            <span> {{$select.selected.title}}</span>
+                        </ui-select-match>
+                        <ui-select-choices
+                                repeat="item in vm.genderList"
+                        >
+                            <span ng-bind-html="item.title"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon">八字</span>
+                    <input class="form-control">
+                </div>
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-info" ng-click="">解析</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 <div class="panel panel-default with-scroll">
+
     <div class="panel-body">
+
+
+
 
         <div class="row">
             <div class="col-xs-2">
@@ -52,6 +98,26 @@
                 <p>
                     <span class="text-info">{{vm.bazi.taizhi}}</span>
                 </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="input-group">
+                    <span class="input-group-addon">大运</span>
+                    <input class="form-control">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="input-group">
+                    <span class="input-group-addon">流年</span>
+                    <input class="form-control">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="input-group">
+                    <span class="input-group-addon">行年</span>
+                    <input class="form-control">
+                </div>
             </div>
         </div>
         <div class="row">

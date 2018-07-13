@@ -21,6 +21,8 @@
     vm.halService = halService;
 
     vm.edit = edit;
+    vm.detail = detail;
+
     vm.destroy = destroy;
     vm.loadData = loadData;
 
