@@ -21,17 +21,20 @@ public class BaZiRuleTest {
         BaZiRule baZiRule = new BaZiRule();
         BaZiAlgorithm algorithm = new BaZiAlgorithm();
 
-
+        Object o;
         BaZi bazi = new BaZi(Arrays.asList("甲","子", "乙","巳","辛","卯","庚","寅"));
 //
-        Object o = baZiRule.liangxiangrun(bazi, algorithm);
-        logger.info("matchRule:"+o);
+//        Object o = baZiRule.liangxiangrun(bazi, algorithm);
+//        logger.info("matchRule:"+o);
+//
+//        o = baZiRule.nianma(bazi, algorithm);
+//        logger.info("nianma:"+o);
+//
+//        o = baZiRule.yangren(bazi, algorithm);
+//        logger.info("yangren:"+o);
 
-        o = baZiRule.nianma(bazi, algorithm);
-        logger.info("nianma:"+o);
-
-        o = baZiRule.yangren(bazi, algorithm);
-        logger.info("yangren:"+o);
+        o = baZiRule.shensha(bazi, algorithm);
+        logger.info("shensha:"+o);
     }
 
 }

@@ -8,6 +8,89 @@ import lzy.module.customer.domain.BaZi
  */
 class BaZiRule {
 
+    def shensha(BaZi  bazi, BaZiAlgorithm baZiAlgorithm) {
+        def mapResult = [:]
+        def mapRule = [:]
+        def matchStr = ""
+
+        def ruleValue
+
+        def nianGan = bazi.getNianGan()
+        def nianZhi = bazi.getNianZhi()
+        def nianZhu = bazi.getNianZhu()
+
+        def yueGan = bazi.getYueGan()
+        def yueZhi = bazi.getYueZhi()
+        def yueZhu = bazi.getYueZhu()
+
+        def riGan = bazi.getRiGan()
+        def riZhi = bazi.getRiZhi()
+        def riZhu = bazi.getRiZhu()
+
+        def shiGan = bazi.getShiGan()
+        def shiZhi = bazi.getShiZhi()
+        def shiZhu = bazi.getShiZhu()
+
+        //填写内容
+        //截路空亡
+        mapRule =[
+                "甲":"申酉",
+                "乙":"午未",
+                "丙":"辰巳",
+                "丁":"寅卯",
+                "戊":"子丑",
+                "己":"申酉",
+                "庚":"午未",
+                "辛":"辰巳",
+                "壬":"寅卯",
+                "癸":"子丑"]
+
+        ruleValue = mapRule.get(nianGan)
+        matchStr="《八字金书》云：凡值此一重不妨，二三重主早亡，不然主遭刑。如甲己生人，申酉日时，定不好。纵干纳吉，只作寻常命，运到此亦凶。"
+        if(ruleValue.contains(shiZhi)){
+            mapResult["时支-截路空亡"]=matchStr
+
+        }
+        if(ruleValue.contains(riZhi)){
+            mapResult["日支-截路空亡"]=matchStr
+        }
+
+        //柱
+        mapRule = [ "甲申","乙未","丙辰","丁卯","戊子","己酉","庚午","辛巳","壬寅","癸丑"]
+        matchStr="精纪重视一柱"
+        if(mapRule.contains(shiZhu)){
+            mapResult["时柱-截路空亡"]=matchStr
+
+        }
+        if(mapRule.contains(riZhu)){
+            mapResult["时柱-截路空亡"]=matchStr
+        }
+
+        //[吞啖杀]
+        mapRule =[
+                "子戌":"鼠见犬时须恶死，鼠鸡逐犬遭徙厄",
+                "丑丑":"牛到牛宫独自伤",
+                "酉戌":"鼠鸡逐犬遭徙厄",
+                "卯巳":"免赶蛇踪配远乡",
+                "辰辰":"龙上见龙波浪起",
+                "巳申":"蛇猴相会树头亡",
+                "亥寅":"猪犬羊逢虎必伤",
+                "戌寅":"猪犬羊逢虎必伤",
+                "未寅":"猪犬羊逢虎必伤"]
+        ruleValue = mapRule.get(nianZhi+shiZhi)
+        if(ruleValue){
+            mapResult["时支-吞啖杀"]=ruleValue
+
+        }
+        ruleValue = mapRule.get(nianZhi+riZhi)
+        if(ruleValue){
+            mapResult["日支-吞啖杀"]=ruleValue
+        }
+
+
+        return mapResult
+    }
+
     def yangren(BaZi  bazi, BaZiAlgorithm baZiAlgorithm) {
         def mapResult = [:]
         def mapRule = [:]
