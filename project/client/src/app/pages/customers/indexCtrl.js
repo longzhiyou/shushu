@@ -103,6 +103,13 @@
     }
 
 
+  vm.study = function (item){
+
+      $state.go('customers.study',{
+          customer:item
+      });
+  };
+
   function detail(item){
 
       $state.go('customers.detail',{

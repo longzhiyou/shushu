@@ -12,7 +12,26 @@
   function StudyCtrl($stateParams, $state,Restangular,promptService,setting) {
 
     var vm = this;
-    vm.id=$stateParams.id>0?$stateParams.id:0;
+    vm.customer=$stateParams.customer;
+
+      // 性别
+      vm.genderList = [
+          {title: '男', value: '1'},
+          {title: '女', value: '2'}
+      ];
+
+      //选择后
+      vm.selectedGender =vm.genderList[0];
+
+      function getSelectedGender(value) {
+          for(var i=0;i<vm.genderList.length;i++){
+
+              if (vm.genderList[i].value===value) {
+                  return vm.genderList[i];
+              }
+          }
+
+      }
 
       vm.dayun = "甲子";
       vm.liunian="甲子";
@@ -23,15 +42,19 @@
           "gender":"男",
           "niangan":"丙",
           "nianzhi":"子",
+
           "yuegan":"丙",
           "yuezhi":"寅",
+
           "rigan":"甲",
           "rizhi":"寅",
+
           "shigan":"乙",
           "shizhi":"卯",
 
-          "taigan":"甲",
-          "taizhi":"子",
+          "taigan":"",
+          "taizhi":"",
+
           "minggan":"甲",
           "mingzhi":"子",
           "shengan":"甲",
@@ -59,6 +82,11 @@
       vm.calculateXingNianShiZhu=calculateXingNianShiZhu;
 
 
+      //天干
+      var tiangan = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
+
+      //地支
+      var  dizhi = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
 
       var sixtyJiaZi= [
           "甲子","乙丑","丙寅","丁卯","戊辰","己巳","庚午","辛未","壬申","癸酉",
@@ -248,22 +276,10 @@
 
       }
       
-    // 性别
-    vm.genderList = [
-        {title: '男', value: '1'},
-        {title: '女', value: '2'}
-    ];
 
     function init(){
-        if (vm.id>0) {
-            Restangular.one("customers",vm.id).get().then(function(hal) {
-                vm.customer = hal;
-                // vm.selectedGender = getSelectedGender(hal.gender);
-
-            }, function(error) {
-                promptService.failure(setting.getDataError);
-
-            });
+        if (vm.customer) {
+            vm.selectedGender = getSelectedGender(vm.customer.gender);
 
         }
 
@@ -273,6 +289,52 @@
       function back() {
           $state.go('customers.index');
       }
+
+      vm.analyze=function () {
+
+          if (!vm.customer)
+          {
+              return;
+
+          }
+
+
+
+          var strBaZi = vm.customer.bazi;
+
+          var sizhu=[];
+          for (var i=0;i<strBaZi.length;i++){
+              var s = strBaZi[i];
+              var b = false;
+              if (tiangan.indexOf(s)>=0) {
+                  b=true;
+              }else if (dizhi.indexOf(s)>=0) {
+                  b=true;
+              }
+
+              if (b) {
+                  sizhu.push(s);
+              }
+
+          }
+          if(sizhu.length>7){
+              vm.bazi.niangan = sizhu[0];
+              vm.bazi.nianzhi = sizhu[1];
+              vm.bazi.yuegan = sizhu[2];
+              vm.bazi.yuezhi = sizhu[3];
+              vm.bazi.rigan = sizhu[4];
+              vm.bazi.rizhi = sizhu[5];
+              vm.bazi.shigan = sizhu[6];
+              vm.bazi.shizhi = sizhu[7];
+          }
+//        strBaZi = strBaZi.replace(" ", "");//去掉所有空格，包括首尾、中间
+//        String[] split = strBaZi.split("");
+//           if (sizhu.size()>7) {
+//               return new BaZi(sizhu);
+//           }else
+//               return null;
+
+      };
 
     init();
 

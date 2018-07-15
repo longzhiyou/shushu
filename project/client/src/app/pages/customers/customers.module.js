@@ -44,6 +44,10 @@
         })
         .state('customers.study', {
             url: '/study',
+            params:{
+                customer:null
+            },
+
             templateUrl: 'app/pages/customers/study.html',
             controller: 'customersStudyCtrl',
             controllerAs: 'vm',
