@@ -213,7 +213,7 @@ var oLanguage=
     };
     DTDefaultOptions.setLanguage(oLanguage);
     //每页显示行数
-    DTDefaultOptions.setDisplayLength(25);
+    DTDefaultOptions.setDisplayLength(20);
 
 
     authManager.redirectWhenUnauthenticated();

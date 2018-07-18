@@ -24,7 +24,7 @@
 
       //选择后
       vm.selectedGender =vm.genderList[0];
-      vm.customer={}
+      vm.customer={};
       function getSelectedGender(value) {
           for(var i=0;i<vm.genderList.length;i++){
 

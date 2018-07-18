@@ -42,18 +42,23 @@
           "gender":"男",
           "niangan":"丙",
           "nianzhi":"子",
+          niannayin:"",
 
           "yuegan":"丙",
           "yuezhi":"寅",
+          yuenayin:"",
 
           "rigan":"甲",
           "rizhi":"寅",
+          rinayin:"",
 
           "shigan":"乙",
           "shizhi":"卯",
+          shinayin:"",
 
           "taigan":"",
           "taizhi":"",
+          tainayin:"",
 
           "minggan":"甲",
           "mingzhi":"子",
@@ -96,6 +101,17 @@
           "甲辰","乙巳","丙午","丁未","戊申","己酉","庚戌","辛亥","壬子","癸丑",
           "甲寅","乙卯","丙辰","丁巳","戊午","己未","庚申","辛酉","壬戌","癸亥"
       ];
+
+      //60甲子纳音
+      var jiazinayin={
+          "甲子":'海中金',"乙丑":"海中金","丙寅":"炉中火","丁卯":"炉中火","戊辰":"大林木","己巳":"大林木","庚午":"路旁土","辛未":"路旁土","壬申":"剑锋金","癸酉":"剑锋金",
+          "甲戌":"山头火","乙亥":"山头火","丙子":"涧下水","丁丑":"涧下水","戊寅":"城头土","己卯":"城头土","庚辰":"白蜡金","辛巳":"白蜡金","壬午":"杨柳木","癸未":"杨柳木",
+          "甲申":"泉中水","乙酉":"泉中水","丙戌":"屋上土","丁亥":"屋上土","戊子":"霹雳火","己丑":"霹雳火","庚寅":"松柏木","辛卯":"松柏木","壬辰":"长流水","癸巳":"长流水",
+          "甲午":"沙中金","乙未":"沙中金","丙申":"山下火","丁酉":"山下火","戊戌":"平地木","己亥":"平地木","庚子":"壁上土","辛丑":"壁上土","壬寅":"金箔金","癸卯":"金箔金",
+          "甲辰":"复灯火","乙巳":"复灯火","丙午":"天河水","丁未":"天河水","戊申":"大驿土","己酉":"大驿土","庚戌":"钗钏金","辛亥":"钗钏金","壬子":"桑拓木","癸丑":"桑拓木",
+          "甲寅":"大溪水","乙卯":"大溪水","丙辰":"沙中土","丁巳":"沙中土","戊午":"天上火","己未":"天上火","庚申":"石榴木","辛酉":"石榴木","壬戌":"大海水","癸亥":"大海水"
+      };
+
 
       //60甲子属性
       //http://blog.sina.com.cn/s/blog_614375770102wn3s.html
@@ -280,8 +296,9 @@
     function init(){
         if (vm.customer) {
             vm.selectedGender = getSelectedGender(vm.customer.gender);
-
         }
+
+        vm.analyze();
 
     }
 
@@ -292,41 +309,50 @@
 
       vm.analyze=function () {
 
-          if (!vm.customer)
+          if (vm.customer)
           {
-              return;
+              var strBaZi = vm.customer.bazi;
 
-          }
+              var sizhu=[];
+              for (var i=0;i<strBaZi.length;i++){
+                  var s = strBaZi[i];
+                  var b = false;
+                  if (tiangan.indexOf(s)>=0) {
+                      b=true;
+                  }else if (dizhi.indexOf(s)>=0) {
+                      b=true;
+                  }
 
+                  if (b) {
+                      sizhu.push(s);
+                  }
 
-
-          var strBaZi = vm.customer.bazi;
-
-          var sizhu=[];
-          for (var i=0;i<strBaZi.length;i++){
-              var s = strBaZi[i];
-              var b = false;
-              if (tiangan.indexOf(s)>=0) {
-                  b=true;
-              }else if (dizhi.indexOf(s)>=0) {
-                  b=true;
               }
+              if(sizhu.length>7){
+                  vm.bazi.niangan = sizhu[0];
+                  vm.bazi.nianzhi = sizhu[1];
 
-              if (b) {
-                  sizhu.push(s);
+                  vm.bazi.yuegan = sizhu[2];
+                  vm.bazi.yuezhi = sizhu[3];
+
+                  vm.bazi.rigan = sizhu[4];
+                  vm.bazi.rizhi = sizhu[5];
+
+                  vm.bazi.shigan = sizhu[6];
+                  vm.bazi.shizhi = sizhu[7];
               }
+          }
 
-          }
-          if(sizhu.length>7){
-              vm.bazi.niangan = sizhu[0];
-              vm.bazi.nianzhi = sizhu[1];
-              vm.bazi.yuegan = sizhu[2];
-              vm.bazi.yuezhi = sizhu[3];
-              vm.bazi.rigan = sizhu[4];
-              vm.bazi.rizhi = sizhu[5];
-              vm.bazi.shigan = sizhu[6];
-              vm.bazi.shizhi = sizhu[7];
-          }
+
+
+          //设置纳音
+          vm.bazi.niannayin = jiazinayin[vm.bazi.niangan+vm.bazi.nianzhi];
+          vm.bazi.yuenayin =  jiazinayin[vm.bazi.yuegan+vm.bazi.yuezhi];
+
+          vm.bazi.rinayin =  jiazinayin[vm.bazi.rigan+vm.bazi.rizhi];
+          vm.bazi.shinayin =  jiazinayin[vm.bazi.shigan+vm.bazi.shizhi];
+
+
 //        strBaZi = strBaZi.replace(" ", "");//去掉所有空格，包括首尾、中间
 //        String[] split = strBaZi.split("");
 //           if (sizhu.size()>7) {

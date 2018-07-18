@@ -75,7 +75,8 @@
       // DTColumnDefBuilder.newColumnDef(2),
       // DTColumnDefBuilder.newColumnDef(3),
       // DTColumnDefBuilder.newColumnDef(4),
-      DTColumnDefBuilder.newColumnDef(5).notVisible()
+      DTColumnDefBuilder.newColumnDef(5).notVisible(),
+      DTColumnDefBuilder.newColumnDef(6).notVisible()
 
     ];
 
@@ -86,7 +87,7 @@
         //customGET
         Restangular.all('customers/search/grid').customGET().then(function(response) {
 
-            vm.customers =halService.getList("customers",response,"customerId");
+            vm.customers =halService.getList("customers",response);
 
 
             Restangular.all('rules/search/combox').customGET().then(function(response) {
