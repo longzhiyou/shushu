@@ -30,6 +30,10 @@ public class Customer extends PersonEntity {
     private Long customerId;
     private String bazi;
 
+    private String label;
+
+
+
     @Column(length=4096)
     private String description;
 
