@@ -3,10 +3,166 @@ package lzy.module.bazi
 import lzy.module.customer.domain.BaZi
 
 /**
- *  滴天髓规则
+ *
  * Created by bukeyan on 2017/6/18.
  */
 class BaZiRule {
+
+    //论官神
+    def guanshen(BaZi  bazi, BaZiAlgorithm baZiAlgorithm) {
+        def mapResult = [:]
+        def mapRule = [:]
+        def matchStr = ""
+
+        def ruleValue
+
+        def nianGan = bazi.getNianGan()
+        def nianZhi = bazi.getNianZhi()
+        def nianZhu = bazi.getNianZhu()
+
+        def yueGan = bazi.getYueGan()
+        def yueZhi = bazi.getYueZhi()
+        def yueZhu = bazi.getYueZhu()
+
+        def riGan = bazi.getRiGan()
+        def riZhi = bazi.getRiZhi()
+        def riZhu = bazi.getRiZhu()
+
+        def shiGan = bazi.getShiGan()
+        def shiZhi = bazi.getShiZhi()
+        def shiZhu = bazi.getShiZhu()
+
+        //填写内容
+        //正官禄，五虎遁官禄位
+         mapRule = [
+            "甲癸酉",
+            "己丙寅",
+            "乙甲申",
+            "庚壬午",
+            "丙庚子",
+            "辛癸巳",
+            "丁辛亥",
+            "壬丙午",
+            "戊乙卯",
+            "癸丁巳"
+
+        ]
+
+        matchStr="五虎遁官禄位，犯者胜带正官，正禄见带前后神亦佳。（太一经）"
+        if(mapRule.contains(nianGan+shiZhu)){
+            mapResult["时柱-正官禄"]=matchStr
+
+        }
+        if(mapRule.contains(nianGan+riZhu)){
+            mapResult["日柱-正官禄"]=matchStr
+        }
+
+
+        mapRule=[
+                "甲":"辛丑",
+                "乙":"辛丑",
+                "丙":"壬辰",
+                "丁":"壬辰",
+                "戊":"乙未",
+                "己":"乙未",
+
+                "庚":"丙戌",
+                "辛":"丙戌",
+
+                "壬":"戊辰",
+                "癸":"戊辰"
+        ]
+
+        ruleValue = mapRule.get(nianGan)
+        matchStr=["如辛金克甲乙木，金墓在丑，余仿此，君子主甲科，武人战功，常人艺业出俗。"]
+
+        if(ruleValue.equals(shiZhu)){
+            mapResult["时柱-官会杀"]=matchStr
+        }
+        if(ruleValue.equals(riZhu)){
+            mapResult["日柱-官会杀"]=matchStr
+        }
+
+
+       mapRule=[
+                "申":"丙戌",
+                "子":"丙戌",
+                "辰":"丙戌",
+
+                "亥":"戊辰",
+                "卯":"戊辰",
+                "未":"戊辰",
+
+                "寅":"辛丑",
+                "午":"辛丑",
+                "戌":"辛丑",
+
+                "巳":"乙未",
+                "酉":"乙未",
+                "丑":"乙未"
+        ]
+
+        ruleValue = mapRule.get(nianZhi)
+        matchStr=["名利并行，寅午戌火克金，金墓在丑","妻财聚会之神，主富足，及有美妻、横财，却防妇人毒药害命，古诗去：财会刑，商贾因妻富出伦，但防毒药因此掩夜轮。（并广信集）"]
+
+        if(ruleValue.equals(shiZhu)){
+            mapResult["时柱-财会杀"]=matchStr
+        }
+        if(ruleValue.equals(riZhu)){
+            mapResult["日柱-财会杀"]=matchStr
+        }
+
+
+       ruleValue= baZiAlgorithm.getNaYinWuXing(nianZhu)
+        mapRule = ["金":"己丑",
+                              "木":"乙未" ,
+                              "水":"丙辰",
+                              "火":"壬戌",
+                              "土":"戊辰"]
+        matchStr="五行墓中逢鬼,如此之格，危疑者甚。（珞琭子）"
+        if(mapRule.get(ruleValue).equals(shiZhu)){
+            mapResult["时柱-墓在鬼中"]=matchStr
+        }
+        if(mapRule.get(ruleValue).equals(riZhu)){
+            mapResult["日柱-墓在鬼中"]=matchStr
+        }
+
+        def riyue =[riZhu,shiZhu]
+        mapRule = ["甲申":"乙酉",
+                   "乙酉":"甲申" ,
+                   "丙午":"壬子",
+                   "壬子":"丙午",
+                   "乙卯":"戊申",
+                   "戊申":"乙卯",
+                   "庚午":"壬午",
+                   "壬午":"庚午",
+                   "丁巳":["辛亥","癸亥"],
+                   "辛亥":"丁巳",
+                   "癸亥":"丁巳",
+
+
+        ]
+       ruleValue  = mapRule.get(nianZhu)
+        if(nianZhu=="丁巳"){
+            if(riyue.contains("辛亥")){
+                mapResult["【交互官格-大贵辛亥】"]=nianZhu+"见辛亥"
+            }
+            if(riyue.contains("癸亥")){
+                mapResult["【交互官格-大贵癸亥】"]=nianZhu+"见癸亥"
+            }
+        }else {
+            if(riyue.contains(ruleValue)){
+                mapResult["【交互官格-大贵】"]=nianZhu+"见"+ruleValue
+            }
+        }
+
+
+
+
+
+        mapResult
+
+    }
 
     def shensha(BaZi  bazi, BaZiAlgorithm baZiAlgorithm) {
         def mapResult = [:]

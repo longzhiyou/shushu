@@ -47,6 +47,7 @@ function config($httpProvider
     ,RestangularProvider
     ,jwtOptionsProvider
     ,w5cValidatorProvider
+    ,JSONFormatterConfigProvider
 
 ) {
 
@@ -56,7 +57,8 @@ function config($httpProvider
 
 
 
-
+    JSONFormatterConfigProvider.hoverPreviewEnabled = true;
+    
     // Please note we're annotating the function so that the $injector works when the file is minified
     jwtOptionsProvider.config({
         authPrefix: '',

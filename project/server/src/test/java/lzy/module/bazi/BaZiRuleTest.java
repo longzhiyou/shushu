@@ -22,7 +22,7 @@ public class BaZiRuleTest {
         BaZiAlgorithm algorithm = new BaZiAlgorithm();
 
         Object o;
-        BaZi bazi = new BaZi(Arrays.asList("甲","子", "乙","巳","辛","卯","庚","寅"));
+        BaZi bazi = new BaZi(Arrays.asList("壬","午", "乙","巳","癸","亥","戊","辰"));
 //
 //        Object o = baZiRule.liangxiangrun(bazi, algorithm);
 //        logger.info("matchRule:"+o);
@@ -33,7 +33,8 @@ public class BaZiRuleTest {
 //        o = baZiRule.yangren(bazi, algorithm);
 //        logger.info("yangren:"+o);
 
-        o = baZiRule.shensha(bazi, algorithm);
+//        o = baZiRule.shensha(bazi, algorithm);
+        o = baZiRule.guanshen(bazi, algorithm);
         logger.info("shensha:"+o);
     }
 

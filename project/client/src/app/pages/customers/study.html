@@ -40,119 +40,157 @@
                     <button class="btn btn-info" ng-click="vm.analyze()">解析</button>
                 </div>
             </div>
-
-        </div>
-
-    </div>
-
-    <div class="row">
-        <div class="col-md-12"
-             ba-panel
-             ba-panel-title="排盘信息"
-             ba-panel-class="with-scroll">
-
-
             <div class="row">
-                <div class="col-xs-2">
+                
+                    <div class="col-xs-2">
+                        <p>年</p>
+                        <h3>
+                            <span class="text-success">{{vm.niangan}}</span>
+                        </h3>
+                        <h3>
+                            <span class="text-success">{{vm.nianzhi}}</span>
+                        </h3>
+                        <p>
+                            <span class="text-primary">{{vm.niannayin}}</span>
+                        </p>
+    
+                    </div>
+                    <div class="col-xs-2">
+                        <p>月</p>
+                        <h3>
+                            <span class="text-success">{{vm.yuegan}}</span>
+                        </h3>
+                        <h3>
+                            <span class="text-success">{{vm.yuezhi}}</span>
+                        </h3>
+    
+                        <p>
+                            <span class="text-primary">{{vm.yuenayin}}</span>
+                        </p>
+                    </div>
+                    <div class="col-xs-2">
+                        <p>日</p>
+                        <h3>
+                            <span class="text-danger">{{vm.rigan}}</span>
+                        </h3>
+                        <h3>
+                            <span class="text-success">{{vm.rizhi}}</span>
+                        </h3>
+    
+                        <p>
+                            <span class="text-primary">{{vm.rinayin}}</span>
+                        </p>
+                    </div>
+                    <div class="col-xs-2">
+                        <p>时</p>
+                        <h3>
+                            <span class="text-success">{{vm.shigan}}</span>
+                        </h3>
+                        <h3>
+                            <span class="text-success">{{vm.shizhi}}</span>
+                        </h3>
+                        <p>
+                            <span class="text-primary">{{vm.shinayin}}</span>
+                        </p>
+                    </div>
+                    <div class="col-xs-2">
+                        <p>胎</p>
+                        <h3>
+                            <span class="text-info">{{vm.bazi.taigan}}</span>
+                        </h3>
+                        <h3>
+                            <span class="text-info">{{vm.bazi.taizhi}}</span>
+                        </h3>
+    
+                        <p>
+                            <span class="text-primary">{{vm.bazi.tainayin}}</span>
+                        </p>
+                    </div>
+             </div>
 
+             <div class="row">
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">大运</span>
+                            <input class="form-control" ng-model="vm.dayunzhu">
+                            <span class="input-group-addon">
+                                <span class="text-primary">{{vm.dayunnayin}}</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">流年</span>
+                            <input class="form-control"  ng-model="vm.liunianzhu">
+                            <span class="input-group-addon">
+                             
+                                <span class="text-primary">{{vm.liuniannayin}}</span>
 
-                </div>
-                <div class="col-xs-2">
-                    <p>年</p>
-                    <h3>
-                        <span class="text-success">{{vm.niangan}}</span>
-                    </h3>
-                    <h3>
-                        <span class="text-success">{{vm.nianzhi}}</span>
-                    </h3>
-                    <p>
-                        <span class="text-primary">{{vm.niannayin}}</span>
-                    </p>
-
-                </div>
-                <div class="col-xs-2">
-                    <p>月</p>
-                    <h3>
-                        <span class="text-success">{{vm.yuegan}}</span>
-                    </h3>
-                    <h3>
-                        <span class="text-success">{{vm.yuezhi}}</span>
-                    </h3>
-
-                    <p>
-                        <span class="text-primary">{{vm.yuenayin}}</span>
-                    </p>
-                </div>
-                <div class="col-xs-2">
-                    <p>日</p>
-                    <h3>
-                        <span class="text-success">{{vm.rigan}}</span>
-                    </h3>
-                    <h3>
-                        <span class="text-success">{{vm.rizhi}}</span>
-                    </h3>
-
-                    <p>
-                        <span class="text-primary">{{vm.rinayin}}</span>
-                    </p>
-                </div>
-                <div class="col-xs-2">
-                    <p>时</p>
-                    <h3>
-                        <span class="text-success">{{vm.shigan}}</span>
-                    </h3>
-                    <h3>
-                        <span class="text-success">{{vm.shizhi}}</span>
-                    </h3>
-                    <p>
-                        <span class="text-primary">{{vm.shinayin}}</span>
-                    </p>
-                </div>
-                <div class="col-xs-2">
-                    <p>胎</p>
-                    <h3>
-                        <span class="text-info">{{vm.bazi.taigan}}</span>
-                    </h3>
-                    <h3>
-                        <span class="text-info">{{vm.bazi.taizhi}}</span>
-                    </h3>
-
-                    <p>
-                        <span class="text-primary">{{vm.bazi.tainayin}}</span>
-                    </p>
-                </div>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">行年</span>
+                            <input class="form-control"  ng-model="vm.xingnianzhu">
+                            <span class="input-group-addon">
+                                    <span class="text-primary">{{vm.xingniannayin}}</span>
+                            </span>
+                        </div>
+                    </div>
             </div>
 
-        </div>
-
-    </div>
-
-    <div class="row">
-        <div class="col-md-12"
-             ba-panel
-             ba-panel-title="岁运"
-             ba-panel-class="with-scroll">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="input-group">
-                        <span class="input-group-addon">大运</span>
-                        <input class="form-control" ng-model="vm.bazi.dayun">
-                    </div>
+                    <uib-tabset active="$tabSetStatus.activeTab">
+                        <uib-tab heading="学习分析">
+                            <div class="row">
+                                <!--<div json-viewer="vm.analyzeResult"></div>-->
+                                <json-formatter json="vm.analyzeResult" open="1"></json-formatter>
+                            </div>
+        
+                        </uib-tab>
+                        <uib-tab heading="规则匹配">
+                          <button class="btn btn-primary" ng-click="vm.match()">匹配</button>
+                        <div json-viewer="vm.matchResult"></div>
+                           
+                        </uib-tab>
+
+                        <uib-tab heading="常用信息">
+                            <!-- <div json-viewer="vm.importantInfo"></div> -->
+                            <json-formatter json="vm.importantInfo" open="1"></json-formatter>
+                        </uib-tab>
+                        <uib-tab heading="详情描述">
+                           <p>{{vm.customer.description}}</p>
+                        </uib-tab>
+                        <uib-tab ng-init="$dropdownTabActive = 1" class="with-dropdown">
+                            <uib-tab-heading uib-dropdown>
+                                <a uib-dropdown-toggle ng-click="$event.stopPropagation()">
+                                    Dropdown tab <i class="caret"></i>
+                                </a>
+                                <ul class="dropdown-menu" uib-dropdown-menu>
+                                    <li><a ng-click="$dropdownTabActive = 1; $tabSetStatus.activeTab = 3">Tab 1</a></li>
+                                    <li><a ng-click="$dropdownTabActive = 2; $tabSetStatus.activeTab = 3">Tab 2</a></li>
+                                </ul>
+                            </uib-tab-heading>
+                            <div ng-show="$dropdownTabActive == 1">
+                                <p>
+                                    Success is ... knowing your purpose in life, growing to reach your maximum potential, and sowing seeds that
+                                    benefit others.
+                                </p>
+        
+                                <p>Failure is the condiment that gives success its flavor.</p>
+                            </div>
+                            <div ng-show="$dropdownTabActive == 2">
+                                <p class="text-center">
+                                    <button class="btn btn-danger">I'm just a dummy button</button>
+                                </p>
+                            </div>
+                        </uib-tab>
+                    </uib-tabset>
                 </div>
-                <div class="col-md-3">
-                    <div class="input-group">
-                        <span class="input-group-addon">流年</span>
-                        <input class="form-control"  ng-model="vm.bazi.liunian">
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="input-group">
-                        <span class="input-group-addon">行年</span>
-                        <input class="form-control"  ng-model="vm.bazi.xingnian">
-                    </div>
-                </div>
-            </div>
+        
         </div>
+
     </div>
 
 </div>
@@ -160,54 +198,7 @@
 
     <div class="panel-body">
 
-        <div class="row">
-            <uib-tabset active="$tabSetStatus.activeTab">
-                <uib-tab heading="分析结果">
-                    <div class="row">
-                        <div json-viewer="vm.analyzeResult"></div>
-                    </div>
-
-                </uib-tab>
-                <uib-tab heading="Getting Done">
-                    <p>
-                        You can't connect the dots looking forward; you can only connect them looking backwards. So you have to trust that
-                        the dots will somehow connect in your future. You have to trust in something--your gut, destiny, life, karma,
-                        whatever. This approach has never let me down, and it has made all the difference in my life.
-                    </p>
-
-                    <p>
-                        The reason most people never reach their goals is that they don't define them, or ever seriously consider them as
-                        believable or achievable. Winners can tell you where they are going, what they plan to do along the way, and who
-                        will be sharing the adventure with them.
-                    </p>
-                </uib-tab>
-                <uib-tab ng-init="$dropdownTabActive = 1" class="with-dropdown">
-                    <uib-tab-heading uib-dropdown>
-                        <a uib-dropdown-toggle ng-click="$event.stopPropagation()">
-                            Dropdown tab <i class="caret"></i>
-                        </a>
-                        <ul class="dropdown-menu" uib-dropdown-menu>
-                            <li><a ng-click="$dropdownTabActive = 1; $tabSetStatus.activeTab = 3">Tab 1</a></li>
-                            <li><a ng-click="$dropdownTabActive = 2; $tabSetStatus.activeTab = 3">Tab 2</a></li>
-                        </ul>
-                    </uib-tab-heading>
-                    <div ng-show="$dropdownTabActive == 1">
-                        <p>
-                            Success is ... knowing your purpose in life, growing to reach your maximum potential, and sowing seeds that
-                            benefit others.
-                        </p>
-
-                        <p>Failure is the condiment that gives success its flavor.</p>
-                    </div>
-                    <div ng-show="$dropdownTabActive == 2">
-                        <p class="text-center">
-                            <button class="btn btn-danger">I'm just a dummy button</button>
-                        </p>
-                    </div>
-                </uib-tab>
-            </uib-tabset>
-        </div>
-
+       
         <div class="row">
             <uib-accordion>
                 <uib-accordion-group heading="分析结果" panel-class="panel-success bootstrap-panel accordion-panel">
