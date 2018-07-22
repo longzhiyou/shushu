@@ -57,6 +57,17 @@ class BaZiRule {
             mapResult["日柱-正官禄"]=matchStr
         }
 
+        mapRule = [
+                "甲寅己亥",
+                "庚寅乙亥",
+
+        ]
+        if(mapRule.contains(nianZhu+shiZhu)){
+            mapResult["【三台拱帝座格】"]=["如不犯凶神恶杀冲破，则官入三台，如有则灭落断之。（玉霄宝鉴）","假令纳音本干见真官，而二位天地相合，中见夹两干贵人是。"]
+        }
+
+
+
 
         mapRule=[
                 "甲":"辛丑",
