@@ -33,6 +33,87 @@ class BaZiRule {
         def shiZhu = bazi.getShiZhu()
 
         //填写内容
+
+        //正官禄，五虎遁官禄位
+        mapRule = [
+                "甲辛未",
+                "甲丁丑",
+                "戊乙丑",
+                "戊己未",
+                "庚癸未",
+                "庚己丑",
+
+                "乙戊子",
+                "乙甲申",
+                "己丙子",
+                "己壬申",
+
+                "丙己亥",
+                "丙丁酉",
+                "丁辛亥",
+                "丁己酉",
+
+                "壬癸卯",
+                "壬乙巳",
+                "癸乙卯",
+                "癸丁巳",
+
+                "辛庚寅",
+                "辛甲午",
+
+
+        ]
+        matchStr="若不犯空亡驳杂者清贵，安逸之人也。"
+        if(mapRule.contains(nianGan+shiZhu)){
+            mapResult["时柱-贵人入庙格"]=matchStr
+
+        }
+        if(mapRule.contains(nianGan+riZhu)){
+            mapResult["日柱-贵人入庙格"]=matchStr
+        }
+
+        mapRule = [
+                "甲乙丑",
+                "甲癸未",
+                "戊乙丑",
+                "戊癸未",
+                "庚乙丑",
+                "庚癸未",
+
+                "乙庚子",
+                "乙戊申",
+                "己丙子",
+                "己甲申",
+
+                "丙乙亥",
+                "丙丁酉",
+                "丁乙亥",
+                "丁丁酉",
+
+                "壬乙卯",
+                "壬癸巳",
+                "癸乙卯",
+                "癸癸巳",
+
+                "辛丙寅",
+                "辛戊午",
+
+
+        ]
+
+        matchStr="更有一种贵人，亦为福甚，重得者必贵"
+        if(mapRule.contains(nianGan+shiZhu)){
+            mapResult["时柱-特殊贵人"]=matchStr
+
+        }
+        if(mapRule.contains(nianGan+riZhu)){
+            mapResult["日柱-特殊贵人"]=matchStr
+        }
+
+
+
+
+
         //正官禄，五虎遁官禄位
          mapRule = [
             "甲癸酉",
