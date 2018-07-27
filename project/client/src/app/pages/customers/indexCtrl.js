@@ -75,8 +75,8 @@
       // DTColumnDefBuilder.newColumnDef(2),
       // DTColumnDefBuilder.newColumnDef(3),
       // DTColumnDefBuilder.newColumnDef(4),
-      DTColumnDefBuilder.newColumnDef(5).notVisible(),
-      DTColumnDefBuilder.newColumnDef(6).notVisible()
+      // DTColumnDefBuilder.newColumnDef(5).notVisible(),
+      // DTColumnDefBuilder.newColumnDef(6).notVisible()
 
     ];
 
@@ -84,22 +84,26 @@
     function loadData(){
 
 
-        //customGET
-        Restangular.all('customers/search/grid').customGET().then(function(response) {
+        Restangular.all('rules/search/combox').customGET().then(function(response) {
+            vm.rules = halService.getList("rules",response);
 
-            vm.customers =halService.getList("customers",response);
+            //customGET
+            Restangular.all('customers/search/grid').customGET().then(function(response) {
 
+                var list = halService.getList("customers",response);
 
-            Restangular.all('rules/search/combox').customGET().then(function(response) {
-                vm.rules = halService.getList("rules",response);
-
+                // vm.customers =list.slice(0,25);
+                vm.customers = list;
+                
             }, function(error) {
 
             });
 
+
         }, function(error) {
 
         });
+
 
     }
 

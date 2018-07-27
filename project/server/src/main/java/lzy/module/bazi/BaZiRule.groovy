@@ -110,7 +110,20 @@ class BaZiRule {
             mapResult["日柱-特殊贵人"]=matchStr
         }
 
+        mapRule = [
+                "壬寅甲寅",
+                "丙申戊申",
+        ]
 
+        matchStr=["若入贵格，别无刑冲，乃清贵之命也，又主一生少病，早年享福常格得之，一生无刑狱宫府之灾"
+                  ,"假令壬寅人得甲寅日时，壬贵在卯，甲贵在丑是也"]
+        if (mapRule.contains(nianZhu+shiZhu)) {
+            mapResult["时柱-天乙扶身格"]=matchStr
+        }
+
+        if (mapRule.contains(nianZhu+riZhu)) {
+            mapResult["日柱-天乙扶身格"]=matchStr
+        }
 
 
 

@@ -1,8 +1,6 @@
 package lzy.module.customer.controller;
 
-import lzy.module.customer.repository.CustomerRepository;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,11 +18,24 @@ public class CustomerController {
 
     private static Logger logger = Logger.getLogger(CustomerController.class);
 
+//
+//    @Autowired
+//    private ElasticsearchTemplate elasticsearchTemplate;
+//
+//    @Autowired
+//    private CustomerElasticsearchRepository customerElasticsearchRepository;
 
-
-    @Autowired
-    private CustomerRepository customerRepository;
-
+//    @GetMapping("/singleWord")
+//    public Object singleTitle(String word, @PageableDefault Pageable pageable) {
+//
+//
+//
+//        //使用queryStringQuery完成单字符串查询
+//        SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(queryStringQuery(word)).withPageable(pageable).build();
+//
+//        return customerElasticsearchRepository.search(searchQuery);
+////        return elasticsearchTemplate.queryForList(searchQuery, Post.class);
+//    }
 
 //    @GetMapping()
 //    public ResponseEntity index() {
