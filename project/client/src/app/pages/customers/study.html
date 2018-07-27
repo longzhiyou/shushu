@@ -16,7 +16,7 @@
 
                 <div class="col-md-2">
                     <div class="form-group">
-                        <ui-select ng-model="vm.selectedGender"
+                        <ui-select ng-model="vm.genderSelected"
                                    class="btn-group bootstrap-select form-control"
                         >
                             <ui-select-match  placeholder="性别">
@@ -36,14 +36,20 @@
                         <input class="form-control"  ng-model="vm.strBaZi">
                     </div>
                 </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">生日</span>
+                        <input class="form-control"  ng-model="vm.birth">
+                    </div>
+                </div>
                 <div class="col-md-1">
                     <button class="btn btn-info" ng-click="vm.analyze()">解析</button>
                 </div>
             </div>
             <div class="row">
                 
-                    <div class="col-xs-2">
-                        <p>年</p>
+                    <div class="col-xs-2 col-md-1">
+                        <p>年柱</p>
                         <h3>
                             <span class="text-success">{{vm.niangan}}</span>
                         </h3>
@@ -55,8 +61,8 @@
                         </p>
     
                     </div>
-                    <div class="col-xs-2">
-                        <p>月</p>
+                    <div class="col-xs-2 col-md-1">
+                        <p>月柱</p>
                         <h3>
                             <span class="text-success">{{vm.yuegan}}</span>
                         </h3>
@@ -68,8 +74,8 @@
                             <span class="text-primary">{{vm.yuenayin}}</span>
                         </p>
                     </div>
-                    <div class="col-xs-2">
-                        <p>日</p>
+                    <div class="col-xs-2 col-md-1">
+                        <p>日柱</p>
                         <h3>
                             <span class="text-danger">{{vm.rigan}}</span>
                         </h3>
@@ -81,8 +87,8 @@
                             <span class="text-primary">{{vm.rinayin}}</span>
                         </p>
                     </div>
-                    <div class="col-xs-2">
-                        <p>时</p>
+                    <div class="col-xs-2 col-md-1">
+                        <p>时柱</p>
                         <h3>
                             <span class="text-success">{{vm.shigan}}</span>
                         </h3>
@@ -93,62 +99,167 @@
                             <span class="text-primary">{{vm.shinayin}}</span>
                         </p>
                     </div>
-                    <div class="col-xs-2">
-                        <p>胎</p>
+
+                    <div class="col-xs-2 col-md-1 col-md-offset-1">
+                        <p>大运</p>
+                        <h3>
+                            <span class="text-info">{{vm.dayungan}}</span>
+                        </h3>
+                        <h3>
+                            <span class="text-info">{{vm.dayunzhi}}</span>
+                        </h3>
+
+                        <p>
+                            <span class="text-primary">{{vm.dayunnayin}}</span>
+                        </p>
+                    </div>
+                    <div class="col-xs-2 col-md-1">
+                        <p>流年</p>
+                        <h3>
+                            <span class="text-info">{{vm.liuniangan}}</span>
+                        </h3>
+                        <h3>
+                            <span class="text-info">{{vm.liunianzhi}}</span>
+                        </h3>
+
+                        <p>
+                            <span class="text-primary">{{vm.liunianzhu}}</span>
+                        </p>
+                    </div>
+
+                    <div class="col-xs-2 col-md-1">
+                        <p>行年</p>
+                        <h3>
+                            <span class="text-info">{{vm.xingniangan}}</span>
+                        </h3>
+                        <h3>
+                            <span class="text-info">{{vm.xingnianzhi}}</span>
+                        </h3>
+
+                        <p>
+                            <span class="text-primary">{{vm.xingniannayin}}</span>
+                        </p>
+                    </div>
+
+
+                    <div class="col-xs-2 col-md-1 col-md-offset-1">
+                        <p>胎宫</p>
                         <h3>
                             <span class="text-info">{{vm.bazi.taigan}}</span>
                         </h3>
                         <h3>
                             <span class="text-info">{{vm.bazi.taizhi}}</span>
                         </h3>
-    
+
+                        <p>
+                            <span class="text-primary">{{vm.bazi.tainayin}}</span>
+                        </p>
+                    </div>
+                    <div class="col-xs-2 col-md-1">
+                        <p>命宫</p>
+                        <h3>
+                            <span class="text-info">{{vm.bazi.taigan}}</span>
+                        </h3>
+                        <h3>
+                            <span class="text-info">{{vm.bazi.taizhi}}</span>
+                        </h3>
+
+                        <p>
+                            <span class="text-primary">{{vm.bazi.tainayin}}</span>
+                        </p>
+                    </div>
+                    <div class="col-xs-2 col-md-1">
+                        <p>身宫</p>
+                        <h3>
+                            <span class="text-info">{{vm.bazi.taigan}}</span>
+                        </h3>
+                        <h3>
+                            <span class="text-info">{{vm.bazi.taizhi}}</span>
+                        </h3>
+
                         <p>
                             <span class="text-primary">{{vm.bazi.tainayin}}</span>
                         </p>
                     </div>
              </div>
 
-             <div class="row">
-                    <div class="col-md-3">
-                        <div class="input-group">
-                            <span class="input-group-addon">大运</span>
-                            <input class="form-control" ng-model="vm.dayunzhu">
-                            <span class="input-group-addon">
-                                <span class="text-primary">{{vm.dayunnayin}}</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="input-group">
-                            <span class="input-group-addon">流年</span>
-                            <input class="form-control"  ng-model="vm.liunianzhu">
-                            <span class="input-group-addon">
-                             
-                                <span class="text-primary">{{vm.liuniannayin}}</span>
-
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="input-group">
-                            <span class="input-group-addon">行年</span>
-                            <input class="form-control"  ng-model="vm.xingnianzhu">
-                            <span class="input-group-addon">
-                                    <span class="text-primary">{{vm.xingniannayin}}</span>
-                            </span>
-                        </div>
-                    </div>
-            </div>
-
             <div class="row">
                     <uib-tabset active="$tabSetStatus.activeTab">
-                        <uib-tab heading="学习分析">
+                        <uib-tab heading="四柱分析">
                             <div class="row">
-                                <!--<div json-viewer="vm.analyzeResult"></div>-->
-                                <json-formatter json="vm.analyzeResult" open="1"></json-formatter>
+                                <!--<div json-viewer="vm.sizhuAnalyze"></div>-->
+                                <json-formatter json="vm.sizhuAnalyze" open="1"></json-formatter>
                             </div>
         
                         </uib-tab>
+                        <uib-tab heading="岁运分析">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">大运</span>
+                                        <ui-select ng-model="vm.dayunSelect" class="btn-group bootstrap-select form-control">
+                                            <ui-select-match>
+                                                <span> {{$select.selected.title}}</span>
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="item in vm.jiaziCombox">
+                                                <span ng-bind-html="item.title"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" ng-click="vm.dayunSet(vm.dayunSelect)" type="button">设置</button>
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">流年</span>
+                                        <ui-select ng-model="vm.liunianSelect" class="btn-group bootstrap-select form-control">
+                                            <ui-select-match>
+                                                <span> {{$select.selected.title}}</span>
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="item in vm.jiaziCombox">
+                                                <span ng-bind-html="item.title"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" ng-click="vm.liunianSet(vm.liunianSelect)" type="button">设置</button>
+                                        </span>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">行年</span>
+                                        <input class="form-control" text="number" ng-model="vm.countYear">
+
+                                        <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default dropdown-toggle"
+                                                data-toggle="dropdown" aria-haspopup="true" >
+                                                计算
+                                                <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                        <li><a href ng-click="vm.calculateXingNian()">传统</a></li>
+                                        <li><a href ng-click="vm.calculateXingNianShiZhu()">时柱</a></li>
+                                        <!--<li><a href="#">Something else here</a></li>-->
+                                        <!--<li role="separator" class="divider"></li>-->
+                                        <!--<li><a href="#">Separated link</a></li>-->
+                                        </ul>
+                                        </span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+                                <!--<div json-viewer="vm.sizhuAnalyze"></div>-->
+                                <json-formatter json="vm.suiyunAnalyze" open="1"></json-formatter>
+                            </div>
+
+                        </uib-tab>
+
                         <uib-tab heading="规则匹配">
                           <button class="btn btn-primary" ng-click="vm.match()">匹配</button>
                         <div json-viewer="vm.matchResult"></div>
@@ -162,30 +273,7 @@
                         <uib-tab heading="详情描述">
                            <p>{{vm.customer.description}}</p>
                         </uib-tab>
-                        <uib-tab ng-init="$dropdownTabActive = 1" class="with-dropdown">
-                            <uib-tab-heading uib-dropdown>
-                                <a uib-dropdown-toggle ng-click="$event.stopPropagation()">
-                                    Dropdown tab <i class="caret"></i>
-                                </a>
-                                <ul class="dropdown-menu" uib-dropdown-menu>
-                                    <li><a ng-click="$dropdownTabActive = 1; $tabSetStatus.activeTab = 3">Tab 1</a></li>
-                                    <li><a ng-click="$dropdownTabActive = 2; $tabSetStatus.activeTab = 3">Tab 2</a></li>
-                                </ul>
-                            </uib-tab-heading>
-                            <div ng-show="$dropdownTabActive == 1">
-                                <p>
-                                    Success is ... knowing your purpose in life, growing to reach your maximum potential, and sowing seeds that
-                                    benefit others.
-                                </p>
-        
-                                <p>Failure is the condiment that gives success its flavor.</p>
-                            </div>
-                            <div ng-show="$dropdownTabActive == 2">
-                                <p class="text-center">
-                                    <button class="btn btn-danger">I'm just a dummy button</button>
-                                </p>
-                            </div>
-                        </uib-tab>
+
                     </uib-tabset>
                 </div>
         
@@ -194,91 +282,7 @@
     </div>
 
 </div>
-<div class="panel panel-default with-scroll">
 
-    <div class="panel-body">
-
-       
-        <div class="row">
-            <uib-accordion>
-                <uib-accordion-group heading="分析结果" panel-class="panel-success bootstrap-panel accordion-panel">
-
-
-                </uib-accordion-group>
-                <uib-accordion-group heading="行年-传统算法" panel-class="panel-primary bootstrap-panel accordion-panel">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div class="input-group">
-                                <span class="input-group-addon">出生年</span>
-                                <input type="number" class="form-control"
-
-                                       ng-model="vm.bazi.birth"
-                                >
-                            </div>
-                        </div>
-
-                        <div class="col-md-2">
-                            <button type="submit" class="btn btn-info" ng-click="vm.calculateXingNian()">计算</button>
-                        </div>
-                    </div>
-                    <table class="table">
-
-                        <tbody>
-                        <tr ng-repeat="item in vm.xingnian" ng-init="outerIndex = $index">
-                            <td ng-repeat="item_data in item">
-                                <p>{{ outerIndex*10+$index+vm.bazi.birth }}年</p>
-                                <p>{{ outerIndex*10+$index+1 }}岁</p>
-                                <p>{{item_data}}</p>
-                            </td>
-                        </tr>
-
-                        </tbody>
-                    </table>
-                </uib-accordion-group>
-                <uib-accordion-group heading="行年-时辰算法" panel-class="panel-success bootstrap-panel accordion-panel">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="input-group">
-                                <span class="input-group-addon" >出生年</span>
-                                <input type="number" class="form-control"
-                                       ng-model="vm.bazi.birth"
-                                >
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <button class="btn btn-info" ng-click="vm.calculateXingNianShiZhu()">计算</button>
-                        </div>
-                    </div>
-                    <table class="table">
-
-                        <tbody>
-                        <tr ng-repeat="item in vm.xingnianShiZhu" ng-init="outerIndex = $index">
-                            <td ng-repeat="item_data in item">
-                                <p>{{ outerIndex*10+$index+ vm.bazi.birth }}年</p>
-                                <p>{{ outerIndex*10+$index+1 }}岁</p>
-                                <p>{{item_data}}</p>
-                            </td>
-                        </tr>
-
-                        </tbody>
-                    </table>
-                </uib-accordion-group>
-
-
-            </uib-accordion>
-
-        </div>
-
-
-        <div class="row">
-            <button class="btn btn-default" ng-click="vm.back()">
-                返回
-            </button>
-        </div>
-
-
-    </div>
-</div>
 
 
 

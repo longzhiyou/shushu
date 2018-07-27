@@ -44,10 +44,9 @@
           "xingniangan":"丁",
           "xingnianzhi":"亥"
       };
-      vm.year = 1984;
 
-      vm.xingnian=[[],[],[],[],[],[],[],[],[],[]];
-      vm.xingnianShiZhu=[[],[],[],[],[],[],[],[],[],[]];
+
+
 
       var yangGan = ["甲","丙","戊","庚","壬"];
       function isYangGan(gan) {
@@ -258,7 +257,7 @@
         if (vm.id>0) {
             Restangular.one("customers",vm.id).get().then(function(hal) {
                 vm.customer = hal;
-                // vm.selectedGender = getSelectedGender(hal.gender);
+                // vm.genderSelected = getSelectedGender(hal.gender);
 
             }, function(error) {
                 promptService.failure(setting.getDataError);

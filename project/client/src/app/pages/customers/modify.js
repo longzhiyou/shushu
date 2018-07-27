@@ -23,7 +23,7 @@
     ];
 
       //选择后
-      vm.selectedGender =vm.genderList[0];
+      vm.genderSelected =vm.genderList[0];
       vm.customer={};
       function getSelectedGender(value) {
           for(var i=0;i<vm.genderList.length;i++){
@@ -46,7 +46,7 @@
       }
 
       function setSelect() {
-          vm.customer.gender = vm.selectedGender.value;
+          vm.customer.gender = vm.genderSelected.value;
       }
 
 
@@ -88,7 +88,7 @@
         if (vm.id>0) {
             Restangular.one("customers",vm.id).get().then(function(hal) {
                 vm.customer = hal;
-                vm.selectedGender = getSelectedGender(hal.gender);
+                vm.genderSelected = getSelectedGender(hal.gender);
 
             }, function(error) {
                 promptService.failure(setting.getDataError);

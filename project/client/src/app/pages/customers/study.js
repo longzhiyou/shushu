@@ -11,11 +11,80 @@
     /** @ngInject */
     function StudyCtrl($stateParams, $state, Restangular, promptService, setting) {
         var vm = this;
+
+        vm.jiaziCombox = [
+            {title: "甲子",value: '甲子'},
+            {title: "乙丑",value: '乙丑'},
+            {title: "丙寅",value: '丙寅'},
+            {title: "丁卯",value: '丁卯'},
+            {title: "戊辰",value: '戊辰'},
+            {title: "己巳",value: '己巳'},
+            {title: "庚午",value: '庚午'},
+            {title: "辛未",value: '辛未'},
+            {title: "壬申",value: '壬申'},
+            {title: "癸酉",value: '癸酉'},
+            {title: "甲戌",value: '甲戌'},
+            {title: "乙亥",value: '乙亥'},
+            {title: "丙子",value: '丙子'},
+            {title: "丁丑",value: '丁丑'},
+            {title: "戊寅",value: '戊寅'},
+            {title: "己卯",value: '己卯'},
+            {title: "庚辰",value: '庚辰'},
+            {title: "辛巳",value: '辛巳'},
+            {title: "壬午",value: '壬午'},
+            {title: "癸未",value: '癸未'},
+            {title: "甲申",value: '甲申'},
+            {title: "乙酉",value: '乙酉'},
+            {title: "丙戌",value: '丙戌'},
+            {title: "丁亥",value: '丁亥'},
+            {title: "戊子",value: '戊子'},
+            {title: "己丑",value: '己丑'},
+            {title: "庚寅",value: '庚寅'},
+            {title: "辛卯",value: '辛卯'},
+            {title: "壬辰",value: '壬辰'},
+            {title: "癸巳",value: '癸巳'},
+            {title: "甲午",value: '甲午'},
+            {title: "乙未",value: '乙未'},
+            {title: "丙申",value: '丙申'},
+            {title: "丁酉",value: '丁酉'},
+            {title: "戊戌",value: '戊戌'},
+            {title: "己亥",value: '己亥'},
+            {title: "庚子",value: '庚子'},
+            {title: "辛丑",value: '辛丑'},
+            {title: "壬寅",value: '壬寅'},
+            {title: "癸卯",value: '癸卯'},
+            {title: "甲辰",value: '甲辰'},
+            {title: "乙巳",value: '乙巳'},
+            {title: "丙午",value: '丙午'},
+            {title: "丁未",value: '丁未'},
+            {title: "戊申",value: '戊申'},
+            {title: "己酉",value: '己酉'},
+            {title: "庚戌",value: '庚戌'},
+            {title: "辛亥",value: '辛亥'},
+            {title: "壬子",value: '壬子'},
+            {title: "癸丑",value: '癸丑'},
+            {title: "甲寅",value: '甲寅'},
+            {title: "乙卯",value: '乙卯'},
+            {title: "丙辰",value: '丙辰'},
+            {title: "丁巳",value: '丁巳'},
+            {title: "戊午",value: '戊午'},
+            {title: "己未",value: '己未'},
+            {title: "庚申",value: '庚申'},
+            {title: "辛酉",value: '辛酉'},
+            {title: "壬戌",value: '壬戌'},
+            {title: "癸亥",value: '癸亥'}
+        ];
+
+
+
         vm.customer = $stateParams.customer;
-        vm.importantInfo={}
+        vm.importantInfo={};
 
         vm.strBaZi = "甲子 丙寅 丁卯 癸亥";
-        vm.gender = "男";
+
+        //出生年
+        vm.birth = "1984-01-01";
+        vm.countYear = moment().years();
 
         //年
         vm.niangan = "";
@@ -48,23 +117,29 @@
         vm.tainayin = "";
 
 
+        vm.dayunSelect = vm.jiaziCombox[0];
+        vm.liunianSelect = vm.jiaziCombox[0];
+
+
         //大运
-        vm.dayungan = "甲";
-        vm.dayunzhi = "";
-        vm.dayunzhu = "甲子";
-        vm.dayunnayin = "";
+        vm.dayungan;
+        vm.dayunzhi;
+        vm.dayunzhu ;
+        vm.dayunnayin;
 
         //流年
-        vm.liuniangan = "";
-        vm.liunianzhi = "";
-        vm.liunianzhu = "甲子";
-        vm.liuniannayin = "";
+        vm.liunianSelect =vm.jiaziCombox[0];
+        vm.liuniangan;
+        vm.liunianzhi;
+        vm.liunianzhu;
+        vm.liuniannayin;
 
         //行年
-        vm.xingniangan = "";
-        vm.xingnianzhi = "";
-        vm.xingnianzhu = "甲子";
-        vm.xingniannayin = "";
+        vm.xingnianganSelect =vm.jiaziCombox[0];
+        vm.xingniangan;
+        vm.xingnianzhi;
+        vm.xingnianzhu ;
+        vm.xingniannayin ;
 
 
 
@@ -80,6 +155,9 @@
             }
         ];
 
+
+
+
         //阴阳
         var yinyang = ["阴", "阳"];
 
@@ -91,6 +169,16 @@
 
         //五行
         var wuxing = ["木", "火", "土", "金", "水"];
+
+        var sixtyJiaZi = [
+            "甲子", "乙丑", "丙寅", "丁卯", "戊辰", "己巳", "庚午", "辛未", "壬申", "癸酉",
+            "甲戌", "乙亥", "丙子", "丁丑", "戊寅", "己卯", "庚辰", "辛巳", "壬午", "癸未",
+            "甲申", "乙酉", "丙戌", "丁亥", "戊子", "己丑", "庚寅", "辛卯", "壬辰", "癸巳",
+            "甲午", "乙未", "丙申", "丁酉", "戊戌", "己亥", "庚子", "辛丑", "壬寅", "癸卯",
+            "甲辰", "乙巳", "丙午", "丁未", "戊申", "己酉", "庚戌", "辛亥", "壬子", "癸丑",
+            "甲寅", "乙卯", "丙辰", "丁巳", "戊午", "己未", "庚申", "辛酉", "壬戌", "癸亥"
+        ];
+
 
         //五虎遁
         var wuhudun = {
@@ -446,7 +534,7 @@
         "辛":"辰巳",
         "壬":"寅卯",
         "癸":"子丑戌亥",
-    }
+    };
         vm.importantInfo["截路空亡"]=jielukongwang;
 
     var jieluzhu = ["甲申","己酉","乙未","庚午","丙辰","辛巳","丁卯","壬寅","戊子","戊戌","癸丑","癸亥"]
@@ -792,7 +880,7 @@
         }
         
         //选择后
-        vm.selectedGender = vm.genderList[0];
+        vm.genderSelected = vm.genderList[0];
 
         function getSelectedGender(value) {
             for (var i = 0; i < vm.genderList.length; i++) {
@@ -875,14 +963,16 @@
             []
         ];
 
-        //分析结果
-        vm.analyzeResult = {};
+        //四柱分析结果
+        vm.sizhuAnalyze = {};
+        //岁运
+        vm.suiyunAnalyze = {};
 
         var yangGan = ["甲", "丙", "戊", "庚", "壬"];
 
         function isYangGan(gan) {
             var index = yangGan.indexOf(gan);
-            return index > 0;
+            return index >=0;
         }
 
         vm.calculateXingNian = calculateXingNian;
@@ -895,14 +985,6 @@
         //地支
         var dizhi = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
 
-        var sixtyJiaZi = [
-            "甲子", "乙丑", "丙寅", "丁卯", "戊辰", "己巳", "庚午", "辛未", "壬申", "癸酉",
-            "甲戌", "乙亥", "丙子", "丁丑", "戊寅", "己卯", "庚辰", "辛巳", "壬午", "癸未",
-            "甲申", "乙酉", "丙戌", "丁亥", "戊子", "己丑", "庚寅", "辛卯", "壬辰", "癸巳",
-            "甲午", "乙未", "丙申", "丁酉", "戊戌", "己亥", "庚子", "辛丑", "壬寅", "癸卯",
-            "甲辰", "乙巳", "丙午", "丁未", "戊申", "己酉", "庚戌", "辛亥", "壬子", "癸丑",
-            "甲寅", "乙卯", "丙辰", "丁巳", "戊午", "己未", "庚申", "辛酉", "壬戌", "癸亥"
-        ];
 
 
 
@@ -2017,54 +2099,96 @@
             return 0;
         }
 
+        function xingnianPase(zhu) {
+            vm.xingnianzhu = zhu;
+            vm.xingniangan = zhu[0];
+            vm.xingnianzhi = zhu[1];
+            vm.xingniannayin = jiazinayin[zhu];
+
+        }
+
+        function dayunPase(zhu) {
+
+            vm.dayunzhu = zhu;
+            vm.dayungan = zhu[0];
+            vm.dayunzhi = zhu[1];
+            vm.dayunnayin = jiazinayin[zhu];
+
+        }
+
+        function liunianPase(zhu) {
+
+            vm.liunianzhu = zhu;
+            vm.liuniangan = zhu[0];
+            vm.liunianzhi = zhu[1];
+            vm.liuniannayin = jiazinayin[zhu];
+
+        }
+
+
         //计算行年
         function calculateXingNian() {
             //传统算法 男-丙寅顺行 女-壬申逆行
             //丙寅索引 2 壬申索引 8
+            var birthYear = parseInt(vm.birth.substr(0,4));
 
-            if (vm.bazi.gender === "男") {
+            var begin = vm.countYear - birthYear;
+            if (vm.genderSelected.title === "男") {
 
-                for (var i = 0; i < 100; i++) {
 
-                    vm.xingnian[parseInt(i / 10)][i % 10] = sixtyJiaZi[(i + 2) % 60];
+                xingnianPase(sixtyJiaZi[(begin + 2) % 60]);
+            }else {
+                var index = (8 - begin) % 60;
+                if (index < 0) {
+                    index = 60 + index;
                 }
-            } else {
-                for (var j = 0; j < 100; j++) {
 
-                    var index = (8 - j) % 60;
-                    if (index < 0) {
-                        index = 60 + index;
-                    }
+                xingnianPase(sixtyJiaZi[index]);
 
-                    vm.xingnian[parseInt(j / 10)][j % 10] = sixtyJiaZi[index];
-
-                }
             }
+
+
+            // if (vm.genderSelected.title === "男") {
+            //
+            //     for (var i = 0; i < 100; i++) {
+            //
+            //         vm.xingnian[parseInt(i / 10)][i % 10] = sixtyJiaZi[(i + 2) % 60];
+            //     }
+            // } else {
+            //     for (var j = 0; j < 100; j++) {
+            //
+            //         var index = (8 - j) % 60;
+            //         if (index < 0) {
+            //             index = 60 + index;
+            //         }
+            //
+            //         vm.xingnian[parseInt(j / 10)][j % 10] = sixtyJiaZi[index];
+            //
+            //     }
+            // }
 
         }
 
         function calculateXingNianShiZhu() {
             //获取时柱
-            var startIndex = sixtyJiaZi.indexOf(vm.bazi.shigan + vm.bazi.shizhi);
+            var startIndex = sixtyJiaZi.indexOf(vm.shizhu);
+            var birthYear = parseInt(vm.birth.substr(0,4));
 
+            var begin = vm.countYear - birthYear;
+
+            var gender = vm.genderSelected.title;
             //时柱 阳男阴女-顺行 阴男阳女-逆行
-            if ((vm.bazi.gender === "男" && isYangGan(vm.bazi.niangan)) || (vm.bazi.gender === "女" && !isYangGan(vm.bazi.niangan))) {
-                for (var i = 0; i < 100; i++) {
 
-                    vm.xingnianShiZhu[parseInt(i / 10)][i % 10] = sixtyJiaZi[(i + startIndex + 1) % 60];
-                }
+            if ((gender === "男" && isYangGan(vm.niangan)) || (gender === "女" && !isYangGan(vm.niangan))) {
+                xingnianPase(sixtyJiaZi[(begin + startIndex + 1) % 60]);
 
             } else {
-                for (var j = 0; j < 100; j++) {
-
-                    var index = (startIndex - j - 1) % 60;
-                    if (index < 0) {
-                        index = 60 + index;
-                    }
-
-                    vm.xingnianShiZhu[parseInt(j / 10)][j % 10] = sixtyJiaZi[index];
-
+                var index = (startIndex - begin - 1) % 60;
+                if (index < 0) {
+                    index = 60 + index;
                 }
+
+                xingnianPase(sixtyJiaZi[index]);
 
             }
 
@@ -2076,7 +2200,7 @@
         vm.match = function () {
         
             var filter  = {
-                gender:vm.selectedGender.value,
+                gender:vm.genderSelected.value,
                 bazi:vm.strBaZi
             };
             Restangular.one("bazis","analyze").get(filter).then(function(result) {
@@ -2093,6 +2217,17 @@
 
         function back() {
             $state.go('customers.index');
+        }
+
+        vm.dayunSet = dayunSet;
+        function dayunSet(item) {
+            dayunPase(item.title);
+
+        }
+        vm.liunianSet = liunianSet;
+        function liunianSet(item) {
+            liunianPase(item.title);
+
         }
 
         function pasebazi(strBaZi) {
@@ -2138,18 +2273,66 @@
         function analyze() {
 
             pasebazi(vm.strBaZi);
-            vm.dayunnayin = jiazinayin[vm.dayunzhu];
-            vm.liuniannayin = jiazinayin[vm.liunianzhu];
-            vm.xingniannayin = jiazinayin[vm.xingnianzhu];
+
+            dayunSet(vm.dayunSelect);
+            liunianSet(vm.liunianSelect);
+            vm.calculateXingNian();
 
             var result = {};
+            var suiyun = {};
             
             result["年柱"] = {
                 // "名称": vm.nianzhu,
                 // "纳音五行": getnayin(vm.nianzhu),
                  "天乙贵人": {
                     "贵人":gettianyi(vm.niangan)
-                    ,"天乙":getzhitianyi(vm.nianzhi)
+                    ,"正天乙-要全":[getzhitianyi(vm.nianzhi)
+                         ,"若丑未人甲戊庚中，惟得两字。子申人得乙己全。酉亥人得丙丁全之类"
+                         ,"更与太岁干禄为正官正印者，其福加倍也。如 甲寅 见辛 "
+                         ,"若在太岁本干四贵华盖之上，遇两天乙者，台辅之命也 如 甲寅 见辛亥 亥是甲长生"
+                         ,"若在四平之位，遇两天乙者，亦为侍从清华 之命。"
+                         ,"若在四忌上，遇两天乙者，常调之官也。"
+                     ]
+
+                    ,"[天乙贵神相还格-交互见贵]":["此格有三,干合为上，支合次之，无合者又次之。"
+                         ,"《寸珠尺璧》云：凡月日时互换见贵，太岁不带者不贵。"
+                         ,"《紫虚局》云：贵人交互人多贵，旺气相乘馆殿资。切莫五行伤着主，令人闲地冷清虚。"
+                         ,"若无死绝冲破空亡，更有福神佐之，当极一品之贵达，有死绝为鄙吝杀故也。如有死绝冲破空亡之类，只做正郎员郎，然多难无福耳。"
+
+                     ]
+                     ,"【干夹贵神格】":"如甲戊庚年生人，得丑日或未，时上却带甲戊庚中一字主显异。"
+                     ,"[贵合] ":["有贵合则官位穹崇，所作契合.有贵合则官多称意"
+                         ,"如甲戊庚贵在丑未，甲得己丑己未，戊得癸丑癸未，庚得乙丑乙未；"
+                         ,"乙己贵在申子，乙得庚子庚申，己得甲子甲申"
+                         ,"丙丁贵在亥酉，丙得辛酉辛亥，丁得壬寅壬辰"
+
+                     ]
+                     ,"[贵食] 食神坐自己的贵人":["有贵食，则财禄丰足，所成遇望"
+                         ,"阴阳不匹配则选择贵人地支六合"
+                         ,"甲得丙寅 丙辰"
+                         ,"乙得丁酉 丁亥"
+                         ,"庚得壬申 壬戌"
+                         ,"辛得癸卯 癸巳"
+                     ]
+                     ,"象":[
+                         "天乙贵人者，三命中最吉之神也，若人遇之，主荣名早达，官禄易近，若更三命皆乘旺气，终登将相公卿之位，大小运行年至此，亦主迁官进财，一切加临至此，皆为吉兆。（三命指掌）"
+                         ,"宜以纳音互换推寻，须比和则其贵为福，若丙寅火得酉，则火至此死，焉足为贵哉。（广录）。"
+                         ,"若与禄马同窠，不犯交退伏神,支干相合者，定须官高职清，若无德，更值空亡交退伏神，五行无气，至老不贵。紧要在月日时支干相合，则为吉，不然乃庸常流也。（同金书命诀）"
+                         ,"与【劫杀】倂，则貌厚有威，多谋足计，与【官符】倂则文翰飘逸，高谈雄辩，与建录倂则文翰纯实，济惠广施也。（烛神经）"
+                         ,{"贵人福力厚薄":["甲尤喜未，庚尤喜丑，各归其库也。"
+                                 ,"戊子戊寅戊午喜丑，丑者火人胎养之乡；"
+                                 ,"戊辰戊申戊戌喜未，未者木人入库，土人生旺之位也。"
+                                 ,"然乙尤喜申者，木之绝乡也；己尤喜申，申者坤之正位也。"
+                                 ,"丙丁属火，火墓在戌"
+                                 ,"然乙尤喜申者，木之绝乡也；己尤喜申，申者坤之正位也。"
+
+                            ]}
+                         ,"李虚中云：本家贵人全者，如甲人有戊、有庚、有丑、有未是也，大贵。"
+                         ,"紫虚格有贵人入庙格歌云：甲戊须寻癸未时，戊庚乙丑细穷推，丙丁丁酉乙亥是，壬癸乙卯癸巳奇，乙得戊申并庚子，己居丙子甲申时，辛遇丙寅兼戊午，遇者重金挂紫绯。 "
+                         ,"有贵人入庙格，取五虎元遁之贵人本位上，见所遁之干者是也"
+
+                     ]
+                     ,"[天乙扶身格］":["假令壬寅人得甲寅日时，壬贵在卯，甲贵在丑是也.丙申人得戊申，准此"]
                 },
                 "禄": {
                     "干禄":getlu(vm.niangan)
@@ -2178,7 +2361,7 @@
                 "[官下有印］": ["如甲人见辛月，丙日时之类是也。主官职崇高，名位清峻。"],
                 "[官下有食有合]": ["月干是官","如甲人见辛为官，辛食癸，丙与辛合，在月日时上是也。主为官有贴职，常人有兼艺。"],
                 "[官会杀］": ["甲乙人见辛丑  丙丁人见壬辰  戊己人见乙未 庚辛人见丙戌  壬癸人见戊辰",
-                "如辛金克甲乙木，金墓在丑。余仿此。君子主甲科，武人战功，常人艺业出俗。",],
+                "如辛金克甲乙木，金墓在丑。余仿此。君子主甲科，武人战功，常人艺业出俗。"]
                
                 },
                 "财": {
@@ -2215,19 +2398,23 @@
             };
             result["调侯"] = tiaohou[vm.rigan+vm.yuezhi];
 
-            result["大运"] = {
+
+
+            vm.sizhuAnalyze = result;
+
+            vm.suiyunAnalyze["大运"] = {
                 "虚一待用":["发于沉滞之中，有非常之庆，起于贫贱之间，有不次之用，当在岁运相遇也。 "
-                ,"谓金、木、水、火而无土"
-                ,"或乙、辛、丁而无癸"
-                ,"或甲、丙、庚而无壬"
-                ,"或辰、戌、丑而无未"
-                ,"或卯、酉、午而无子"
-                ,"或寅、申、亥而无巳"
-                ,"有天乙而无天官"
-                ,"有官印而无食神"
-                ,"有甲戊而无庚，有丙丁而虚乙"
-                ,"至于六合、四库、三合，交互见贵，见禄之类，待其岁运，补其不足，则气数备。"
-            ],
+                    ,"谓金、木、水、火而无土"
+                    ,"或乙、辛、丁而无癸"
+                    ,"或甲、丙、庚而无壬"
+                    ,"或辰、戌、丑而无未"
+                    ,"或卯、酉、午而无子"
+                    ,"或寅、申、亥而无巳"
+                    ,"有天乙而无天官"
+                    ,"有官印而无食神"
+                    ,"有甲戊而无庚，有丙丁而虚乙"
+                    ,"至于六合、四库、三合，交互见贵，见禄之类，待其岁运，补其不足，则气数备。"
+                ],
                 "金不换":jinbuhuan[vm.rigan + vm.yuezhi],
                 "调候大运": tiaohoudayun[vm.rigan+vm.yuezhi],
                 "十干败亡": "只要日主四柱地支没有临官、帝旺根,轻则败落，重则死伤",
@@ -2244,13 +2431,12 @@
                 },
                 "换甲": "",
 
-                "亲属引死绝": "",
+                "亲属引死绝": ""
 
 
-            }
+            };
 
-
-            result["流年"] = {
+            vm.suiyunAnalyze["流年"] = {
                 "规则": [
                     "流年为起点与大运四柱匹配", {
                         "进角合": "进角吉",
@@ -2261,7 +2447,7 @@
 
 
 
-            vm.analyzeResult = result;
+
 
             //   //设置纳音
             //   vm.bazi.niannayin = jiazinayin[vm.bazi.niangan+vm.bazi.nianzhi];
@@ -2275,29 +2461,29 @@
             //   vm.bazi.liunianyanyin =  jiazinayin[vm.bazi.shigan+vm.bazi.shizhi];
             //   vm.bazi.xingniannayin =  jiazinayin[vm.bazi.shigan+vm.bazi.shizhi];
 
-            //   vm.analyzeResult["调侯用神"]=tiaohou[vm.bazi.rigan+vm.bazi.yuezhi];
+            //   vm.sizhuAnalyze["调侯用神"]=tiaohou[vm.bazi.rigan+vm.bazi.yuezhi];
 
 
 
             //
-            // vm.analyzeResult["纳音五行"]= {"大运":jiazinayin[vm.bazi.dayun]
+            // vm.sizhuAnalyze["纳音五行"]= {"大运":jiazinayin[vm.bazi.dayun]
             //
             //   ,"流年":jiazinayin[vm.bazi.liunian]
             //   ,"行年":jiazinayin[vm.bazi.xingnian]
             //
             // };
-            //   vm.analyzeResult["鬼论"]= {
+            //   vm.sizhuAnalyze["鬼论"]= {
 
             //       "窠中鬼者":"如丙子见庚子、丁丑见辛丑之类是也",
             //       "隔壁鬼者":"如庚子见癸丑之类是也",
             //       "墓中鬼者":"如水人见丙辰，土人见戊辰之类是也",
             //       "空亡鬼者":"如甲戌见甲申乙酉之类是也"
             //   };
-            // vm.analyzeResult["年柱信息"]=[
+            // vm.sizhuAnalyze["年柱信息"]=[
             //     {"年时鬼论":vm.bazi.nianzhu+":"+vm.bazi.niannayin+"-"+vm.bazi.shinayin}
             // ];
             //
-            // vm.analyzeResult["日柱信息"]=[
+            // vm.sizhuAnalyze["日柱信息"]=[
             //     {"鬼论":"查看流年柱"}
             // ]
 
@@ -2315,9 +2501,12 @@
 
 
         function init() {
+
+
+
             if (vm.customer) {
-                vm.strBaZi = vm.customer.bazi
-                vm.selectedGender = getSelectedGender(vm.customer.gender);
+                vm.strBaZi = vm.customer.bazi;
+                vm.genderSelected = getSelectedGender(vm.customer.gender);
             }
             analyze();
 

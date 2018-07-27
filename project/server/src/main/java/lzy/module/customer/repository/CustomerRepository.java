@@ -1,6 +1,7 @@
 package lzy.module.customer.repository;
 
 import lzy.module.customer.entity.Customer;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,6 +23,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 //    @Query("select name,gender from Customer c")
 //    List<CustomerGrid> findAllGridBy();
 
+    @Cacheable(value="Customers")
     @Query(value = "select c from Customer c order by c.updatedAt Desc")
     List<Customer> grid();
 
