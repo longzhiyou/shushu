@@ -67,6 +67,35 @@ class BaZi {
 
     List<String> listMingYunSuiZhu
 
+    BaZi(String strBaZi){
+        strBaZi = strBaZi.replace(" ", "")//去掉所有空格，包括首尾、中间
+        String[] split = strBaZi.split("")
+
+
+        this.nianGan = split[0]
+        this.nianZhi = split[1]
+        this.yueGan = split[2]
+        this.yueZhi =split[3]
+        this.riGan = split[4]
+        this.riZhi = split[5]
+        this.shiGan = split[6]
+        this.shiZhi = split[7]
+
+        this.nianZhu = nianGan+nianZhi
+        this.yueZhu = yueGan+yueZhi
+        this.riZhu = riGan+riZhi
+        this.shiZhu = shiGan+shiZhi
+
+        this.listMingGan = [nianGan, yueGan,riGan,shiGan]
+        this.listMingZhi = [nianZhi, yueZhi,riZhi,shiZhi]
+        this.listMingZhu = [nianZhu, yueZhu,riZhu,shiZhu]
+
+        if (split.size()>8){
+            this.taiGan = split[8]
+            this.taiZhi = split[9]
+            this.taiZhu =  taiGan+taiZhi
+        }
+    }
     /**
      * 八字字符串,如果是10个则对应最后面是胎柱
      * [2018-06-25 add by longzhiyou]

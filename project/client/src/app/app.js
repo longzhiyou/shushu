@@ -26,10 +26,12 @@ angular.module('BlurAdmin', [
   'BlurAdmin.pages'
 ]);
 
+
 var setting = {
     saveSuccess:"保存成功"
     ,saveError:"保存失败"
     ,getDataError:"获取数据失败"
+
 };
 angular.module('BlurAdmin').constant('setting', setting);
 

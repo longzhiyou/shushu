@@ -1,6 +1,7 @@
 package lzy.module.customer.repository;
 
 import lzy.module.customer.entity.Customer;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,6 +15,7 @@ import java.util.List;
 //@RepositoryRestResource()
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
+//    @CacheEvict(value="Customers")
     @Modifying
     @Query("update Customer t set t.deleteFlag = 1 where t.customerId = ?1")
     @Override
@@ -23,7 +25,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 //    @Query("select name,gender from Customer c")
 //    List<CustomerGrid> findAllGridBy();
 
-    @Cacheable(value="Customers")
+//    @Cacheable(value="Customers")
     @Query(value = "select c from Customer c order by c.updatedAt Desc")
     List<Customer> grid();
 

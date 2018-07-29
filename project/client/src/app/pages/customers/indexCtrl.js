@@ -9,9 +9,9 @@
       .controller('customersIndexCtrl', indexCtrl);
 
   /** @ngInject */
-  function indexCtrl($state,$http, $uibModal, Restangular, DTOptionsBuilder,
+  function indexCtrl($state, Restangular, DTOptionsBuilder,
                      DTColumnDefBuilder,defaultOptionsDom,warningModalService
-                     ,halService,promptService
+                     ,halService,dataService
 
   ) {
 
@@ -87,13 +87,20 @@
         Restangular.all('rules/search/combox').customGET().then(function(response) {
             vm.rules = halService.getList("rules",response);
 
+            // var customers = dataService.get("customers");
+            // if(customers){
+            //
+            //     vm.customers = customers;
+            //     return;
+            // }
             //customGET
             Restangular.all('customers/search/grid').customGET().then(function(response) {
 
-                var list = halService.getList("customers",response);
+                // var list = halService.getList("customers",response);
 
                 // vm.customers =list.slice(0,25);
-                vm.customers = list;
+                vm.customers = halService.getList("customers",response);
+                // dataService.set("customers",vm.customers);
                 
             }, function(error) {
 
