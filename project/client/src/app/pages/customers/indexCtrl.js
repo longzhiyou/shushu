@@ -75,8 +75,8 @@
       // DTColumnDefBuilder.newColumnDef(2),
       // DTColumnDefBuilder.newColumnDef(3),
       // DTColumnDefBuilder.newColumnDef(4),
-      // DTColumnDefBuilder.newColumnDef(5).notVisible(),
-      // DTColumnDefBuilder.newColumnDef(6).notVisible()
+      DTColumnDefBuilder.newColumnDef(5).notVisible(),
+      DTColumnDefBuilder.newColumnDef(6).notVisible()
 
     ];
 

@@ -744,6 +744,7 @@ class BaZiRule {
 
     }
 
+    //神煞
     def shensha(BaZi  bazi, BaZiAlgorithm baZiAlgorithm) {
         def mapResult = [:]
         def mapRule = [:]
@@ -766,6 +767,12 @@ class BaZiRule {
         def shiGan = bazi.getShiGan()
         def shiZhi = bazi.getShiZhi()
         def shiZhu = bazi.getShiZhu()
+
+        def yunGan = bazi.getYunGan()
+        def yunZhi = bazi.getYunZhi()
+        def yunZhu = bazi.getYunZhu()
+
+        def matchDiZhi = [shiZhi,riZhi,yunZhi]
 
         //填写内容
         //截路空亡
@@ -822,6 +829,90 @@ class BaZiRule {
         if(ruleValue){
             mapResult["日支-吞啖杀"]=ruleValue
         }
+
+        /**
+         * 甲己年：三月，戊戌。七月，癸亥。十月，丙申。十一月，丁亥
+         * 乙庚年：四月，壬申。九月，乙巳。
+         * 丙辛年：三月，辛巳。九月，庚辰。十月，甲辰。
+         * 丁壬年：无
+         * 戊癸年：六月，己丑。
+         *
+         * 十恶大败日 出道藏第四十九
+         * [2017-10-10 add by longzhiyou]
+         */
+
+        def shiedabai = [
+                "甲辰戊戌","甲申癸亥","甲亥丙申","甲子丁亥",
+                "己辰戊戌","己申癸亥","己亥丙申","己子丁亥",
+
+                "乙巳壬申","乙戌乙巳",
+                "庚巳壬申","庚戌乙巳",
+
+                "丙辰辛巳","丙戌庚辰","丙亥甲辰",
+                "辛辰辛巳","辛戌庚辰","辛亥甲辰",
+                "戊未己丑",
+                "癸未己丑"
+        ]
+
+        if (shiedabai.contains(nianGan+yueZhi+riZhu)){
+            mapResult["【十恶大败日】"]=nianGan+"年"+yueZhi+"月"+riZhu+"日"
+        }
+        def jianfengsha=["寅甲甲","卯乙乙","辰戊戊"
+                         ,"巳丙丙","午丁丁","未己己"
+                         ,"申庚庚","酉辛辛","戌戊戊"
+                         ,"亥壬壬","子癸癸","丑己己"]
+        if (jianfengsha.contains(yueZhi+riGan+shiGan)) {
+            mapResult["【戟锋煞-月支日干时干】"]=["命主后天意外伤害而伤残，大运流年忌讳【忌干】旺支。刑合之期"
+                                       ,"正月起甲，二月在乙，三月在戊，四月在丙，五月在丁，六月在己， 七月在庚，八月在辛，九月在戌，十月在壬，十一月在癸，十二月在巳，逐月处于旺盛的天干加临，日柱、时柱带两重的，凶，此煞再与悬针相见，命主被判流 刑，伤残。"
+            ]
+        }
+        def posha=["卯午","丑辰","子酉","未戌"]
+        if (posha.contains(nianZhi+shiZhi)) {
+            mapResult["【破煞-年时地支】"]="少年多灾难，多指连累家属破财，如连年有病，增加家长无限忧虑。"
+        }
+        def tianxingsha=["子乙","丑乙","寅庚","卯辛"
+                         ,"辰辛","巳壬","午癸","未癸"
+                         ,"申丙","酉丁","戌丁","亥戊"]
+        if (tianxingsha.contains(nianZhi+shiGan)) {
+            mapResult["【天刑煞-年支时干组合】"]="体弱多病，一生多有疾病。常与医生交往，医药费比较高，但也年年过"
+        }
+
+        def leitingsha = [ "寅":"子",
+                           "申":"子",
+                           "卯":"寅",
+                           "酉":"寅",
+
+                           "辰":"辰",
+                           "戌":"辰",
+
+                           "巳":"午",
+                           "亥":"子",
+
+                           "午":"申",
+                           "子":"申",
+                           "未":"戍",
+                           "丑":"戍"
+        ]
+
+        matchStr = leitingsha.get(yueZhi)
+        if (matchStr==shiZhi) {
+            mapResult["【雷霆煞-月支对时支】"]="忽然遇难,祸起萧墙。如游泳淹死，登山失足坠山，驾驶昏睡出车祸。"
+        }
+
+        mapRule=["子":"亥","丑":"子","寅":"丑","卯":"寅",
+                    "辰":"卯","巳":"辰","午":"巳","未":"午",
+                    "申":"未","酉":"申","戌":"酉","亥":"戌"]
+
+        ruleValue= mapRule.get(nianZhi)
+
+        matchStr ="命中及行运见之，主灾病。"
+        if (shiZhi==ruleValue) {
+            mapResult["【病符煞】时支"]=matchStr
+        }
+        if (riZhu==ruleValue) {
+            mapResult["【病符煞】日支"]=matchStr
+        }
+
 
 
         return mapResult
