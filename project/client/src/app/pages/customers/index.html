@@ -22,73 +22,120 @@
 
     </div>
 
-    <table class="table table-bordered table-hover table-condensed"
-           datatable="ng"
-           dt-column-defs="vm.dtColumnDefs"
-           dt-options="vm.dtOptions"
-           dt-disable-deep-watchers="true"
+    <table
+           st-table="displayedCollection"
+           st-safe-src="vm.customers"
+           class="table  table-bordered table-hover table-condensed"
     >
       <thead>
       <tr>
-        <th></th>
-        <th>姓名</th>
-        <th>性别</th>
-        <th>八字</th>
-        <th>出生日期</th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th>会员</th>
+        <th>地址</th>
+        <th>服务项</th>
+        <th>职工</th>
+        <th>状态</th>
+        <th>状态</th>
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="item in vm.customers ">
-
+      <tr ng-repeat="item in displayedCollection">
         <td>{{ $index+1 }}</td>
         <td>
-          <a href ng-click="vm.detail(item)">
-            {{ item.name }}
-          </a>
+        <a href ng-click="vm.detail(item)">
+        {{ item.name }}
+        </a>
         </td>
         <td>
-          {{ item.gender | genderFilter}}
+        {{ item.gender | genderFilter}}
         </td>
         <td>
-          {{ item.bazi }}
+        {{ item.bazi }}
         </td>
         <td>
-          {{ item.birth }}
-        </td>
-
-        <td>
-          {{ item.description }}
+        {{ item.birth }}
         </td>
 
         <td>
-          {{ item.label }}
-        </td>
-
-        <td>
-
-          <button type="button" ng-click="vm.edit(item)"
-                  class="btn-sm btn-primary btn-with-icon">
-            <i class="fa fa-edit"></i>
-            修改
-          </button>
-          <!--<button type="button" ng-click="vm.study(item)"-->
-                  <!--class="btn-sm btn-info btn-with-icon">-->
-            <!--<i class="fa fa-edit"></i>-->
-            <!--学习-->
-          <!--</button>-->
-          <button type="button" ng-click="vm.destroy(item)"
-                  class="btn-sm btn-danger btn-with-icon">
-            <i class="fa fa-trash-o"></i>
-            刪除
-          </button>
+        {{ item.label }}
         </td>
 
       </tr>
       </tbody>
-
+      <tfoot>
+      <tr>
+        <td colspan="5" class="text-center">
+          <div st-pagination="" st-items-by-page="10" st-displayed-pages="7"></div>
+        </td>
+      </tr>
+      </tfoot>
     </table>
+    <!--<table class="table table-bordered table-hover table-condensed"-->
+           <!--datatable="ng"-->
+           <!--dt-column-defs="vm.dtColumnDefs"-->
+           <!--dt-options="vm.dtOptions"-->
+           <!--dt-disable-deep-watchers="true"-->
+    <!--&gt;-->
+      <!--<thead>-->
+      <!--<tr>-->
+        <!--<th></th>-->
+        <!--<th>姓名</th>-->
+        <!--<th>性别</th>-->
+        <!--<th>八字</th>-->
+        <!--<th>出生日期</th>-->
+        <!--<th></th>-->
+        <!--<th></th>-->
+        <!--<th></th>-->
+      <!--</tr>-->
+      <!--</thead>-->
+      <!--<tbody>-->
+      <!--<tr ng-repeat="item in vm.customers ">-->
+
+        <!--<td>{{ $index+1 }}</td>-->
+        <!--<td>-->
+          <!--<a href ng-click="vm.detail(item)">-->
+            <!--{{ item.name }}-->
+          <!--</a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--{{ item.gender | genderFilter}}-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--{{ item.bazi }}-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--{{ item.birth }}-->
+        <!--</td>-->
+
+        <!--<td>-->
+          <!--{{ item.description }}-->
+        <!--</td>-->
+
+        <!--<td>-->
+          <!--{{ item.label }}-->
+        <!--</td>-->
+
+        <!--<td>-->
+
+          <!--<button type="button" ng-click="vm.edit(item)"-->
+                  <!--class="btn-sm btn-primary btn-with-icon">-->
+            <!--<i class="fa fa-edit"></i>-->
+            <!--修改-->
+          <!--</button>-->
+          <!--&lt;!&ndash;<button type="button" ng-click="vm.study(item)"&ndash;&gt;-->
+                  <!--&lt;!&ndash;class="btn-sm btn-info btn-with-icon">&ndash;&gt;-->
+            <!--&lt;!&ndash;<i class="fa fa-edit"></i>&ndash;&gt;-->
+            <!--&lt;!&ndash;学习&ndash;&gt;-->
+          <!--&lt;!&ndash;</button>&ndash;&gt;-->
+          <!--<button type="button" ng-click="vm.destroy(item)"-->
+                  <!--class="btn-sm btn-danger btn-with-icon">-->
+            <!--<i class="fa fa-trash-o"></i>-->
+            <!--刪除-->
+          <!--</button>-->
+        <!--</td>-->
+
+      <!--</tr>-->
+      <!--</tbody>-->
+
+    <!--</table>-->
   </div>
 </div>

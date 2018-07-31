@@ -22,6 +22,7 @@ angular.module('BlurAdmin', [
   'w5c.validator',
    'platypus.jsonviewer',
    'jsonFormatter',
+    'smart-table',
   'BlurAdmin.theme',
   'BlurAdmin.pages'
 ]);

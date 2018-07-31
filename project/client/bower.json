@@ -63,7 +63,8 @@
     "angular-bootstrap": "~1.3.3",
     "w5c-validator": "angular-w5c-validator#^2.4.25",
     "json-viewer": "angular-json-viewer#^1.0.3",
-    "json-formatter": "^0.7.0"
+    "json-formatter": "^0.7.0",
+    "angular-smart-table": "^2.1.11"
   },
   "resolutions": {
     "angular": "~1.6.4",

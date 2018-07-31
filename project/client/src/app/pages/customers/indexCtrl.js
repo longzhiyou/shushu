@@ -9,14 +9,18 @@
       .controller('customersIndexCtrl', indexCtrl);
 
   /** @ngInject */
-  function indexCtrl($state, Restangular, DTOptionsBuilder,
-                     DTColumnDefBuilder,defaultOptionsDom,warningModalService
-                     ,halService,dataService
+  function indexCtrl($scope,$state, Restangular, DTOptionsBuilder,
+                     DTColumnDefBuilder,defaultOptionsDom,warningModalService,halService,dataService
 
   ) {
 
+
     var vm = this;
-    var idName = "customerId";
+
+      vm.itemsByPage=10;
+
+
+      var idName = "customerId";
 
     vm.halService = halService;
 
@@ -94,12 +98,15 @@
             //     return;
             // }
             //customGET
-            Restangular.all('customers/search/grid').customGET().then(function(response) {
+            Restangular.all('customers').customGET().then(function(response) {
 
                 // var list = halService.getList("customers",response);
 
                 // vm.customers =list.slice(0,25);
                 vm.customers = halService.getList("customers",response);
+
+
+
                 // dataService.set("customers",vm.customers);
                 
             }, function(error) {
