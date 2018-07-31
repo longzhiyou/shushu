@@ -23,18 +23,20 @@
     </div>
 
     <table
+            st-persist="myTable"
            st-table="displayedCollection"
            st-safe-src="vm.customers"
-           class="table  table-bordered table-hover table-condensed"
+           class="table  table-bordered table-hover"
     >
       <thead>
       <tr>
-        <th>会员</th>
-        <th>地址</th>
-        <th>服务项</th>
-        <th>职工</th>
-        <th>状态</th>
-        <th>状态</th>
+        <th>*</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>八字</th>
+        <th>出生日期</th>
+        <th>操作</th>
+
       </tr>
       </thead>
       <tbody>
@@ -56,15 +58,35 @@
         </td>
 
         <td>
-        {{ item.label }}
+          <!--<button type="button" ng-click="vm.edit(item)"-->
+          <!--class="btn btn-sm btn-primary btn-with-icon">-->
+          <!--<i class="fa fa-edit"></i>-->
+          <!--修改-->
+          <!--</button>-->
+          <button type="button" ng-click="vm.edit(item)"
+                  class="btn btn-sm btn-primary ">
+            <i class="fa fa-edit"></i>
+
+          </button>
+
+          <button type="button" ng-click="vm.destroy(item)"
+          class="btn btn-sm btn-danger ">
+          <i class="fa fa-trash-o"></i>
+
+          </button>
+
+          <!--<button type="button" ng-click="removeRow(row)" class="btn btn-sm btn-danger">-->
+            <!--<i class="glyphicon glyphicon-remove-circle">-->
+            <!--</i>-->
+          <!--</button>-->
         </td>
 
       </tr>
       </tbody>
       <tfoot>
       <tr>
-        <td colspan="5" class="text-center">
-          <div st-pagination="" st-items-by-page="10" st-displayed-pages="7"></div>
+        <td colspan="7" class="text-center">
+          <div st-pagination="" st-items-by-page="10" ></div>
         </td>
       </tr>
       </tfoot>

@@ -51,6 +51,7 @@ function config($httpProvider
     ,jwtOptionsProvider
     ,w5cValidatorProvider
     ,JSONFormatterConfigProvider
+    ,stConfig
 
 ) {
 
@@ -59,6 +60,7 @@ function config($httpProvider
     // RestangularProvider.setBaseUrl('http://192.168.1.119:3002/api');
 
 
+    stConfig.pagination.template = 'app/theme/components/pagination/pagination.custom.html';
 
     JSONFormatterConfigProvider.hoverPreviewEnabled = true;
     

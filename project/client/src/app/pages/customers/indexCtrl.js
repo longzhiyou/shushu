@@ -6,7 +6,36 @@
   'use strict';
 
   angular.module('BlurAdmin.pages.customers')
-      .controller('customersIndexCtrl', indexCtrl);
+      .controller('customersIndexCtrl', indexCtrl)
+      .directive('stPersist', function () {
+          return {
+              require: '^stTable',
+              link: function (scope, element, attr, ctrl) {
+                  var nameSpace = attr.stPersist;
+
+                  //save the table state every time it changes
+                  scope.$watch(function () {
+                      return ctrl.tableState();
+                  }, function (newValue, oldValue) {
+                      if (newValue !== oldValue) {
+                          localStorage.setItem(nameSpace, JSON.stringify(newValue));
+                      }
+                  }, true);
+
+                  //fetch the table state when the directive is loaded
+                  if (localStorage.getItem(nameSpace)) {
+                      var savedState = JSON.parse(localStorage.getItem(nameSpace));
+                      var tableState = ctrl.tableState();
+
+                      angular.extend(tableState, savedState);
+                      ctrl.pipe();
+
+                  }
+
+              }
+          };
+      });
+  ;
 
   /** @ngInject */
   function indexCtrl($scope,$state, Restangular, DTOptionsBuilder,
@@ -17,7 +46,7 @@
 
     var vm = this;
 
-      vm.itemsByPage=10;
+      vm.itemsByPage=20;
 
 
       var idName = "customerId";
@@ -98,7 +127,7 @@
             //     return;
             // }
             //customGET
-            Restangular.all('customers').customGET().then(function(response) {
+            Restangular.all('customers/search/grid').customGET().then(function(response) {
 
                 // var list = halService.getList("customers",response);
 
