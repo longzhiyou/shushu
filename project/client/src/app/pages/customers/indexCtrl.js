@@ -38,82 +38,38 @@
   ;
 
   /** @ngInject */
-  function indexCtrl($scope,$state, Restangular, DTOptionsBuilder,
-                     DTColumnDefBuilder,defaultOptionsDom,warningModalService,halService,dataService
-
-  ) {
+  function indexCtrl($state, Restangular,warningModalService,halService) {
 
 
     var vm = this;
-
-      vm.itemsByPage=20;
-
-
-      var idName = "customerId";
-
     vm.halService = halService;
 
     vm.edit = edit;
     vm.detail = detail;
 
     vm.destroy = destroy;
-    vm.loadData = loadData;
 
-
-      vm.multipleSelectItems = [];
-
-      vm.rules=[];
-
-      vm.customers = [];
-    vm.dtOptions = DTOptionsBuilder.newOptions()
-        .withPaginationType('full_numbers')
-        .withDOM(defaultOptionsDom)
-        .withButtons([
-            {
-                text: '新增',
-                className: 'btn btn-primary',
-                key: '1',
-                action: function (e, dt, node, config) {
-                    $state.go('customers.new');
-                }
-            },
-            {
-                text: '匹配规则',
-                className: 'btn btn-info',
-                key: '2',
-                action: function (e, dt, node, config) {
-
-                    var ids=[];
-                    for(var i  = 0; i < vm.multipleSelectItems.length; i++) {
-                        ids.push(halService.getId(vm.multipleSelectItems[i]));
-                    }
-                    var filter  = JSON.stringify(ids);
-                    // filter = ids.join(",");
-
-                    Restangular.all('bazis').getList({filter: filter}).then(function(customers) {
-
-                        vm.customers = customers;
-                    });
+    vm.multipleSelectItems = [];
+    vm.rules=[];
+    vm.customers = [];
 
 
 
-                }
-            }
-        ])
-    ;
-    vm.dtColumnDefs = [
-      // DTColumnDefBuilder.newColumnDef(0).withClass('select-checkbox').renderWith(function() {return '';}),
-      DTColumnDefBuilder.newColumnDef(0).withClass('text-danger'),
-      // DTColumnDefBuilder.newColumnDef(1),
-      // DTColumnDefBuilder.newColumnDef(2),
-      // DTColumnDefBuilder.newColumnDef(3),
-      // DTColumnDefBuilder.newColumnDef(4),
-      DTColumnDefBuilder.newColumnDef(5).notVisible(),
-      DTColumnDefBuilder.newColumnDef(6).notVisible()
+      vm.matchRule=function(){
 
-    ];
+          var ids=[];
+          for(var i  = 0; i < vm.multipleSelectItems.length; i++) {
+              ids.push(halService.getId(vm.multipleSelectItems[i]));
+          }
+          var filter  = JSON.stringify(ids);
+          // filter = ids.join(",");
 
+          Restangular.all('bazis').getList({filter: filter}).then(function(customers) {
 
+              vm.customers = customers;
+          });
+
+      };
       vm.callServer = function callServer(tableState) {
 
           var number = tableState.pagination.number || 10;  // Number of entries showed per page.
@@ -132,8 +88,14 @@
               tableState.pagination.numberOfPages = response.page.totalPages;//set the number of pages so the pagination can update
               tableState.pagination.totalItemCount = response.page.totalElements;
 
+              if (vm.rules.length<=0) {
+                  Restangular.all('rules/search/combox').customGET().then(function(response) {
+                      vm.rules = halService.getList("rules",response);
+                  }, function(error) {
 
-              // dataService.set("customers",vm.customers);
+                  });
+
+              }
 
           }, function(error) {
 
@@ -141,43 +103,41 @@
 
 
       };
-    function loadData(){
+
+    // function loadData(){
+    //
+    //
+    //     Restangular.all('rules/search/combox').customGET().then(function(response) {
+    //         vm.rules = halService.getList("rules",response);
+    //
+    //         //customGET
+    //         Restangular.all('customers').customGET().then(function(response) {
+    //
+    //             // var list = halService.getList("customers",response);
+    //
+    //             // vm.customers =list.slice(0,25);
+    //             vm.customers = halService.getList("customers",response);
+    //
+    //
+    //         }, function(error) {
+    //
+    //         });
+    //
+    //
+    //     }, function(error) {
+    //
+    //     });
+    //
+    //
+    // }
 
 
-        Restangular.all('rules/search/combox').customGET().then(function(response) {
-            vm.rules = halService.getList("rules",response);
-
-            //customGET
-            Restangular.all('customers').customGET().then(function(response) {
-
-                // var list = halService.getList("customers",response);
-
-                // vm.customers =list.slice(0,25);
-                vm.customers = halService.getList("customers",response);
-
-
-
-                // dataService.set("customers",vm.customers);
-                
-            }, function(error) {
-
-            });
-
-
-        }, function(error) {
-
-        });
-
-
-    }
-
-
-  vm.study = function (item){
-
-      $state.go('customers.study',{
-          customer:item
-      });
-  };
+  // vm.study = function (item){
+  //
+  //     $state.go('customers.study',{
+  //         customer:item
+  //     });
+  // };
 
   function detail(item){
 
@@ -207,10 +167,10 @@
     }
 
 
-    function init(){
-
-      loadData();
-    }
+    // function init(){
+    //
+    //   loadData();
+    // }
     // init();
 
 
