@@ -21,15 +21,20 @@
       </div>
 
     </div>
-    <!--st-safe-src="vm.customers"-->
-    <!--st-persist="myTable"-->
+
     <table
-            st-persist="myTable"
+            st-persist="customersTable"
            st-pipe="vm.callServer"
            st-table="vm.customers"
            class="table  table-bordered table-hover"
     >
       <thead>
+      <tr>
+        <th colspan="7">
+          <input st-search="match" placeholder="global search" class="input-sm form-control" type="search"/>
+        </th>
+
+      </tr>
       <tr>
         <th>*</th>
         <th>姓名</th>
@@ -39,6 +44,7 @@
         <th>操作</th>
 
       </tr>
+
       </thead>
       <tbody>
       <tr ng-repeat="item in vm.customers">

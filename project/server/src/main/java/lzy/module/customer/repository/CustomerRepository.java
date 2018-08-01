@@ -8,12 +8,17 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QueryDslPredicateExecutor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import java.util.List;
 
 //@RepositoryRestResource()
-public interface CustomerRepository extends JpaRepository<Customer, Long> {
+public interface CustomerRepository extends JpaRepository<Customer, Long>
+
+{
 
 //    @CacheEvict(value="Customers")
     @Modifying
@@ -26,26 +31,10 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 //    List<CustomerGrid> findAllGridBy();
 
 //    @Cacheable(value="Customers")
-    @Query(value = "select c from Customer c order by c.updatedAt Desc")
-    List<Customer> grid();
 
-//    @Query(value = "select new Customer(c.customerId, c.bazi, c.name, c.gender, c.birth) " +
-//            "from Customer c order by c.updatedAt Desc")
-//    List<Customer> grid();
-
-    @Query(value = "select new Customer(c.customerId, c.bazi, c.name, c.gender, c.birth) " +
-            "from Customer c ")
-    Page gridPage(Pageable p);
-
-//    @Query(value = "select new Customer(c.customerId, c.bazi, c.name, c.gender, c.birth) " +
-//            "from Customer c ")
-//    List<Customer> findAll();
-
-//    @Query
-//    public Page<Customer> findByType(String type, Pageable pageable);
-
-//    @RestResource(path = "nameStartsWith", rel = "nameStartsWithRel")
-//    Page findByNameStartsWith(@Param("name") String name, Pageable p);
+    @RestResource(path = "filter", rel = "filterRel")
+    @Query(value = "select c from Customer c where c.description like concat('%',:match,'%') or c.label like concat('%',:match,'%') or c.bazi like concat('%',:match,'%') or c.name like concat('%',:match,'%') ")
+    Page filter(@Param("match") String match, Pageable p);
 
 
 }

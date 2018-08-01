@@ -52,7 +52,7 @@
     vm.multipleSelectItems = [];
     vm.rules=[];
     vm.customers = [];
-
+      vm.match="";
 
 
       vm.matchRule=function(){
@@ -74,13 +74,17 @@
 
           var number = tableState.pagination.number || 10;  // Number of entries showed per page.
 
-          var start = tableState.pagination.start || 0;     // This is NOT the page number, but the index of item in the list that you want to use to display the table.
+          var start = tableState.pagination.start || 0;
+
+
 
           var pagination = {
               page:start/number,
-              size:number
+              size:number,
+              match:tableState.search.predicateObject.match||"",
           };
-          Restangular.all('customers').customGET("",pagination).then(function(response) {
+
+          Restangular.all('customers').customGET("search/filter",pagination).then(function(response) {
 
 
               vm.customers = halService.getList("customers",response);
