@@ -6,19 +6,30 @@
         <li>
             <a ng-click="selectPage(currentPage - 1)"><span>上一页</span></a>
         </li>
+
+        <li ng-repeat="page in pages"
+            ng-class="{active: page==currentPage}">
+            <a ng-click="selectPage(page)">{{page}}</a>
+
+        </li>
+
+        <!--<li>共{{numPages}}页</li>-->
         <!--<li>-->
-            <!--<a>-->
-                <!--<page-select></page-select> of {{numPages}}</a>-->
+        <!--<a>-->
+        <!--<page-select></page-select> of {{numPages}}</a>-->
         <!--</li>-->
-        <li ng-repeat="page in pages" ng-class="{active: page==currentPage}"><a ng-click="selectPage(page)">{{page}}</a></li>
+
         <li>
-            <a ng-click="selectPage(currentPage + 1)"><span>下一页</span></a>
+           <a ng-click="selectPage(currentPage + 1)"><span>下一页</span></a>
         </li>
         <li>
             <a ng-click="selectPage(numPages)">尾页</a>
         </li>
         <li>
-            <span>从 {{stItemsByPage*(currentPage-1)+1}} 到 {{stItemsByPage*(currentPage)}} /共 {{stItemsByPage*numPages}} 条数据</span>
+            <a ><span>共{{numPages}}页</span></a>
         </li>
+        <!--<li>-->
+            <!--<span>从 {{stItemsByPage*(currentPage-1)+1}} 到 {{stItemsByPage*(currentPage)}} /共 {{stItemsByPage*numPages}} 条数据</span>-->
+        <!--</li>-->
     </ul>
 </nav>

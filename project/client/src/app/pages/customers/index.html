@@ -21,11 +21,11 @@
       </div>
 
     </div>
-
+    <!--st-safe-src="vm.customers"-->
+    <!--st-persist="myTable"-->
     <table
-            st-persist="myTable"
-           st-table="displayedCollection"
-           st-safe-src="vm.customers"
+           st-pipe="vm.callServer"
+           st-table="vm.customers"
            class="table  table-bordered table-hover"
     >
       <thead>
@@ -40,7 +40,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="item in displayedCollection">
+      <tr ng-repeat="item in vm.customers">
         <td>{{ $index+1 }}</td>
         <td>
         <a href ng-click="vm.detail(item)">

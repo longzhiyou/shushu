@@ -114,20 +114,41 @@
     ];
 
 
+      vm.callServer = function callServer(tableState) {
+
+          var number = tableState.pagination.number || 10;  // Number of entries showed per page.
+
+          var start = tableState.pagination.start || 0;     // This is NOT the page number, but the index of item in the list that you want to use to display the table.
+
+          var pagination = {
+              page:start/number,
+              size:number
+          };
+          Restangular.all('customers').customGET("",pagination).then(function(response) {
+
+
+              vm.customers = halService.getList("customers",response);
+
+              tableState.pagination.numberOfPages = response.page.totalPages;//set the number of pages so the pagination can update
+              tableState.pagination.totalItemCount = response.page.totalElements;
+
+
+              // dataService.set("customers",vm.customers);
+
+          }, function(error) {
+
+          });
+
+
+      };
     function loadData(){
 
 
         Restangular.all('rules/search/combox').customGET().then(function(response) {
             vm.rules = halService.getList("rules",response);
 
-            // var customers = dataService.get("customers");
-            // if(customers){
-            //
-            //     vm.customers = customers;
-            //     return;
-            // }
             //customGET
-            Restangular.all('customers/search/grid').customGET().then(function(response) {
+            Restangular.all('customers').customGET().then(function(response) {
 
                 // var list = halService.getList("customers",response);
 
@@ -190,7 +211,7 @@
 
       loadData();
     }
-    init();
+    // init();
 
 
   }
