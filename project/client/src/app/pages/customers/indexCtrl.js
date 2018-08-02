@@ -76,12 +76,16 @@
 
           var start = tableState.pagination.start || 0;
 
+          var match = "";
+          if (tableState.search.predicateObject&&tableState.search.predicateObject["match"]) {
+              match =tableState.search.predicateObject["match"];
+          }
 
 
           var pagination = {
               page:start/number,
               size:number,
-              match:tableState.search.predicateObject.match||"",
+              match:match,
           };
 
           Restangular.all('customers').customGET("search/filter",pagination).then(function(response) {

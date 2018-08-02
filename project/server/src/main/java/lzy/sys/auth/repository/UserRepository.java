@@ -1,6 +1,7 @@
 package lzy.sys.auth.repository;
 
 import lzy.sys.auth.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -16,7 +17,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 //@CacheConfig(cacheNames = "users")
 //@RepositoryRestResource(exported = false)
 //@PreAuthorize("hasRole('ROLE_ADMIN')")
-public interface UserRepository extends PagingAndSortingRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
     @Modifying
     @Query("update User t set t.deleteFlag = 1 where t.userId = ?1")

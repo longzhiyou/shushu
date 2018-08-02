@@ -9,66 +9,57 @@
       .controller('rulesIndexCtrl', indexCtrl);
 
   /** @ngInject */
-  function indexCtrl($state, Restangular, DTOptionsBuilder,
-                     DTColumnDefBuilder,defaultOptionsDom,warningModalService
-                     ,halService,promptService
-
-  ) {
+  function indexCtrl($state, Restangular,warningModalService,halService) {
 
     var vm = this;
-    var idName = "id";
 
     vm.halService = halService;
 
     vm.edit = edit;
     vm.destroy = destroy;
-    vm.loadData = loadData;
 
 
-      vm.rules=[];
+     vm.rules = [];
+      vm.callServer = function callServer(tableState) {
 
-      vm.rules = [];
-    vm.dtOptions = DTOptionsBuilder.newOptions()
-        .withPaginationType('full_numbers')
-        .withDOM(defaultOptionsDom)
-        .withButtons([
-            {
-                text: '新增',
-                className: 'btn btn-primary',
-                key: '1',
-                action: function (e, dt, node, config) {
-                    $state.go('rules.new');
-                }
-            }
-        ])
-    ;
-    vm.dtColumnDefs = [
-      // DTColumnDefBuilder.newColumnDef(0).withClass('select-checkbox').renderWith(function() {return '';}),
-      DTColumnDefBuilder.newColumnDef(0).withClass('text-danger'),
-      DTColumnDefBuilder.newColumnDef(1),
-      DTColumnDefBuilder.newColumnDef(2).notSortable()
+          var number = tableState.pagination.number || 10;  // Number of entries showed per page.
 
-    ];
+          var start = tableState.pagination.start || 0;
+
+          var match = "";
+          if (tableState.search.predicateObject&&tableState.search.predicateObject["match"]) {
+              match =tableState.search.predicateObject["match"];
+          }
 
 
-    function loadData(){
+          var pagination = {
+              page:start/number,
+              size:number,
+              match:match
+          };
 
-        //customGET
-        Restangular.all('rules/search/combox').customGET().then(function(hal) {
-            // vm.rules = hal._embedded["rules"];
-            vm.rules = halService.getList("rules",hal);
+          Restangular.all('rules').customGET("search/filter",pagination).then(function(response) {
 
-        }, function(error) {
 
-        });
+              vm.rules = halService.getList("rules",response);
 
-    }
+              tableState.pagination.numberOfPages = response.page.totalPages;//set the number of pages so the pagination can update
+              tableState.pagination.totalItemCount = response.page.totalElements;
+
+
+
+          }, function(error) {
+
+          });
+
+
+      };
 
 
     function edit(item){
 
       $state.go('rules.edit',{
-          id:halService.getId(item,idName)
+          id:halService.getId(item)
       });
     }
 
@@ -76,7 +67,7 @@
 
         warningModalService.open(item).result.then(function(item) {
             //以后直接复制
-            Restangular.one('rules',halService.getId(item,idName)).remove().then(
+            Restangular.one('rules',halService.getId(item)).remove().then(
                 function(hal) {
                     vm.loadData();
             });
@@ -85,11 +76,6 @@
 
     }
 
-
-    function init(){
-      loadData();
-    }
-    init();
 
 
   }

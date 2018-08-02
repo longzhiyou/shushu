@@ -3,12 +3,17 @@
   <div class="panel-body">
 
     <table class="table table-bordered table-hover table-condensed"
-           datatable="ng"
-           dt-column-defs="vm.dtColumnDefs"
-           dt-options="vm.dtOptions"
-           dt-disable-deep-watchers="true"
+           st-persist="rulesTable"
+           st-pipe="vm.callServer"
+           st-table="vm.rules"
     >
       <thead>
+      <tr>
+        <th colspan="5">
+          <input st-search="match" placeholder="global search" class="input-sm form-control" type="search"/>
+        </th>
+
+      </tr>
       <tr>
         <th></th>
         <th>名称</th>
@@ -27,12 +32,12 @@
 
         <td>
           <button type="button" ng-click="vm.edit(item)"
-                  class="btn-sm btn-primary btn-with-icon">
+                  class="btn btn-sm btn-primary ">
             <i class="fa fa-edit"></i>
             修改
           </button>
           <button type="button" ng-click="vm.destroy(item)"
-                  class="btn-sm btn-danger btn-with-icon">
+                  class="btn btn-sm btn-danger ">
             <i class="fa fa-trash-o"></i>
             刪除
           </button>
@@ -40,6 +45,13 @@
 
       </tr>
       </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="7" class="text-center">
+          <div st-pagination="" st-items-by-page="10" ></div>
+        </td>
+      </tr>
+      </tfoot>
 
     </table>
 
