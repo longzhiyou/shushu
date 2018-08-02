@@ -7,6 +7,22 @@
 
   angular.module('BlurAdmin.pages.customers')
       .controller('customersIndexCtrl', indexCtrl)
+      .directive('matchRule', function() {
+          return {
+              restrict: 'A',
+              require: '^stTable',
+              // scope: {
+              //     // collection: '=',
+              // },
+              link: function(scope, element, attr, table) {
+
+                  element.bind('click', function() {
+                      table.pipe();
+                  });
+
+              }
+          }
+      })
       .directive('stPersist', function () {
           return {
               require: '^stTable',
@@ -43,6 +59,7 @@
 
     var vm = this;
     vm.halService = halService;
+      vm.itemsByPage =10;
 
     vm.edit = edit;
     vm.detail = detail;
@@ -54,25 +71,22 @@
     vm.customers = [];
       vm.match="";
 
-
       vm.matchRule=function(){
-
+          this.callServer(vm.tableState);
           var ids=[];
           for(var i  = 0; i < vm.multipleSelectItems.length; i++) {
               ids.push(halService.getId(vm.multipleSelectItems[i]));
           }
           var filter  = JSON.stringify(ids);
-          // filter = ids.join(",");
-
           Restangular.all('bazis').getList({filter: filter}).then(function(customers) {
-
               vm.customers = customers;
+
           });
 
       };
       vm.callServer = function callServer(tableState) {
 
-          var number = tableState.pagination.number || 10;  // Number of entries showed per page.
+          var number = tableState.pagination.number || vm.itemsByPage;  // Number of entries showed per page.
 
           var start = tableState.pagination.start || 0;
 
@@ -90,12 +104,11 @@
 
           Restangular.all('customers').customGET("search/filter",pagination).then(function(response) {
 
-
               vm.customers = halService.getList("customers",response);
 
               tableState.pagination.numberOfPages = response.page.totalPages;//set the number of pages so the pagination can update
               tableState.pagination.totalItemCount = response.page.totalElements;
-
+              vm.tableState =tableState;
               if (vm.rules.length<=0) {
                   Restangular.all('rules/search/combox').customGET().then(function(response) {
                       vm.rules = halService.getList("rules",response);
@@ -105,10 +118,7 @@
 
               }
 
-          }, function(error) {
-
           });
-
 
       };
 
