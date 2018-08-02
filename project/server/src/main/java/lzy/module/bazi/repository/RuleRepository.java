@@ -22,6 +22,9 @@ public interface RuleRepository extends JpaRepository<Rule, Long> {
     void delete(Long id);
 
 
+    @Query(value = "select new Rule(t.id, t.title) " +
+            "from Rule t ")
+    List<Rule> combox();
 
     @RestResource(path = "filter", rel = "filterRel")
     @Query(value = "select c from Rule c where c.description like concat('%',:match,'%') or c.title like concat('%',:match,'%') or c.subject like concat('%',:match,'%') or c.algorithm like concat('%',:match,'%') ")

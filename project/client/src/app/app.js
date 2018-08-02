@@ -17,8 +17,6 @@ angular.module('BlurAdmin', [
   'angular-progress-button-styles',
   'angular-jwt',
   'restangular',
-  'datatables',
-  'datatables.buttons',
   'w5c.validator',
    'platypus.jsonviewer',
    'jsonFormatter',
@@ -35,10 +33,6 @@ var setting = {
 
 };
 angular.module('BlurAdmin').constant('setting', setting);
-
-angular.module('BlurAdmin')
-    .constant('defaultOptionsDom'
-        ,'<"row"<"col-xs-9 col-md-9"B><"col-xs-3 col-md-3"f>>rt<"row"<"col-md-3"l><"col-md-6"p><"col-md-3"i>>');
 
 
 angular.module('BlurAdmin')
@@ -188,40 +182,8 @@ function config($httpProvider
 }
 
 /** @ngInject */
-function appRun(authManager,$rootScope,DTDefaultOptions) {
+function appRun(authManager,$rootScope) {
     //console.info("appRun");
-
-var oLanguage=
-    {
-
-        "sEmptyTable":     "没有可用的数据",
-        "copy":"拷贝",
-
-        "sInfo":           "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
-        "sInfoEmpty":      "显示 0 to 0 of 0 条",
-        "sInfoFiltered":   "(从 _MAX_ 条数据中检索)",
-        "sInfoPostFix":    "",
-        "sInfoThousands":  ",",
-        "sLengthMenu":     "每页显示 _MENU_ 条记录",
-        "sLoadingRecords": "加载中...",
-        "sProcessing":     "处理中...",
-        "sSearch":         "查询:",
-        "sZeroRecords":    "没有检索到数据",
-        "oPaginate": {
-        "sFirst":    "首页",
-            "sLast":     "尾页",
-            "sNext":     "前一页",
-            "sPrevious": "后一页"
-    },
-        "oAria": {
-        "sSortAscending":  ": activate to sort column ascending",
-            "sSortDescending": ": activate to sort column descending"
-    }
-    };
-    DTDefaultOptions.setLanguage(oLanguage);
-    //每页显示行数
-    // DTDefaultOptions.setDisplayLength(20);
-
 
     authManager.redirectWhenUnauthenticated();
 
