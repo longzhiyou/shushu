@@ -33,7 +33,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long>
 //    @Cacheable(value="Customers")
 
     @RestResource(path = "filter", rel = "filterRel")
-    @Query(value = "select c from Customer c where c.description like concat('%',:match,'%') or c.label like concat('%',:match,'%') or c.bazi like concat('%',:match,'%') or c.name like concat('%',:match,'%') ")
+    @Query(value = "select c from Customer c where c.description like concat('%',:match,'%') or c.label like concat('%',:match,'%') or c.bazi like concat('%',:match,'%') or c.name like concat('%',:match,'%') order by c.updatedAt Desc ")
     Page filter(@Param("match") String match, Pageable p);
 
 
