@@ -22,7 +22,7 @@ public class BaZiRuleTest {
         BaZiAlgorithm algorithm = new BaZiAlgorithm();
 
         Object o;
-        BaZi bazi = new BaZi("戊辰癸未甲寅辛亥");
+        BaZi bazi = new BaZi("庚辰癸未戊寅乙巳");
 //
 //        Object o = baZiRule.liangxiangrun(bazi, algorithm);
 //        logger.info("matchRule:"+o);
@@ -35,7 +35,9 @@ public class BaZiRuleTest {
 
 //        o = baZiRule.jingjilu(bazi, algorithm);
 //        o = baZiRule.guanshen(bazi, algorithm);
-        o = baZiRule.jingjiguige(bazi, algorithm);
+//        o = baZiRule.jingjiguige(bazi, algorithm);
+        o = baZiRule.lantaimiaoxuan(bazi, algorithm);
+
         logger.info("结果:"+o);
     }
 

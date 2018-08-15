@@ -289,7 +289,12 @@
                         <json-formatter json="vm.importantInfo" open="1"></json-formatter>
                     </uib-tab>
                     <uib-tab heading="详情描述">
-                        <p>{{vm.customer.description}}</p>
+                        <button class="btn btn-info" ng-click="vm.updateDescription()">更新</button>
+                         <textarea class="form-control" ng-model="vm.customer.description" style="height:auto;" rows="10">
+
+                        </textarea>
+
+                        <!--<p>{{vm.customer.description}}</p>-->
                     </uib-tab>
 
                 </uib-tabset>
