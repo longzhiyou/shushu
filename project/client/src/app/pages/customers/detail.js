@@ -5613,6 +5613,8 @@
                         "又云：以上杀有鬼则灾重，无鬼则灾轻。（三命提要）",
 
                     ],
+                    "病符": [jiesha[vm.liunianzhi],"命后一辰"],
+                    "死符": [jiesha[vm.liunianzhi],"病符对冲"],
                     "劫杀": jiesha[vm.liunianzhi],
                     "亡神": wangshen[vm.liunianzhi],
                     "元辰": [
