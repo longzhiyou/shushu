@@ -1917,6 +1917,48 @@
         vm.calculateXingNianShiZhu = calculateXingNianShiZhu;
 
 
+        /**
+         * 1、驾前神煞
+            一 太岁剑锋伏尸寄（建）
+            二 太阳天空仍可畏（除）
+            三 丧门内外孝服至（满）
+            四 太阴贯索勾绞具（平）
+            五 官符杖责难回避（定）
+            六 死符月德同行位（执）
+            七 岁破月空拦杆是（破）
+            八 龙德暴败天厄至（危）
+            九 白虎飞廉同此处（成）
+            十 天德福星卷舌系（收）
+            十一 吊客天狗吠（开）
+            十二 病符顺行位（闭）
+         * 
+         */
+        var jiaqian = [
+        "一 太岁剑锋伏尸寄（建）",
+        "二 太阳天空仍可畏（除）",
+        "三 丧门内外孝服至（满）",
+        "四 太阴贯索勾绞具（平）",
+        "五 官符杖责难回避（定）",
+        "六 死符月德同行位（执）",
+        "七 岁破月空拦杆是（破）",
+        "八 龙德暴败天厄至（危）",
+        "九 白虎飞廉同此处（成）",
+        "十 天德福星卷舌系（收）",
+        "十一 吊客天狗吠（开）",
+        "十二 病符顺行位（闭）"];
+        function jiaqianshensha(zhi){
+
+            var match = {};
+            var index = dizhi.indexOf(zhi);
+            for(var i=0;i<12;i++){
+                // match[jiaqian[i]]=dizhi[(i+index)%12];
+                match[i+1+dizhi[(i+index)%12]]=jiaqian[i];
+            }
+
+            return match;
+
+        }
+
         //60甲子属性
         //http://blog.sina.com.cn/s/blog_614375770102wn3s.html
         var jiazishuxinglist = {
@@ -5270,7 +5312,7 @@
 
             result["年柱"] = {
 
-
+                "驾前神煞":jiaqianshensha(vm.nianzhi),
                 "四贵，四忌，四平": [
                     "凡看命，取【胎生旺库】为四贵，【死绝病败】为四忌，余为四平。",
                     "以【太岁干为主，配于五行】，取四贵、四平、四忌之位而分贵贱，遇贵多则贵，遇贱多则贱。",
@@ -5848,6 +5890,7 @@
                     }
                 ],
                 "神煞":{
+                   
                     "丧门": [sangmen[vm.liunianzhi]],
                     "吊客": diaoke[vm.liunianzhi],
                     "勾绞": [
