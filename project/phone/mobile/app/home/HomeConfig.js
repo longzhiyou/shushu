@@ -17,6 +17,7 @@
             //费用相关
             .state('app.luming',
                 {
+
                     url: '/luming',
                     views: {
                         'tab-home': {
