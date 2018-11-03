@@ -1,0 +1,73 @@
+<form novalidate
+      name="chageInfoForm"
+      w5c-form-validate
+>
+
+<ion-view class="bar-positive"
+          hide-back-button="true"
+          view-title="收费">
+    <ion-nav-buttons side="left">
+        <button
+                class="button button-clear" ng-click="vm.goBack()">
+            取消
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button
+                 class="button button-balanced" ng-click="vm.doPayment()" ng-disabled="chageInfoForm.$invalid">
+            支付
+        </button>
+    </ion-nav-buttons>
+   <ion-content>
+       <div class="item item-avatar">
+           <img src="{{vm.headIconURL}}">
+           <h2>{{vm.personName}}</h2>
+       </div>
+
+           <label class="item item-icon-right"
+                  ng-click="vm.gotoInfo()">
+               <span class="input-label">收费总额：{{vm.formatterMoney(vm.sum)}}元</span>
+               <i class="icon ion-chevron-right icon-accessory"></i>
+           </label>
+           <div class="item item-divider">
+               账户可支付：共{{vm.formatterMoney(vm.accountSum)}}元
+           </div>
+
+           <ion-item class="item"
+                     ng-repeat="item in vm.accountList">
+               <h3>{{item.accountName}}
+               余额：{{vm.formatterMoney(item.balance)}}元
+               </h3>
+           </ion-item>
+
+           <div class="item item-divider item-icon-left item-icon-right" style="color: #33cd5f">
+               <i class="icon ion-chevron-left ion-minus-circled" ng-click="vm.change()"></i>
+               <font color="black">支付方式</font>
+               <i class="icon ion-chevron-right ion-plus-circled" ng-click="vm.gotoDetail(-1)"></i>
+           </div>
+
+       <ion-list
+               show-delete="vm.data.showDelete"
+               class="item-remove-animate">
+
+           <ion-item class="item item-icon-right"
+                     item="item"
+                     ng-repeat="item in vm.tfPaymentModeList"
+                     ng-click="vm.gotoDetail({{item.id}})"
+           >
+               <h3>{{item.payModeText}}{{item.payFlagText}}{{vm.formatterMoney(item.amount)}}元</h3>
+               <i class="icon ion-chevron-right icon-accessory"></i>
+               <ion-delete-button class="ion-minus-circled"
+                                  ng-click="vm.onItemDelete({{item}})">
+               </ion-delete-button>
+           </ion-item>
+       </ion-list>
+       <label class="item item-input">
+                   <textarea class="text-left" ng-model="vm.memo" ng-maxlength="100"
+                             placeholder="请输入备注"> </textarea>
+       </label>
+
+   </ion-content>
+
+</ion-view>
+</form>

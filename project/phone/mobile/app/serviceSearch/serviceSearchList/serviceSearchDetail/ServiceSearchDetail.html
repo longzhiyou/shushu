@@ -1,0 +1,59 @@
+
+<ion-view class="bar-positive" view-title="服务实施详细">
+    <ion-nav-buttons side="right">
+        <button class="button button-balanced" ng-click="vm.save()">
+            保存
+        </button>
+    </ion-nav-buttons>
+   <ion-content>
+       <div class="list">
+           <label class="item-avatar item">
+               <img ng-src="{{vm.serviceURL}}" >
+               <span class="input-label">{{vm.serviceName}}</span>
+           </label>
+           <label ng-if="vm.comment" class="item item-text-wrap">
+               <span>说明：{{vm.comment}}</span>
+           </label>
+           <label ng-if="vm.addComment" class="item item-text-wrap">
+               <span>补充说明：{{vm.addComment}}</span>
+           </label>
+           <label class="item item-text-wrap">
+               <span>实施时间：{{vm.careDate}}</span>
+           </label>
+           <label class="item item-input item-select">
+               <span class="input-label">状态：</span>
+               <select ng-model="vm.status"
+                       ng-options="item.care_para_id as item.care_disply_content for item in vm.careConfigList">
+               </select>
+           </label>
+           <label class="item item-input">
+               <span class="input-label">备注：</span>
+               <textarea ng-model="vm.memo" style="width: 60%"> </textarea>
+           </label>
+       </div>
+       <div class="row row-wrap">
+           <div class="col">
+
+               <img id="img1" style="width: 100px"  src={{vm.img1}} class="img-responsive" ng-click="vm.show(0)">
+
+           </div>
+           <div class="col">
+
+               <img id="img2" style="width: 100px"  src={{vm.img2}} class="img-responsive" ng-click="vm.show(1)">
+
+           </div>
+           <div class="col">
+
+               <img id="img3" style="width: 100px"  src={{vm.img3}} class="img-responsive" ng-click="vm.show(2)">
+
+           </div>
+
+       </div>
+       <div class="row">
+           <div class="col">
+                <span style="color: red">拍照时注意老人隐私</span>
+            </div>
+        </div>
+   </ion-content>
+
+</ion-view>

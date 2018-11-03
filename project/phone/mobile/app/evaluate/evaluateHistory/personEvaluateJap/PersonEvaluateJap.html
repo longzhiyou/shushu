@@ -1,0 +1,35 @@
+<ion-view  view-title="老人评估">
+    <ion-nav-buttons side="right">
+        <button class="button button-balanced" ng-disabled="personEvaluateJap.$invalid" ng-click="vm.save()">
+            保存
+        </button>
+    </ion-nav-buttons>
+<form novalidate w5c-form-validate name="personEvaluateJap" >
+    <ion-content >
+        <label class="item item-avatar">
+            <img id="headIcon" src="{{vm.headIcon}}" >
+            {{vm.personName}}
+        </label>
+        <ion-list>
+            <ion-item class="item item item-icon-right"
+                      ng-repeat="item in vm.menus"
+                      ng-click="vm.toDetail({{item}})">
+                {{item.title}}
+                <span class="badge badge-assertive">{{item.itemCount}}</span>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+            <ion-item class="item item item-icon-right"
+                      ng-click="vm.toDetail('H6')">
+                医疗行为
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+            <ion-item class="item item-input">
+                <textarea  placeholder="备注" ng-model="vm.comment" style="height: 140px;" ng-maxlength="500" name="comment"> </textarea>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</form>
+
+</ion-view>
+
+

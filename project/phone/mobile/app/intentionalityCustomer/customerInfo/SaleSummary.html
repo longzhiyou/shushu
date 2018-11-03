@@ -1,0 +1,29 @@
+<ion-view view-title="营销小结">
+    <!--<ion-nav-buttons side="right">-->
+        <!--<button class="button " ng-click="vm.confirm()">-->
+            <!--确定-->
+        <!--</button>-->
+    <!--</ion-nav-buttons>-->
+   <ion-content>
+       <ion-list>
+
+
+           <label class="item item-input item-select">
+               <span class="input-label">营销小结</span>
+               <select ng-model="vm.allInfo.status"
+                       ng-options="item.key as item.value for item in vm.baseData.statusList">
+               </select>
+           </label>
+
+           <label class="item item-input">
+               <span class="input-label">备注</span>
+               <textarea class="text-right" ng-model="vm.allInfo.summaryMemo" style="width: 60%"
+                         placeholder="请输入营销备注"> </textarea>
+           </label>
+
+
+       </ion-list>
+
+     </ion-content>
+
+</ion-view>

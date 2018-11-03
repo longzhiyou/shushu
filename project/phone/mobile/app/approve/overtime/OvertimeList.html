@@ -1,0 +1,21 @@
+<ion-view class="bar-positive" view-title="加班待审批列表">
+   <ion-content>
+       <ion-item class="item"
+                 ng-if="vm.noData">
+           <h2>没有申请中的加班审核</h2>
+       </ion-item>
+
+       <ion-item class="item-text-wrap item-icon-right"
+                 ng-repeat="item in vm.list" ng-click="vm.toDetail({{item}})">
+           <h2>加班人：{{item.staffName}}</h2>
+           <h3 style="color: #8e8e8e;">申请日期：{{item.insertTime}}</h3>
+           <h3 style="color: #8e8e8e;">加班录入人：{{item.register}}</h3>
+           <h3 style="color: #8e8e8e;">加班单类型：{{item.otApplyTypeName}}</h3>
+           <i class="icon ion-chevron-right icon-accessory"></i>
+       </ion-item>
+
+   </ion-list>
+
+   </ion-content>
+
+</ion-view>

@@ -1,0 +1,55 @@
+<ion-view class="bar-positive" view-title="请假审批">
+    <ion-header-bar class="bar-subheader">
+        <button class="button button-assertive" ng-click="vm.agreeApplyLeave(0)">拒绝</button>
+        <h1 class="title"><button class="button button-positive" ng-click="vm.otherAgreeApplyLeave()" style="float: right;margin-top: 5px;">他人审核</button></h1>
+        <button class="button button-balanced" ng-click="vm.agreeApplyLeave(1)">同意</button>
+    </ion-header-bar>
+   <ion-content>
+
+       <div class="item item-divider" style="background-color: #11c1f3">
+           <div style="text-align: center;color: white;"><b>请假明细</b></div>
+       </div>
+       <label class="item item-text-wrap">
+           <span>请假人：{{vm.staffName}}</span>
+       </label>
+       <label class="item item-text-wrap">
+           <span>请假录入人：{{vm.register}}</span>
+       </label>
+       <ion-item class="item-text-wrap"
+                 ng-repeat="item in vm.list">
+           <h3>请假开始日：{{item.leaveStartDateName}}</h3>
+           <h3>请假结束日：{{item.leaveEndDateName}}</h3>
+           <h3>请假类型：{{item.leaveTypeName}}</h3>
+           <h3>请假时长：{{item.leaveDuration}} {{vm.unit}}</h3>
+           <h3>说明：{{item.memo}}</h3>
+       </ion-item>
+
+       <div ng-if="vm.leaveApplyType == 3">
+           <div class="item item-divider" style="background-color: #11c1f3">
+               <div style="text-align: center;color: white;"><b>取消前的请假明细</b></div>
+           </div>
+           <ion-item class="item-text-wrap"
+                     ng-repeat="item in vm.adjustList">
+               <h3>请假开始日：{{item.leaveStartDateName}}</h3>
+               <h3>请假结束日：{{item.leaveEndDateName}}</h3>
+               <h3>请假类型：{{item.leaveTypeName}}</h3>
+               <h3>请假时长：{{item.leaveDuration}} {{vm.unit}}</h3>
+               <h3>说明：{{item.memo}}</h3>
+           </ion-item>
+           <div class="item item-divider" style="background-color: #11c1f3">
+               <div style="text-align: center;color: white;"><b>取消前的审核明细</b></div>
+           </div>
+           <ion-item class="item-text-wrap"
+                     ng-repeat="item in vm.auditList">
+               <h3>审核人：{{item.auditName}}</h3>
+               <h3>审核结果 ：{{item.auditResultName}}</h3>
+               <h3>审核时间：{{item.auditDateName}}</h3>
+               <h3>审核意见：{{item.auditOpinion}}</h3>
+           </ion-item>
+       </div>
+
+   </ion-list>
+
+   </ion-content>
+
+</ion-view>

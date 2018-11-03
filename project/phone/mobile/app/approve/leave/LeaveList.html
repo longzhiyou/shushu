@@ -1,0 +1,21 @@
+<ion-view class="bar-positive" view-title="请假待审批列表">
+   <ion-content>
+       <ion-item class="item"
+                 ng-if="vm.noData">
+           <h2>没有申请中的请假审核</h2>
+       </ion-item>
+
+       <ion-item class="item-text-wrap item-icon-right"
+                 ng-repeat="item in vm.list" ng-click="vm.toDetail({{item}})">
+           <h2>{{item.staffName}}</h2>
+           <h3 style="color: #8e8e8e;">申请日期：{{item.insertTime}}</h3>
+           <h3 style="color: #8e8e8e;">请假录入人：{{item.register}}</h3>
+           <h3 style="color: #8e8e8e;">请假单类型：{{item.leaveApplyTypeName}}</h3>
+           <i class="icon ion-chevron-right icon-accessory"></i>
+       </ion-item>
+
+   </ion-list>
+
+   </ion-content>
+
+</ion-view>

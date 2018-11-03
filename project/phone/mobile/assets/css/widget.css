@@ -1,0 +1,205 @@
+/*css 版本的小工具*/
+
+.item_btn {
+    border-width: 0px !important;
+}
+.item_btn h2 {
+    margin: 5px 0 2px 0;
+    font-size: 16px;
+    font-weight: normal;
+}
+.tabs-red-point {
+    position: absolute;
+    top: 10%;
+    left: 40px;
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    background-color: red;
+    font-size: 12px;
+    color:#ffffff;
+    font-weight: normal;
+    text-align:center;
+    line-height:20px;
+}
+.select-checked {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    background-color: green;
+    font-size: 3px;
+    font-weight: normal;
+    text-align:center;
+    line-height:15px;
+    border:1px solid #cecece;
+    margin-top: 20px;
+}
+.select-uncheck {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    height: 20px;
+    width: 20px;
+    border:1px solid #cecece;
+    border-radius: 20px;
+    background-color: white;
+    font-size: 3px;
+     font-weight: normal;
+    text-align:center;
+    line-height:15px;
+    margin-top: 20px;
+}
+.white-button {
+    background-color: #fff; filter:alpha(opacity=0);-moz-opacity:0.5;-khtml-opacity: 0.5;opacity: 0.5;
+    border: none;
+    width: 50px;
+    color: black;
+    padding: 15px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+}
+.custItem{
+    border-color: #ddd;
+    background-color: #fff;
+    color: #444;
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin: -1px;
+    padding: 8px;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 16px;
+}
+#allmap {height:100%; width: 100%;}
+
+.position {
+    position: relative;
+    width: .6em;
+    height: .6em;
+    border: .4em solid #000;
+    border-radius: 50%;
+}
+.position:after {
+    content: "";
+    position: absolute;
+    top: .55em;
+    left: -.4em;
+    width: 0;
+    height: 0;
+    border-top: 1em solid #000;
+    border-right: .7em solid transparent;
+    border-left: .7em solid transparent;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+.sfz3{float:left;width:50px;height:32px;border:1px solid #8EC448; background: no-repeat;background:#8EC448;color:#4b8bf4; font-family:"微软雅黑"; cursor:pointer;outline:none;}
+.sfz4{float:left;width:300px;height:32px;border:1px solid #8EC448; color:#000; font-family:"微软雅黑";}
+.col1{
+    font-size:x-large;
+    background-size: auto 100%;
+    border-radius: 2px;
+    text-align: center;
+    color: white;
+    vertical-align:top;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.col3{
+    font-size:x-large;
+    background-size: 100% 100%;
+    border-radius: 2px;
+    text-align: center;
+    vertical-align:middle;
+    color: white;
+    background-color: #6b46e5;
+}
+.col2 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: block;
+    font-size:x-large;
+    text-align: center;
+    color: white;
+    border-radius: 2px;
+    width: 100%; }
+
+.row2 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%; }
+
+.titleComment {
+    text-align: left;
+    vertical-align: middle;
+    /* background-color: white; */
+    font-size: 10pt; /* needed for cloned object */
+    /* round corners */
+    -moz-border-radius: 4px; /* FF */
+    /* margin: 10px auto; */
+    display: inline-block;
+    float: left;
+}
+.whiteBG {
+    border: 1px solid #e0e0e0;
+}
+.greenBG {
+    border: 1px solid #e0e0e0;background-Color:#9cbc72;
+}
+.redBG {
+    border: 1px solid #e0e0e0;background-Color:#f1705c;
+}
+.grayBG {
+    border: 1px solid #e0e0e0;background-Color:#bcbcbc;
+}
+.item-color {
+    background-color: #9cbc72;
+}
+.col-17{
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 17%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 17%;
+    -ms-flex: 0 0 17%;
+    flex: 0 0 17%;
+}
+.col-18{
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 18%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 18%;
+    -ms-flex: 0 0 18%;
+    flex: 0 0 18%;
+}
+.col-24{
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 24%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 24%;
+    -ms-flex: 0 0 24%;
+    flex: 0 0 24%;
+}
+.col-15{
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 15%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 15%;
+    -ms-flex: 0 0 15%;
+    flex: 0 0 15%;
+}

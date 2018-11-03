@@ -1,0 +1,52 @@
+<form>
+<ion-view class="" view-title="意向客户列表">
+    <ion-nav-buttons side="right">
+        <button  ng-if="vm.permissions.hasPermission(vm.permission)"
+                class="button button-balanced" ng-click="vm.add()">
+            新增
+        </button>
+    </ion-nav-buttons>
+   <ion-content>
+       <div class="item-input item-button-right">
+           <label class="item-input-wrapper" style="width: 29%;margin-right: 2px;">
+               <i class="icon ion-ios-search placeholder-icon"></i>
+               <input type="search" placeholder="姓名/编号" ng-model="vm.searchContent">
+           </label>
+           <label class="item item-input item-select" style="width: 60%;height: 37px;margin-right: 16px;">
+               <select ng-model="vm.status"
+                       ng-options="item.key as item.value for item in vm.baseData.statusListSearch">
+               </select>
+           </label>
+           <button class="button button-clear" ng-click="vm.search()">
+           </button>
+       </div>
+       <ion-item class="item"
+                 ng-if="vm.noData">
+           <h2>没有查询到数据</h2>
+       </ion-item>
+
+       <ion-refresher pulling-text="下拉刷新" on-refresh="vm.doRefresh()"></ion-refresher>
+       <ion-list>
+
+
+           <ion-item class="item item-icon-right"
+                     ng-repeat="item in vm.customerList"
+                     ui-sref="{{vm.state}}({customerId:{{item.customerId}},personName:'{{item.personName}}'})">
+               <h2 style="height: 19px;">{{item.personName}}
+                   <button class="button button-outline button-small button-calm" style="float: right;margin-top: 4px;color: #6bc2fa;min-height: 15px; line-height: 10px;">
+                       {{item.statusName}}
+                   </button>
+               </h2>
+               <h3 style="color: #8e8e8e;">性别：{{item.genderName}}</h3>
+               <h3 style="color: #8e8e8e;">年龄：{{item.age}}</h3>
+               <h3 style="color: #8e8e8e;">客户编号：{{item.customerNumber}}</h3>
+               <i class="icon ion-chevron-right icon-accessory"></i>
+           </ion-item>
+       </ion-list>
+
+       <ion-infinite-scroll ng-if="vm.moredata" on-infinite="vm.loadMore()" distance="1%" ></ion-infinite-scroll>
+
+   </ion-content>
+
+</ion-view>
+</form>

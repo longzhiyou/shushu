@@ -1,0 +1,32 @@
+<ion-view class="bar-positive"
+          hide-back-button="true"
+             view-title="支付宝支付">
+    <ion-nav-buttons side="right">
+        <button
+                 class="button button-balanced" ng-click="vm.goBack()">
+            完成
+        </button>
+    </ion-nav-buttons>
+   <ion-content style="background-color:black">
+       <div class="row" style="margin-top: 30px;">
+           <div style="margin: 0px auto;background-color: white;text-align:center;">
+               <div style="height:400px;width:320px;margin: 0px auto;background-color: white;text-align:center;">
+                   <br/>
+                   <div ng-if="vm.pay" style="height:300px;width:300px;margin: 10px auto;text-align:center;">
+                       <iframe name ="submitIfram" data-tap-disabled="true" height="300px" style="height:300px;width:300px;" ng-src="{{vm.targetUrl}}"></iframe>
+                   </div>
+                   <div ng-if="vm.complete"  style="margin-top:40px;height: 80px;">
+                       <h2 style="color: #8EC448">{{vm.message}}</h2>
+                   </div>
+                   <div ng-if="vm.complete">
+                       <img id="img2" style="width: 100px"  src={{vm.img1}} class="img-responsive">
+                   </div>
+
+                   <h5 ng-if="vm.pay">启动手机支付宝，选择扫一扫，<br/>
+                       对准屏幕上的二维码进行支付</h5>
+               </div>
+           </div>
+       </div>
+   </ion-content>
+
+</ion-view>

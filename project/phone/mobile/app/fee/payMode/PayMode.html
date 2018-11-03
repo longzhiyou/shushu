@@ -1,0 +1,32 @@
+<ion-view class="bar-positive"
+          view-title="收费">
+    <ion-nav-buttons side="right">
+        <button  class="button button-balanced" ng-click="vm.confirm()">
+            确定
+        </button>
+    </ion-nav-buttons>
+   <ion-content>
+
+       <label class="item item-input item-select">
+           <span class="input-label">支付方式</span>
+           <select ng-model="vm.payMode" ng-change="vm.changePayMode()"
+                   ng-options="item.key as item.value for item in vm.baseData.paymentModeList">
+           </select>
+
+       </label>
+       <label class="item item-input item-select">
+           <span class="input-label">收退费</span>
+           <select ng-model="vm.payFlag"
+                   ng-options="item.key as item.value for item in vm.payFlagList">
+           </select>
+
+       </label>
+       <label class="item item-input">
+           <span class="input-label">金额(元)</span>
+           <input class="text-right" type="text" ng-readonly="vm.readonly"
+                  ng-model="vm.amount"
+                  ng-maxlength="10">
+       </label>
+   </ion-content>
+
+</ion-view>

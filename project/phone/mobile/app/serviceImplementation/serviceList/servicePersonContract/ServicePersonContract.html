@@ -1,0 +1,39 @@
+
+<ion-view class="bar-positive" view-title="老人联系方式">
+   <ion-content>
+       <div class="item item-avatar item-text-wrap item-icon-right">
+           <img src="{{vm.headIconURL}}">
+           <h2>{{vm.personName}}</h2>
+       </div>
+
+       <ion-list>
+           <ion-item class="item item-icon-right"
+                     ng-if="vm.show1"
+                     ng-click="vm.callTel('{{vm.tel1}}')">
+               <h2>电话：{{vm.tel1}}</h2>
+               <button class="icon white-button">
+                   <i class="icon ion-ios-telephone"></i>
+               </button>
+           </ion-item>
+           <ion-item class="item item-icon-right"
+                     ng-if="vm.show2"
+                     ng-click="vm.callTel('{{vm.tel2}}')">
+               <h2>电话：{{vm.tel2}}</h2>
+               <button  class="icon white-button">
+               <i class="icon ion-ios-telephone"></i>
+               </button>
+           </ion-item>
+           <ion-item class="item item-icon-right item-text-wrap"
+                     ng-if="vm.show3"
+                     ng-click="vm.toMap()">
+               <h2>地址：{{vm.address}}</h2>
+               <button  class="icon white-button">
+               <i class="icon ion-location"></i>
+               </button>
+           </ion-item>
+       </ion-list>
+
+
+   </ion-content>
+
+</ion-view>

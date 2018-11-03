@@ -1,0 +1,54 @@
+<ion-view class="bar-positive" view-title="入院最终审核">
+    <ion-header-bar class="bar-subheader">
+        <button class="button button-assertive" ng-click="vm.agreeApply(0)" ng-if="vm.permissions.hasPermission(vm.permission)">拒绝</button>
+        <button class="button button-balanced" ng-click="vm.agreeApply(1)" ng-if="vm.permissions.hasPermission(vm.permission)">同意</button>
+    </ion-header-bar>
+   <ion-content>
+       <div class="item item-divider" style="background-color: #11c1f3">
+           <div style="text-align: center;color: white;"><b>老人基本信息</b></div>
+       </div>
+       <label class="item item-text-wrap">
+           <span>姓名：{{vm.proposerName}}</span>
+       </label>
+       <label class="item item-text-wrap">
+           <span>年龄：{{vm.age}}岁</span>
+       </label>
+       <label class="item item-text-wrap">
+           <span>证件类型：{{vm.certificateName}}</span>
+       </label>
+       <label class="item item-text-wrap">
+           <span>证件号码：{{vm.idNumber}}</span>
+       </label>
+       <div class="item item-divider" style="background-color: #11c1f3">
+           <div style="text-align: center;color: white;"><b>详细信息</b></div>
+       </div>
+       <ion-item class="item-icon-right"
+                 ng-click="vm.toApplyStatus()"  >
+           <h2>申请状况</h2>
+           <i class="icon ion-chevron-right icon-accessory"></i>
+       </ion-item>
+       <ion-item class="item-icon-right"
+                 ng-click="vm.toEvaluateInfo()"  >
+           <h2>评估状况</h2>
+           <i class="icon ion-chevron-right icon-accessory"></i>
+       </ion-item>
+       <ion-item class="item-icon-right"
+                 ng-click="vm.toServiceItem()"  >
+           <h2>服务项目</h2>
+           <i class="icon ion-chevron-right icon-accessory"></i>
+       </ion-item>
+       <ion-item class="item-icon-right"
+                 ng-click="vm.toExamItem()"  >
+           <h2>体检状况</h2>
+           <i class="icon ion-chevron-right icon-accessory"></i>
+       </ion-item>
+       <ion-item class="item-icon-right"
+                 ng-click="vm.toPaymentInfo()"  >
+           <h2>付款计划</h2>
+           <i class="icon ion-chevron-right icon-accessory"></i>
+       </ion-item>
+   </ion-list>
+
+   </ion-content>
+
+</ion-view>

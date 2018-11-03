@@ -1,0 +1,27 @@
+<ion-view class="bar-positive" view-title="{{vm.personName}}">
+   <ion-content>
+       <ion-item class="item"
+                 ng-if="vm.noData">
+           <h2>没有付款计划</h2>
+       </ion-item>
+       <div class="item item-divider" style="background-color: #11c1f3">
+           <div style="text-align: center;color: white;"><b>付款计划</b></div>
+       </div>
+       <label class="item item-text-wrap">
+           <span>合同类型：{{vm.contractTypeName}}</span>
+       </label>
+       <ion-list ng-repeat="item in vm.allPlanList">
+           <div class="item item-divider item-color">
+               <div>{{item.exacctName}}</div>
+           </div>
+           <ion-item class="item item-text-wrap" >
+               <h3 ng-if="item.period">期间：{{item.period}}</h3>
+               <h3>收费标准：{{item.standardAmount}}</h3>
+               <h3>折扣后：{{item.realAmount}}</h3>
+               <h3>说明：{{item.memo}}</h3>
+           </ion-item>
+       </ion-list>
+
+   </ion-content>
+
+</ion-view>

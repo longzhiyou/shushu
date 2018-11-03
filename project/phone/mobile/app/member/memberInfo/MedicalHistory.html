@@ -1,0 +1,88 @@
+<ion-view view-title="既往病史">
+    <!--<ion-nav-buttons side="right">-->
+        <!--<button class="button " ng-click="vm.confirm()">-->
+            <!--确定-->
+        <!--</button>-->
+    <!--</ion-nav-buttons>-->
+   <ion-content>
+       <ion-list>
+           <label class="item item-input item-select" ng-if="vm.baseData.listHearingStatus">
+               <div class="input-label">
+                   听力情况
+               </div>
+
+               <select ng-model="vm.allInfo.hearingStatus"
+                       ng-options="item.key as item.value for item in vm.baseData.listHearingStatus">
+               </select>
+           </label>
+           <label class="item item-input item-select" ng-if="vm.baseData.listVisionStatus" >
+               <div class="input-label">
+                   视力情况
+               </div>
+               <select ng-model="vm.allInfo.visionStatus"
+                       ng-options="item.key as item.value  for item in vm.baseData.listVisionStatus">
+               </select>
+           </label>
+           <!--<label class="item item-input item-select" ng-if="vm.baseData.diseaseList" >-->
+               <!--<div class="input-label">-->
+                   <!--病史-->
+               <!--</div>-->
+               <!--<select ng-model="vm.allInfo.disease"-->
+                       <!--ng-options="item.key as item.value  for item in vm.baseData.diseaseList">-->
+               <!--</select>-->
+           <!--</label>-->
+
+
+           <label class="item item-input item-select" ng-if="vm.baseData.listInfectiousDiseases" >
+               <div class="input-label">
+                   传染病
+               </div>
+               <select ng-model="vm.allInfo.infectiousDiseases"
+                       ng-options="item.key as item.value  for item in vm.baseData.listInfectiousDiseases">
+               </select>
+           </label>
+           <label class="item item-input item-select" ng-if="vm.baseData.listIntelligenceStatus" >
+               <div class="input-label">
+                   失能失智情况
+               </div>
+               <select ng-model="vm.allInfo.intelligenceStatus"
+                       ng-options="item.key as item.value  for item in vm.baseData.listIntelligenceStatus">
+               </select>
+           </label>
+
+           <label class="item item-input item-select" ng-if="vm.baseData.listSpiritStatus" >
+               <div class="input-label">
+                   精神状况
+               </div>
+               <select ng-model="vm.allInfo.spiritStatus"
+                       ng-options="item.key as item.value  for item in vm.baseData.listSpiritStatus">
+               </select>
+           </label>
+
+           <div class="item item-divider">
+               病史
+           </div>
+           <ion-checkbox
+                   ng-repeat="item in vm.baseData.diseaseList"
+                   ng-model="vm.selectDisease[item.key]"
+           >
+               {{item.value}}
+           </ion-checkbox>
+
+
+           <div class="item item-divider">
+               现身体状况
+           </div>
+           <ion-checkbox
+                   ng-repeat="item in vm.baseData.listPhysicalCondition"
+                   ng-model="vm.selectPhysicalCondition[item.key]"
+           >
+               {{item.value}}
+           </ion-checkbox>
+
+
+       </ion-list>
+
+     </ion-content>
+
+</ion-view>

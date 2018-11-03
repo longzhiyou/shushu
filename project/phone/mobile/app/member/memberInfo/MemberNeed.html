@@ -1,0 +1,30 @@
+<ion-view view-title="服务需求">
+    <!--<ion-nav-buttons side="right">-->
+        <!--<button class="button " ng-click="vm.confirm()">-->
+            <!--确定-->
+        <!--</button>-->
+    <!--</ion-nav-buttons>-->
+    <ion-content>
+        <ion-list >
+
+            <ion-checkbox class="item item-text-wrap"
+                          ng-repeat="item in vm.baseData.listAllServices"
+                          ng-model="vm.select[item.key]"
+            >
+                {{item.value}}
+            </ion-checkbox>
+
+            <!--<div ng-repeat="item in vm.baseData.listAllServices">-->
+                <!--<li class="item item-checkbox" >-->
+                    <!--<label class="checkbox" >-->
+                        <!--<input type="checkbox" ng-model="data.itemName">-->
+                    <!--</label>-->
+                    <!--{{data.scoringName}}-->
+                <!--</li>-->
+            <!--</div>-->
+
+        </ion-list>
+
+    </ion-content>
+
+</ion-view>

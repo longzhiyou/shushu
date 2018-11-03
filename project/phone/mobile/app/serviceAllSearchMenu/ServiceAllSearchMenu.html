@@ -1,0 +1,15 @@
+<ion-view class="bar-positive" view-title="服务类型">
+
+   <ion-content>
+       <ion-list>
+           <ion-item class="item-icon-right"
+                     ng-repeat="item in vm.menus"
+                     ui-sref="{{item.state}}({accessDiv:{{item.accessDiv}}})">
+               {{item.title}}
+               <i class="icon ion-chevron-right icon-accessory"></i>
+           </ion-item>
+       </ion-list>
+
+   </ion-content>
+
+</ion-view>

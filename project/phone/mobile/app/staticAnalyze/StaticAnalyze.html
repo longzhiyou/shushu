@@ -1,0 +1,85 @@
+<ion-view view-title="统计分析"
+          cache-view="false">
+    <ion-content>
+        <div ng-if="vm.isGroup">
+            <label class="item item-input item-select">
+
+                <span style="padding: 16px;"></span>
+                <select ng-model="vm.instituteId"
+                        ng-options="item.key as item.value for item in vm.instituteList"
+                        ng-change="vm.changeInstitute(vm.instituteId)"
+                >
+                </select>
+
+            </label>
+        </div>
+       <div class="item item-divider " style="background-color: #11c1f3"ng-if="vm.data">
+           <div style="text-align: center;color: white;"><b>入住率</b></div>
+       </div>
+       <div class="row row-wrap">
+           <div class="col" ng-if="vm.data">
+               <highchart style="height: 180px;" id="circleAllMember" config="vm.circleAllMemberConfig"></highchart>
+           </div>
+       </div>
+       <div class="item item-divider " style="background-color: #11c1f3" ng-if="vm.data">
+           <div style="text-align: center;color: white;"><b>入住情况</b></div>
+       </div>
+       <div class="row row-wrap">
+           <div class="col" ng-if="vm.data">
+               <highchart style="height: 200px;" id="member" config="vm.memberConfig" style="height: {{vm.height}};"></highchart>
+           </div>
+       </div>
+       <div class="item item-divider " style="background-color: #11c1f3"ng-if="vm.data">
+               <div style="text-align: center;color: white;"><b>入住人数</b></div>
+       </div>
+       <div class="row row-wrap">
+           <div class="col" ng-if="vm.data">
+               <highchart style="height: 280px;" id="memberIn" config="vm.memberInConfig" style="height: {{vm.height}};"></highchart>
+           </div>
+       </div>
+       <div class="item item-divider " style="background-color: #11c1f3"ng-if="vm.data">
+           <div style="text-align: center;color: white;"><b>退住人数</b></div>
+       </div>
+       <div class="row row-wrap">
+           <div class="col" ng-if="vm.data">
+               <highchart style="height: 280px;" id="memberOut" config="vm.memberOutConfig" style="height: {{vm.height}};"></highchart>
+           </div>
+       </div>
+       <div class="item item-divider " style="background-color: #11c1f3"ng-if="vm.data.mCareRankDtoList">
+           <div style="text-align: center;color: white;"><b>服务等级</b></div>
+       </div>
+       <div class="row row-wrap">
+           <div class="col" ng-if="vm.data.mCareRankDtoList">
+                 <highchart style="height: 280px;" id="service" config="vm.serviceConfig"></highchart>
+           </div>
+       </div>
+       <div class="item item-divider " style="background-color: #11c1f3"ng-if="vm.data.ageList">
+           <div style="text-align: center;color: white;"><b>年龄段</b></div>
+       </div>
+       <div class="row row-wrap">
+           <div class="col" ng-if="vm.data.ageList">
+               <highchart style="height: 280px;" id="age" config="vm.ageConfig"></highchart>
+           </div>
+       </div>
+       <div class="item item-divider " style="background-color: #11c1f3"ng-if="vm.data">
+           <div style="text-align: center;color: white;"><b>预付款</b></div>
+       </div>
+       <div class="row row-wrap">
+           <div class="col" ng-if="vm.data">
+               <highchart style="height: 280px;" id="accountInfo" config="vm.accountConfig"></highchart>
+           </div>
+       </div>
+       <div class="item item-divider " style="background-color: #11c1f3"ng-if="vm.data">
+           <div style="text-align: center;color: white;"><b>费用</b></div>
+       </div>
+
+       <div class="row row-wrap">
+           <div class="col" ng-if="vm.data">
+               <ion-scroll direction="x">
+               <highchart style="height: 280px;width: 1000px;" id="feeInfo" config="vm.feeConfig"></highchart>
+                   </ion-scroll>
+           </div>
+       </div>
+   </ion-content>
+
+</ion-view>

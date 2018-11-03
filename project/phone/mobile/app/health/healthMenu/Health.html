@@ -1,0 +1,46 @@
+<ion-view class="bar-positive" view-title="{{vm.personName}}">
+
+   <ion-content>
+
+       <ion-list>
+           <ion-item class="item-icon-right"
+                     ng-if="vm.permissions.hasPermission('HEA302')"
+                     ng-click="vm.toVitalSign()">
+               录入生命体征
+               <i class="icon ion-chevron-right icon-accessory"></i>
+           </ion-item>
+
+           <ion-item class="item-icon-right"
+                     ng-if="vm.permissions.hasPermission('HEA307')"
+                     ng-click="vm.toBloodGlucose()">
+               录入血糖
+               <i class="icon ion-chevron-right icon-accessory"></i>
+           </ion-item>
+
+           <ion-item class="item-icon-right"
+                     ng-if="vm.permissions.hasPermission('HEA304')"
+                     ng-click="vm.toMedicalWrite()">
+               录入病程记录
+               <i class="icon ion-chevron-right icon-accessory"></i>
+           </ion-item>
+
+           <ion-item class="item-icon-right"
+                     ng-if="vm.permissions.hasPermission('HEA302')"
+                     ng-click="vm.toHealthCurve()">
+               健康曲线
+               <i class="icon ion-chevron-right icon-accessory"></i>
+           </ion-item>
+
+           <ion-item class="item-icon-right"
+                     ng-if="vm.permissions.hasPermission('HEA304')"
+                     ng-click="vm.toMedicalRecord()">
+               查看病程记录
+               <i class="icon ion-chevron-right icon-accessory"></i>
+           </ion-item>
+
+
+       </ion-list>
+
+   </ion-content>
+
+</ion-view>

@@ -1,0 +1,26 @@
+<ion-view class="bar-positive" view-title="{{vm.personName}}">
+   <ion-content>
+       <ion-item class="item"
+                 ng-if="vm.noData">
+           <h2>没有查询到数据</h2>
+       </ion-item>
+       <ion-refresher pulling-text="下拉刷新" on-refresh="vm.doRefresh()"></ion-refresher>
+       <ion-list>
+           <ion-item class="item-text-wrap item-icon-right"
+                     ng-repeat="item in vm.personList">
+               <ion-option-button class="button-positive" ng-if="vm.permissions.hasPermission(vm.permission)"
+                                  ng-click="vm.edit(item)">
+                   修改
+               </ion-option-button>
+               <h2>时间：{{item.measureDate}}</h2>
+               <h3>新发疾病：{{item.disease}}</h3>
+               <h3>病程记录：{{item.comment}}</h3>
+               <h3 style="color: #8e8e8e;">记录者：{{item.operatorName}}</h3>
+           </ion-item>
+       </ion-list>
+
+       <ion-infinite-scroll ng-if="vm.moredata" on-infinite="vm.loadMore()" distance="1%" ></ion-infinite-scroll>
+
+   </ion-content>
+
+</ion-view>

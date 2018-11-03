@@ -1,0 +1,40 @@
+<ion-view class="bar-positive" view-title="家属信息">
+
+
+    <ion-content>
+
+        <form >
+        <ion-list>
+
+            <label class="item item-input">
+                <span class="input-label">姓名</span>
+                <input type="text" ng-model="vm.allInfo.sibName"
+                       name="sibName" class="text-right"
+                       ng-minlength="2"
+                       placeholder="请输入家属名称">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">联系方式</span>
+                <input class="text-right" type="text" ng-model="vm.allInfo.sibContact" placeholder="联系电话">
+            </label>
+            <label class="item item-input item-select">
+                <span class="input-label">与老人关系</span>
+                <select ng-model="vm.allInfo.sibRelation"
+                        ng-options="item.key as item.value for item in vm.baseData.relationList">
+                </select>
+
+            </label>
+
+            <label class="item item-input">
+                <span class="input-label">备注</span>
+               <textarea class="text-right" ng-model="vm.allInfo.sibMemo" style="width: 60%"
+                         placeholder="请输入家属备注"> </textarea>
+            </label>
+
+        </ion-list>
+
+        </form>
+    </ion-content>
+
+
+</ion-view>

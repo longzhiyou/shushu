@@ -1,0 +1,57 @@
+<ion-view class="bar-positive" view-title="{{vm.title}}">
+    <ion-nav-buttons side="right">
+        <button  ng-if="vm.isGroup"
+                 class="button button-balanced" ng-click="vm.chgInstitute()">
+            切换机构
+        </button>
+    </ion-nav-buttons>
+   <ion-content>
+       <div class="row row-wrap" style="height: {{vm.height}};padding:0px;">
+           <div class="col col1" style="height: {{vm.height}};line-height:{{vm.height}};margin-left: 10px;margin-right: 5px;background-image: url({{vm.bak1}});background-position: center center;" ng-click="vm.toSub(0)">
+               <div style="height: 30%"></div>
+               意向客户
+           </div>
+           <div class="col col1" style="height: {{vm.height}};line-height:{{vm.height}};margin-left: 5px;margin-right: 10px;background-image: url({{vm.bak2}});background-position: center center;" ng-click="vm.toSub(1)">
+               <div style="height: 30%"></div>
+               在院老人
+           </div>
+       </div>
+       <div class="row row-wrap"  style="height: {{vm.height2}};line-height:{{vm.height2}};margin-top: 10px;padding:0px;">
+           <div class="col col2" style="margin-left: 10px;padding: 0px;">
+               <div class="row row-wrap" style="height3: {{vm.height3}};line-height:{{vm.height3}};padding:0px;">
+                   <div class="col col3"style="padding:0px;margin-top: 10px;background-color:#01d48f; "ng-click="vm.toSub(2)">
+                       健康管理
+                   </div>
+               </div>
+               <div class="row row-wrap" style="height3: {{vm.height3}};line-height:{{vm.height3}};padding:0px;">
+                   <div class="col col3" style="padding:0px;margin-top: 15px;background-color:#00c2db"ng-click="vm.toSub(3)">
+                       照护
+                   </div>
+               </div>
+           </div>
+           <div class="col col1" style="height: {{vm.height2}};padding:0px;margin-left: 10px;margin-right: 10px;background-image: url({{vm.bak3}});background-position: center center;"ng-click="vm.toSub(4)">
+               <div style="height: 0px;margin-top: -50px;">健康评估</div>
+           </div>
+       </div>
+       <div class="row row-wrap" style="height: {{vm.height2}};padding:0px;margin-top: 10px;">
+           <div class="col col1" style="height: {{vm.height2}};padding:0px;line-height:{{vm.height2}};margin-left: 10px;margin-right:5px;background-image: url({{vm.bak4}});background-position: center center;" ng-click="vm.toSub(5)">
+               <div style="margin-top: 50px;">职工</div>
+           </div>
+           <div class="col col2" style="height: {{vm.height2}};line-height:{{vm.height2}};margin-left: 5px;margin-right: 10px;padding: 0px;">
+               <div class="row row-wrap" style="height3: {{vm.height3}};line-height:{{vm.height3}};padding:0px;">
+                   <div class="col col3"style="padding:0px;margin-top: 10px;background-color:#f2796e "ng-click="vm.toSub(6)">
+                       审批
+                   </div>
+               </div>
+               <div class="row row-wrap" style="height3: {{vm.height3}};line-height:{{vm.height3}};padding:0px;">
+                   <div class="col col3" style="padding:0px;margin-top: 15px;background-color:#a6d672"ng-click="vm.toSub(7)">
+                       统计
+                   </div>
+               </div>
+           </div>
+
+       </div>
+
+   </ion-content>
+
+</ion-view>

@@ -1,0 +1,32 @@
+<ion-view class="bar-positive" view-title="审批列表">
+   <ion-content>
+       <ion-item class="item"
+                 ng-if="vm.noData">
+           <h2>没有待审批数据</h2>
+       </ion-item>
+
+       <div ng-if="vm.reviewedlist1" class="item item-divider " style="background-color: #11c1f3">
+           <div style="text-align: center;color: white;"><b>老人管理</b></div>
+       </div>
+       <ion-item class="item-text-wrap item-icon-right"
+                 ng-repeat="item in vm.reviewedlist1"
+                 ng-click="vm.toDetail1({{item.index}})">
+           <h2>{{item.title}}</h2>
+           <span class="badge badge-assertive">{{item.count}}</span>
+           <i class="icon ion-chevron-right icon-accessory"></i>
+       </ion-item>
+       <div ng-if="vm.reviewedlist2" class="item item-divider " style="background-color: #11c1f3">
+           <div style="text-align: center;color: white;"><b>机构管理</b></div>
+       </div>
+       <ion-item class="item-text-wrap item-icon-right"
+                 ng-repeat="item in vm.reviewedlist2"
+                 ng-click="vm.toDetail2({{item.index}})">
+           <h2>{{item.title}}</h2>
+           <span class="badge badge-assertive">{{item.count}}</span>
+           <i class="icon ion-chevron-right icon-accessory"></i>
+       </ion-item>
+   </ion-list>
+
+   </ion-content>
+
+</ion-view>

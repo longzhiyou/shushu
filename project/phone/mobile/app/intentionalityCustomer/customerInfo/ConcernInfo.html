@@ -1,0 +1,102 @@
+<ion-view view-title="关注信息">
+    <!--<ion-nav-buttons side="right">-->
+        <!--<button class="button " ng-click="vm.confirm()">-->
+            <!--确定-->
+        <!--</button>-->
+    <!--</ion-nav-buttons>-->
+   <ion-content>
+       <ion-list>
+
+
+           <label class="item item-input item-select">
+               <span class="input-label">可能入住日期</span>
+               <select ng-model="vm.allInfo.desiredDate"
+                       ng-options="item.key as item.value for item in vm.baseData.desiredDateList">
+               </select>
+           </label>
+
+           <label class="item item-input item-select">
+               <span class="input-label">入住类型</span>
+               <select ng-model="vm.allInfo.livingStatus"
+                       ng-options="item.key as item.value for item in vm.baseData.liveTypeList">
+               </select>
+           </label>
+
+           <div class="item item-divider">
+               信息获取渠道
+           </div>
+           <ion-checkbox
+                   ng-repeat="item in vm.baseData.channelsList"
+                   ng-model="vm.selectInformationChannel[item.key]"
+           >
+               {{item.value}}
+           </ion-checkbox>
+
+           <label class="item item-input item-select">
+               <span class="input-label">理想价格</span>
+               <select ng-model="vm.allInfo.affordablePeriodCost"
+                       ng-options="item.key as item.value for item in vm.baseData.affordablePeriodCostList">
+               </select>
+           </label>
+           <label class="item item-input">
+               <span class="input-label">可承担费用</span>
+               <input type="text"
+                      class="text-right"
+                      name="affordableCost"
+                      ng-model="vm.allInfo.affordableCost"
+                      placeholder="请输入可承担费用">
+           </label>
+
+           <div class="item item-divider">
+               付款方式
+           </div>
+           <ion-checkbox
+                   ng-repeat="item in vm.baseData.payTypeList"
+                   ng-model="vm.selectPayType[item.key]"
+           >
+               {{item.value}}
+           </ion-checkbox>
+
+           <div class="item item-divider">
+               关注点
+           </div>
+           <ion-checkbox
+                   ng-repeat="item in vm.baseData.concernList"
+                   ng-model="vm.selectConcerns[item.key]"
+           >
+               {{item.value}}
+           </ion-checkbox>
+           <label class="item item-input item-select">
+               <span class="input-label">意愿方</span>
+               <select ng-model="vm.allInfo.willParty"
+                       ng-options="item.key as item.value for item in vm.baseData.willPartyList">
+               </select>
+           </label>
+
+           <label class="item item-input item-select">
+               <span class="input-label">意向度</span>
+               <select ng-model="vm.allInfo.intentionality"
+                       ng-options="item.key as item.value for item in vm.baseData.intentionalityList">
+               </select>
+           </label>
+
+           <label class="item item-input">
+               <span class="input-label">预定回访日期</span>
+               <input class="text-right" style="background-color:white" type="text" readonly
+                      ng-model="vm.allInfo.returnVisitDate"
+                      ng-click="vm.openDatePicker()"
+                      placeholder="请选择日期">
+           </label>
+
+           <label class="item item-input">
+               <span class="input-label">备注</span>
+               <textarea class="text-right" ng-model="vm.allInfo.concernsMemo" style="width: 60%"
+                         placeholder="请输入关注备注"> </textarea>
+           </label>
+
+
+       </ion-list>
+
+     </ion-content>
+
+</ion-view>

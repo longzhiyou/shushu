@@ -1,0 +1,38 @@
+
+<ion-view class="bar-positive" view-title="老人服务列表">
+    <ion-nav-buttons side="right">
+        <button class="button button-balanced" ng-if="vm.showPayButton" ng-click="vm.toPay()">
+            支付
+        </button>
+    </ion-nav-buttons>
+   <ion-content>
+       <div class="item item-avatar item-text-wrap item-icon-right">
+           <img src="{{vm.headIconURL}}">
+           <h2>{{vm.personName}}</h2>
+           <p>年龄：{{vm.age}}</p>
+           <p>{{vm.bedInfo}}</p>
+       </div>
+
+       <ion-refresher pulling-text="下拉刷新" on-refresh="vm.doRefresh()"></ion-refresher>
+       <ion-list >
+           <ion-item class="item item-avatar item-icon-right"
+                     item="item"
+                     ng-repeat="item in vm.personList"
+                     ng-click="vm.toDetail({{item}})">
+                <img ng-src="{{item.image_file_name}}" >
+               <ion-option-button class="button-assertive"
+                                  ng-click="vm.onItemDelete(item)">
+                   删除
+               </ion-option-button>
+               <h2>名称：{{item.service_abbr_name}}</h2>
+               <h3>实施时间：{{item.care_date_content}}</h3>
+               <h3>{{item.careStatus}}</h3>
+               <i class="icon ion-chevron-right icon-accessory"></i>
+           </ion-item>
+       </ion-list>
+
+       <ion-infinite-scroll ng-if="vm.moredata" on-infinite="vm.loadMore()" distance="1%" ></ion-infinite-scroll>
+
+   </ion-content>
+
+</ion-view>

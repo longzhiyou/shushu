@@ -1,0 +1,24 @@
+<ion-view class="bar-positive" view-title="审核意见">
+    <ion-nav-buttons side="right">
+
+        <button  class="button button-balanced" ng-if="vm.isAgree" ng-disabled="auditDetail.$invalid"
+                 ng-click="vm.approve(1)">
+            同意
+        </button>
+        <button  class="button button-balanced" ng-if="vm.isRefuse" ng-disabled="auditDetail.$invalid"
+                 ng-click="vm.approve(0)">
+            拒绝
+        </button>
+    </ion-nav-buttons>
+<form novalidate w5c-form-validate name="auditDetail" >
+   <ion-content>
+       <label class="item item-text-wrap" ng-if="vm.inputParam.flag == 1">
+           <span>日期：{{vm.inputParam.auditingDate}}</span>
+       </label>
+       <ion-item class="item item-input">
+           <textarea  placeholder="意见" ng-model="vm.auditOpinion" ng-maxlength="200" style="height: 150px;" name="comment"> </textarea>
+       </ion-item>
+
+     </ion-content>
+</form>
+</ion-view>

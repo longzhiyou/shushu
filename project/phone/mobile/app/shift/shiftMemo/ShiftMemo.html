@@ -1,0 +1,13 @@
+<ion-view class="bar-positive" view-title="交班内容">
+    <ion-nav-buttons side="right">
+        <button class="button button-balanced" ng-click="vm.save()" ng-if="vm.blnShift">
+            保存
+        </button>
+    </ion-nav-buttons>
+   <ion-content>
+       <label class="item item-input">
+           <span class="input-label" >交班内容：</span>
+           <textarea ng-model="vm.memo" style="width: 60%;height: 200px;"> </textarea>
+       </label>
+   </ion-content>
+</ion-view>

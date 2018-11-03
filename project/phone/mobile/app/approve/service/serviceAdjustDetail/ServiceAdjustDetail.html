@@ -1,0 +1,52 @@
+<ion-view class="bar-positive" view-title="护理等级调整审批">
+    <ion-header-bar class="bar-subheader">
+        <button class="button button-assertive" ng-click="vm.agreeApply(0)">拒绝</button>
+        <button class="button button-balanced" ng-click="vm.agreeApply(1)">同意</button>
+    </ion-header-bar>
+   <ion-content>
+       <div class="item item-divider" style="background-color: #11c1f3">
+           <div style="text-align: center;color: white;"><b>老人基本信息</b></div>
+       </div>
+       <label class="item item-text-wrap">
+           <span>老人：{{vm.personName}}</span>
+       </label>
+       <label class="item item-text-wrap">
+           <span>调整前护理等级：{{vm.oldValue1}}</span>
+       </label>
+       <label class="item item-text-wrap">
+           <span>调整后护理等级：{{vm.newValue1}}</span>
+       </label>
+       <label class="item item-text-wrap">
+           <span>调整前服务套餐：{{vm.oldValue2}}</span>
+       </label>
+       <label class="item item-text-wrap">
+           <span>调整后服务套餐：{{vm.newValue2}}</span>
+       </label>
+       <label class="item item-text-wrap">
+           <span>申请日期：{{vm.applyDate}}</span>
+       </label>
+       <label class="item item-text-wrap">
+           <span>预定生效日：{{vm.effectiveDate}}</span>
+       </label>
+       <ion-item class="item item-text-wrap">
+           调整原因：
+           <textarea  readonly ng-model="vm.reason"style="height: 150px;width: 100%"> </textarea>
+       </ion-item>
+       <div class="item item-divider" style="background-color: #11c1f3">
+           <div style="text-align: center;color: white;"><b>详细信息</b></div>
+       </div>
+       <ion-item class="item-icon-right"
+                 ng-click="vm.toServiceItem()"  >
+           <h2>服务项目</h2>
+           <i class="icon ion-chevron-right icon-accessory"></i>
+       </ion-item>
+       <ion-item class="item-icon-right"
+                 ng-click="vm.toPaymentInfo()"  >
+           <h2>付款计划</h2>
+           <i class="icon ion-chevron-right icon-accessory"></i>
+       </ion-item>
+   </ion-list>
+
+   </ion-content>
+
+</ion-view>

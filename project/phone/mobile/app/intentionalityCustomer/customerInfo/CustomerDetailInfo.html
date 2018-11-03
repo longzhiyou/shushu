@@ -1,0 +1,180 @@
+<ion-view view-title="老人信息">
+    <!--<ion-nav-buttons side="right">-->
+        <!--<button class="button " ng-click="vm.confirm()">-->
+            <!--确定-->
+        <!--</button>-->
+    <!--</ion-nav-buttons>-->
+   <ion-content>
+       <ion-list>
+
+
+           <label class="item item-input">
+               <span class="input-label">姓名<span style="color: red">*</span></span>
+               <input type="text"
+                      class="text-right"
+                      name="personName"
+                      ng-model="vm.allInfo.personName"
+                      required
+                      placeholder="请输入老人名称">
+           </label>
+           <label class="item item-input item-select">
+               <span class="input-label">性别</span>
+               <select ng-model="vm.allInfo.gender"
+                       ng-options="item.key as item.value for item in vm.baseData.genderMap">
+               </select>
+           </label>
+
+           <label class="item item-input">
+               <span class="input-label">年龄</span>
+               <input type="number"
+                      class="text-right"
+                      name="age"
+                      ng-model="vm.allInfo.age"
+                      placeholder="请输入老人年龄">
+           </label>
+
+           <label class="item item-input">
+               <span class="input-label">联系方式</span>
+               <input class="text-right" type="text"
+                      ng-model="vm.allInfo.contact"
+                      ng-maxlength="50"
+                      placeholder="手机或座机">
+           </label>
+
+           <label class="item item-input item-select">
+               <span class="input-label">民族</span>
+               <select ng-model="vm.allInfo.nation"
+                       ng-options="item.key as item.value for item in vm.baseData.nationList">
+               </select>
+           </label>
+
+           <label class="item item-input item-select">
+               <span class="input-label">自理程度</span>
+               <select ng-model="vm.allInfo.selfcareDegree"
+                       ng-options="item.key as item.value for item in vm.baseData.selfcareDegreeList">
+               </select>
+           </label>
+
+           <label class="item item-divider" ng-if="vm.baseData.provinceList">
+               现住址
+           </label>
+           <label class="item item-input item-select" ng-if="vm.baseData.provinceList">
+               <div class="input-label" style="margin-left: 60px">
+                   省
+               </div>
+               <select ng-model="vm.allInfo.addressProvince" ng-change="vm.changeList(2)"
+                       ng-options="item.key as item.value for item in vm.baseData.provinceList">
+               </select>
+           </label>
+           <label class="item item-input item-select" ng-if="vm.cityList">
+               <div class="input-label" style="margin-left: 60px">
+                   市
+               </div>
+               <select ng-model="vm.allInfo.addressCity" ng-change="vm.changeList(3)"
+                       ng-options="item.key as item.value for item in vm.cityList">
+               </select>
+           </label>
+           <label class="item item-input item-select" ng-if="vm.countyList">
+               <div class="input-label" style="margin-left: 60px">
+                   区
+               </div>
+               <select ng-model="vm.allInfo.addressCountry"  ng-change="vm.changeList(4)"
+                       ng-options="item.key as item.value for item in vm.countyList">
+               </select>
+           </label>
+
+           <label class="item item-input">
+               <span class="input-label">具体地址</span>
+               <textarea class="text-right" ng-model="vm.allInfo.address" style="width: 60%" id="address"
+                         placeholder="请输入地址"> </textarea>
+           </label>
+
+           <label class="item item-input item-select">
+               <span class="input-label">是否住过养老机构</span>
+               <select ng-model="vm.allInfo.livedInNursingHome"
+                       ng-options="item.key as item.value for item in vm.baseData.listLivedInNursingHomeList">
+               </select>
+           </label>
+
+           <label class="item item-input item-select">
+               <span class="input-label">居住状况</span>
+               <select ng-model="vm.allInfo.residentialStatus"
+                       ng-options="item.key as item.value for item in vm.baseData.livingMap">
+               </select>
+           </label>
+
+           <div class="item item-divider">
+               收入来源
+           </div>
+           <ion-checkbox
+                   ng-repeat="item in vm.baseData.economyMap"
+                   ng-model="vm.selectIncomeSource[item.key]"
+           >
+               {{item.value}}
+           </ion-checkbox>
+
+           <label class="item item-input item-select">
+               <span class="input-label">收入水平</span>
+               <select ng-model="vm.allInfo.economicIncome"
+                       ng-options="item.key as item.value for item in vm.baseData.economicIncomeMap">
+               </select>
+           </label>
+
+           <label class="item item-input item-select">
+               <span class="input-label">医保属性</span>
+               <select ng-model="vm.allInfo.medicalInsurance"
+                       ng-options="item.key as item.value for item in vm.baseData.hospitalMap">
+               </select>
+           </label>
+
+           <label class="item item-input item-select">
+               <span class="input-label">文化程度</span>
+               <select ng-model="vm.allInfo.educationDegree"
+                       ng-options="item.key as item.value for item in vm.baseData.educationMap">
+               </select>
+           </label>
+
+           <label class="item item-input item-select">
+               <span class="input-label">原单位类型</span>
+               <select ng-model="vm.allInfo.orgWorkunitType"
+                       ng-options="item.key as item.value for item in vm.baseData.orgWorkunitTypeList">
+               </select>
+           </label>
+           <label class="item item-input">
+               <span class="input-label">原工作单位</span>
+               <textarea class="text-right" ng-model="vm.allInfo.orgWorkunit" style="width: 60%"
+                         placeholder="请输入老人原工作单位"> </textarea>
+           </label>
+           <label class="item item-input">
+               <span class="input-label">原职业</span>
+               <input type="text"
+                      class="text-right"
+                      name="orgWorkunitPosition"
+                      ng-model="vm.allInfo.orgWorkunitPosition"
+                      placeholder="请输入老人原职业">
+           </label>
+
+           <label class="item item-input">
+               <span class="input-label">家庭结构</span>
+               <input type="text"
+                      class="text-right"
+                      name="familyStructure"
+                      ng-model="vm.allInfo.familyStructure"
+                      placeholder="请输入老人家庭结构">
+           </label>
+           <label class="item item-input item-select">
+               <span class="input-label">是否自愿</span>
+               <select ng-model="vm.allInfo.voluntary"
+                       ng-options="item.key as item.value for item in vm.baseData.voluntaryList">
+               </select>
+           </label>
+           <label class="item item-input">
+               <span class="input-label">备注</span>
+               <textarea class="text-right" ng-model="vm.allInfo.personMemo" style="width: 60%"
+                         placeholder="请输入老人备注"> </textarea>
+           </label>
+       </ion-list>
+
+     </ion-content>
+
+</ion-view>

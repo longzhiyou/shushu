@@ -1,0 +1,48 @@
+<ion-view view-title="我的"
+          cache-view="false">
+   <ion-content >
+
+
+           <div ng-if="vm.personName" class="row">
+               <div class="col"></div>
+               <div class="col" style="text-align: center;margin:0 auto ">
+                   <div style="width:100px; height:100px;border-radius:50%; overflow:hidden;text-align: center;margin:0 auto  ">
+                    <img id="img1"  style="width:100px; height:100px;" src="{{vm.url}}">
+                   </div>
+               </div>
+               <div class="col"></div>
+
+           </div>
+           <div ng-if="vm.personName" class="row">
+               <div class="col"></div>
+               <div class="col" style="text-align:center;font-size: 20px;"> {{vm.personName}}</div>
+               <div class="col"></div>
+            </div>
+
+       <div class="list list-inset">
+           <a class="item item-icon-left item-icon-right"
+              ui-sref="app.chgPassword">
+               <i class="calm icon ion-unlocked"></i>
+               修改密码
+               <span class="icon ion-chevron-right icon-accessory"></span>
+           </a>
+           <a class="item item-icon-left" ng-click="vm.clearHistory()" ng-if="vm.show">
+               <span class="calm icon  ion-trash-a"></span>
+               清除缓存
+           </a>
+           <a class="item item-icon-left item-icon-right"
+              ui-sref="app.about" ng-if="vm.show">
+               <i class="calm icon ion-android-contact"></i>
+               关于我们
+               <span class="icon ion-chevron-right icon-accessory"></span>
+           </a>
+           <a class="item item-icon-left" ng-click="vm.clear()">
+               <span style="color: #ff726b" class="icon ion-power"></span>
+               安全退出
+           </a>
+
+       </div>
+
+   </ion-content>
+
+</ion-view>

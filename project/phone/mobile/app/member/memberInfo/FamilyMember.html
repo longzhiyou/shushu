@@ -1,0 +1,26 @@
+<ion-view class="bar-positive" view-title="联系人">
+
+
+    <ion-content>
+        <ion-item class="item"
+                  ng-if="vm.noData">
+            <h2>没有联系人数据</h2>
+        </ion-item>
+        <ion-refresher pulling-text="下拉刷新" on-refresh="vm.doRefresh()"></ion-refresher>
+        <ion-list>
+            <ion-item class="item item-icon-right"
+                      ng-repeat="item in vm.servedSibDtoList" ng-click="vm.callTel('{{item.telephoneOne}}')">
+                <h2>姓名：{{item.personName}}</h2>
+                <h3 style="color: #8e8e8e;">与老人关系：{{item.relationName}}</h3>
+                <h3 style="color: #8e8e8e;">手机：{{item.telephoneOne}}</h3>
+                <h3 style="color: #8e8e8e;">监护人：{{item.guardian}}</h3>
+                <i ng-if="item.guardian == '是'"><h3 style="color: #8e8e8e;">监护人顺序：{{item.viewNum}}</h3></i>
+                <i ng-if="item.telephoneOne" class="icon ion-ios-telephone"></i>
+            </ion-item>
+        </ion-list>
+
+        <ion-infinite-scroll ng-if="vm.moredata" on-infinite="vm.loadMore()" distance="1%" ></ion-infinite-scroll>
+    </ion-content>
+
+
+</ion-view>

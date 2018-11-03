@@ -1,0 +1,22 @@
+<ion-view class="bar-positive" view-title="待审批列表">
+   <ion-content>
+       <ion-item class="item"
+                 ng-if="vm.noData">
+           <h2>没有申请中的付款计划审核列表</h2>
+       </ion-item>
+
+       <ion-item class="item item-avatar item-text-wrap item-icon-right"
+                 ng-repeat="item in vm.list" ng-click="vm.toDetail({{item}})">
+           <img ng-src="{{item.avatarPath}}">
+           <h2>{{item.personName}}</h2>
+           <h3 style="color: #8e8e8e;">床位：{{item.bedInfo}}</h3>
+           <h3 style="color: #8e8e8e;">申请日期：{{item.applyDate}}</h3>
+           <h3 style="color: #8e8e8e;">申请人：{{item.applyPerson}}</h3>
+           <i class="icon ion-chevron-right icon-accessory"></i>
+       </ion-item>
+
+   </ion-list>
+
+   </ion-content>
+
+</ion-view>

@@ -1,0 +1,161 @@
+<ion-view view-title="目前生活状况">
+    <!--<ion-nav-buttons side="right">-->
+        <!--<button class="button " ng-click="vm.confirm()">-->
+            <!--确定-->
+        <!--</button>-->
+    <!--</ion-nav-buttons>-->
+   <ion-content>
+       <ion-list>
+           <label class="item item-divider" ng-if="vm.baseData.provinceList">
+                现住址
+           </label>
+           <label class="item item-input item-select" ng-if="vm.baseData.provinceList">
+               <div class="input-label" style="margin-left: 60px">
+               省
+               </div>
+               <select ng-model="vm.allInfo.province" ng-change="vm.changeList(2)"
+                       ng-options="item.key as item.value for item in vm.baseData.provinceList">
+               </select>
+           </label>
+           <label class="item item-input item-select" ng-if="vm.cityList">
+               <div class="input-label" style="margin-left: 60px">
+                市
+               </div>
+               <select ng-model="vm.allInfo.city" ng-change="vm.changeList(3)"
+                       ng-options="item.key as item.value for item in vm.cityList">
+               </select>
+           </label>
+           <label class="item item-input item-select" ng-if="vm.countyList">
+               <div class="input-label" style="margin-left: 60px">
+                   区
+               </div>
+               <select ng-model="vm.allInfo.county"  ng-change="vm.changeList(4)"
+                       ng-options="item.key as item.value for item in vm.countyList">
+               </select>
+           </label>
+           <label class="item item-input item-select" ng-if="vm.streetList">
+               <div class="input-label"style="margin-left: 60px">
+                   街道
+               </div>
+               <select ng-model="vm.allInfo.street"
+                       ng-options="item.key as item.value for item in vm.streetList">
+               </select>
+           </label>
+           <label class="item item-input">
+               <span class="input-label">详细地址</span>
+               <textarea class="text-right" ng-model="vm.allInfo.busStation" ng-maxlength="50" style="width: 60%"
+                          placeholder="请输入地址"> </textarea>
+           </label>
+           <label class="item item-icon-right" ng-if="vm.allInfo.busStation" ng-click="vm.toMap()">
+
+               <span class="input-label">地址坐标</span>
+
+                   <i class="icon ion-location"></i>
+
+           </label>
+           <label class="item item-input item-select" ng-if="vm.baseData.educationMap">
+               <div class="input-label">
+                   文化程度
+               </div>
+
+               <select ng-model="vm.allInfo.education"
+                       ng-options="item.key as item.value for item in vm.baseData.educationMap">
+               </select>
+           </label>
+           <label class="item item-input item-select" ng-if="vm.baseData.marriageMap" >
+               <div class="input-label">
+                   婚姻状况
+               </div>
+               <select ng-model="vm.allInfo.marriage"
+                       ng-options="item.key as item.value  for item in vm.baseData.marriageMap">
+               </select>
+           </label>
+           <label class="item item-input item-select" ng-if="vm.baseData.livingMap" >
+               <div class="input-label">
+                   居住状况
+               </div>
+               <select ng-model="vm.allInfo.living"
+                       ng-options="item.key as item.value  for item in vm.baseData.livingMap">
+               </select>
+           </label>
+
+           <!--ng-click="vm.show=!vm.show"-->
+
+
+
+
+           <!--<label class="item item-input item-select" ng-if="vm.baseData.listElderType" >-->
+               <!--<div class="input-label">-->
+                   <!--老人类型-->
+               <!--</div>-->
+               <!--<select ng-model="vm.allInfo.elderType"-->
+                       <!--ng-options="item.key as item.value  for item in vm.baseData.listElderType">-->
+               <!--</select>-->
+           <!--</label>-->
+
+           <label class="item item-input item-select" ng-if="vm.baseData.economyMap" >
+               <div class="input-label">
+                   经济来源
+               </div>
+               <select ng-model="vm.allInfo.economy"
+                       ng-options="item.key as item.value  for item in vm.baseData.economyMap">
+               </select>
+           </label>
+
+
+           <label class="item item-input item-select" ng-if="vm.baseData.economicIncomeMap" >
+               <div class="input-label">
+                   经济收入
+               </div>
+               <select ng-model="vm.allInfo.economicIncome"
+                       ng-options="item.key as item.value  for item in vm.baseData.economicIncomeMap">
+               </select>
+           </label>
+
+           <label class="item item-input item-select" ng-if="vm.baseData.listNursingLevel" >
+               <div class="input-label">
+                   自理程度
+               </div>
+               <select ng-model="vm.allInfo.nursingLevel"
+                       ng-options="item.key as item.value  for item in vm.baseData.listNursingLevel">
+               </select>
+           </label>
+           <label class="item item-input item-select" ng-if="vm.baseData.hospitalMap" >
+               <div class="input-label">
+                   保障情况
+               </div>
+               <select ng-model="vm.allInfo.hospital"
+                       ng-options="item.key as item.value  for item in vm.baseData.hospitalMap">
+               </select>
+           </label>
+
+           <label class="item item-input item-select" ng-if="vm.baseData.listBurdenRatio" >
+               <div class="input-label">
+                   负担情况
+               </div>
+               <select ng-model="vm.allInfo.burdenRatio"
+                       ng-options="item.key as item.value  for item in vm.baseData.listBurdenRatio">
+               </select>
+           </label>
+
+           <div class="item  item-divider item-icon-right"
+                ng-if="vm.baseData.listElderType"
+           >
+               老人类型
+               <!--<i class="icon  ion-arrow-down-b"></i>-->
+           </div>
+           <div class="" ng-show="vm.show">
+               <ion-checkbox
+                       ng-repeat="item in vm.baseData.listElderType"
+                       ng-model="vm.selectType[item.key]"
+               >
+                   {{item.value}}
+               </ion-checkbox>
+           </div>
+
+
+       </ion-list>
+
+     </ion-content>
+
+</ion-view>

@@ -1,0 +1,40 @@
+
+<ion-view class="bar-positive" view-title="老人服务列表">
+    <ion-nav-buttons side="right">
+        <button class="button button-balanced" ng-click="vm.toHandWrite()">
+            实施
+        </button>
+    </ion-nav-buttons>
+   <ion-content>
+       <div class="item item-avatar item-text-wrap item-icon-right">
+           <img src="{{vm.headIconURL}}">
+           <h2>{{vm.personName}}</h2>
+           <p>年龄：{{vm.age}}</p>
+           <p>床位：{{vm.bedInfo}}</p>
+
+       </div>
+       <ion-item class="item"
+                 ng-if="vm.noData"/>
+       <h2>没有要实施的服务数据</h2>
+       </ion-item>
+       <ion-refresher pulling-text="下拉刷新" on-refresh="vm.doRefresh()"></ion-refresher>
+       <ion-list>
+           <ion-item class="item item-avatar item-icon-right"
+                     ng-repeat="item in vm.personList"
+                     ng-click="vm.toDetail({{item}})">
+                <img ng-src="{{item.image_file_name}}" >
+               <h2>名称：{{item.service_abbr_name}}</h2>
+               <h3>时间：{{item.plan_start_time}}</h3>
+               <h3 ng-if="item.at_any_time=='1'">随时</h3>
+               <h3 ng-if="item.at_any_time=='0'">次数：{{item.do_times}}</h3>
+               <button id={{item.care_no}} class="icon white-button" ng-click="vm.selectBtn({{$index}})">
+                   <i class="{{item.is_record}}"></i>
+               </button>
+           </ion-item>
+       </ion-list>
+
+       <ion-infinite-scroll ng-if="vm.moredata" on-infinite="vm.loadMore()" distance="1%" ></ion-infinite-scroll>
+
+   </ion-content>
+
+</ion-view>

@@ -1,0 +1,39 @@
+<ion-view class="bar-positive" view-title="付款计划">
+   <ion-content>
+       <ion-item class="item"
+                 ng-if="vm.noData">
+           <h2>没有付款计划详情</h2>
+       </ion-item>
+       <div class="item item-divider">
+           合同类型：{{vm.contract}}
+       </div>
+
+       <div class="item item-divider" style="background-color: #11c1f3">
+           <div style="text-align: center;color: white;"><b>周期性费用</b></div>
+       </div>
+       <ion-list ng-repeat="item in vm.cyclePlan">
+       <div ng-if="item.title" class="item item-divider item-color">
+           <div ng-if="item.title">{{item.title}}</div>
+       </div>
+       <ion-item  ng-if="item.period" class="item item-text-wrap" >
+           <h3 ng-if="item.period">期间：{{item.period}}</h3>
+           <h3 ng-if="item.period">收费标准：{{item.standardAmount}}</h3>
+           <h3 ng-if="item.period">折扣后：{{item.realAmount}}</h3>
+           <h3 ng-if="item.period">说明：{{item.memo}}</h3>
+       </ion-item>
+
+   </ion-list>
+   <div class="item item-divider" style="background-color: #11c1f3">
+       <div style="text-align: center;color: white;"><b>一次性费用</b></div>
+   </div>
+   <ion-list ng-repeat="item in vm.disposablePlan">
+       <ion-item  class="item item-text-wrap" >
+           <h2>{{item.title}}</h2>
+           <h3>收费标准：{{item.standardAmount}}</h3>
+           <h3>折扣后：{{item.realAmount}}</h3>
+           <h3>说明：{{item.memo}}</h3>
+       </ion-item>
+   </ion-list>
+   </ion-content>
+
+</ion-view>

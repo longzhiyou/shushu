@@ -1,0 +1,66 @@
+<ion-view class="bar-positive" view-title="加班审批">
+
+    <ion-header-bar class="bar-subheader">
+        <button class="button button-assertive" ng-click="vm.agreeApplyOt(0)">拒绝</button>
+        <button class="button button-balanced" ng-click="vm.agreeApplyOt(1)">同意</button>
+    </ion-header-bar>
+   <ion-content>
+
+       <div class="item item-divider" style="background-color: #11c1f3">
+           <div style="text-align: center;color: white;"><b>加班申请信息</b></div>
+       </div>
+       <label class="item item-text-wrap">
+           <span>加班人：{{vm.staffName}}</span>
+       </label>
+       <label class="item item-text-wrap">
+           <span>加班录入人：{{vm.register}}</span>
+       </label>
+       <label class="item item-text-wrap">
+           <span>加班时长：{{vm.otTime}} {{vm.unit}}</span>
+       </label>
+       <label class="item item-text-wrap">
+           <span>加班时间：{{vm.otPeriod}}</span>
+       </label>
+       <label class="item item-text-wrap">
+           <span>说明：{{vm.memo}}</span>
+       </label>
+       <div ng-if="vm.countAuditLeave == 1">
+           <div class="item item-divider" style="background-color: #11c1f3">
+               <div style="text-align: center;color: white;"><b>调整前的加班申请</b></div>
+           </div>
+           <label class="item item-text-wrap">
+               <span>加班人：{{vm.staffOtModifyName}}</span>
+           </label>
+           <label class="item item-text-wrap">
+               <span>加班录入人：{{vm.registerModify}}</span>
+           </label>
+           <label class="item item-text-wrap">
+               <span>加班时长：{{vm.otTimeModify}} {{vm.unit}}</span>
+           </label>
+           <label class="item item-text-wrap">
+               <span>加班时间：{{vm.otPeriodModify}}</span>
+           </label>
+           <label class="item item-text-wrap">
+               <span>说明：{{vm.otApplyMemoModify}}</span>
+           </label>
+           <div class="item item-divider" style="background-color: #11c1f3">
+               <div style="text-align: center;color: white;"><b>调整前的加班审核</b></div>
+           </div>
+           <label class="item item-text-wrap">
+               <span>审核人：{{vm.auditName}}</span>
+           </label>
+           <label class="item item-text-wrap">
+               <span>审核结果：{{vm.auditResult}}</span>
+           </label>
+           <label class="item item-text-wrap">
+               <span>审核时间：{{vm.auditDate}}</span>
+           </label>
+           <label class="item item-text-wrap">
+               <span>审核意见：{{vm.auditModifyOpinion}}</span>
+           </label>
+       </div>
+   </ion-list>
+
+   </ion-content>
+
+</ion-view>
