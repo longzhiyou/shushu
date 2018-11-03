@@ -3,11 +3,11 @@
  * Created by longzhiyou on 11/03/16.
  */
 var MobilePublic = MobilePublic || {};
-MobilePublic.Domains = ["demo.jkwatch99.com"];
+MobilePublic.Domains = ["47.105.164.246"];
 
 
- MobilePublic.Url = "http://demo.jkwatch99.com/inst/mobile/care/";
- MobilePublic.Api = "http://demo.jkwatch99.com/inst/api/";
+ MobilePublic.Url = "http://localhost:88/mobile/";
+ MobilePublic.Api = "http://47.105.164.246/api/";
 
 //默认是远程获取
 MobilePublic.getServerUrl = function (shortUrl,isLocal) {

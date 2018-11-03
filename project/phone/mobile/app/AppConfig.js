@@ -18,95 +18,39 @@
                         ,toastrConfig
                         ,ionicDatePickerProvider
                         ,w5cValidatorProvider
+                        ,jwtOptionsProvider
                         ,$httpProvider
-                        ,$sceDelegateProvider      ) {
-        $sceDelegateProvider.resourceUrlWhitelist([
-            // Allow same origin resource loads.
-            'self',
-            'http://192.168.1.12/api/*',
-            'http://192.168.1.98:8080/api/*',
-            'http://demo.jkwatch99.com/api/*',
-            'http://http://community.jkwatch99.com/api/*',
-            // Allow loading from our assets domain.  Notice the difference between * and **.
-            'http://*/**']);
-
-        $httpProvider.interceptors.push(['$injector', '$q', function ($injector, $q) {
+                        ,JSONFormatterConfigProvider
+                        ) {
 
 
-            return {
-                response: function(res){
 
-                    var deferred=$q.defer();
-                    var promise=deferred.promise;
-
-                    if (res.data.returnCode && res.data.returnCode != "0") {
-
-                        var $state = $injector.get("$state");
-                        var $ionicHistory = $injector.get("$ionicHistory");
-                        var auth = $injector.get("auth");
-                        var toastr = $injector.get("toastr");
-
-                        if (res.data.returnCode=="8") {
-                            toastr.error("相同用户已经登录");
-                            $ionicHistory.clearCache();
-                            auth.clear();
-                            $state.go('login');
-                            return;
-                        }
-                        if (res.data.message){
-
-                            toastr.error(res.data.message);
-                        }else {
-                            toastr.error("系统错误");
-                        }
-                        return deferred.reject();
-                        // console.info("returnCode");
-                    }
-                    return res;
+        // Please note we're annotating the function so that the $injector works when the file is minified
+        jwtOptionsProvider.config({
+            authPrefix: '',
+            tokenGetter: function() {
+                var token = localStorage.getItem('token');
+                if (!token) {
+                    token = sessionStorage.getItem('token');
                 }
+                return token;
             }
-        }]);
+            ,unauthenticatedRedirector: ['$state', function($state) {
+                $state.go('login');
+            }]
+            ,whiteListedDomains: MobilePublic.Domains
+        });
+        $httpProvider.interceptors.push('jwtInterceptor');
+
         $urlRouterProvider.otherwise( function($injector, $location) {
             var $state = $injector.get("$state");
             $state.go("app.home");
         });
 
-        angular.extend(toastrConfig, {
-            positionClass: 'toast-bottom-center'
 
-        });
-
-        //$ionicConfigProvider.views.forwardCache(true);
-        //$ionicConfigProvider.views.maxCache(0);
-
-        //$urlRouterProvider.otherwise('/app/home');       // Return to the login ordering screen
         //调试状态禁止缓存
         //$ionicConfigProvider.views.maxCache(0);
         RestangularProvider.setBaseUrl(MobilePublic.Api);
-        RestangularProvider.addFullRequestInterceptor(function(element, operation, route, url, headers, params, httpConfig) {
-
-            // console.info("element:"+element.name);
-            // console.info("params:"+params);
-            if (route != "mobileLogin") {
-                var account = JSON.parse(localStorage["account"] || '{}');
-
-                element.userUuid = account.userUuid;
-                element.groupId = account.groupId;
-                element.orgId = account.orgId;
-
-                element.divceType = "1";
-                element.version = "1";
-                element.ipAddress = "192.168.1.109";
-                element.processId = "1";
-            }
-
-            return {
-                element: element,
-                params: params,
-                headers: headers,
-                httpConfig: httpConfig
-            };
-        });
 
 
         var datePickerObj = {
@@ -128,7 +72,10 @@
         };
         ionicDatePickerProvider.configDatePicker(datePickerObj);
 
+        angular.extend(toastrConfig, {
+            positionClass: 'toast-bottom-center'
 
+        });
         var showError = function(elem, errorMessages){
             var $elem = angular.element(elem),
             $group = getParentGroup($elem);
@@ -166,7 +113,7 @@
         };
 
         var getParentGroup = function (elem) {
-            if (elem[0].tagName === "FORM" || elem[0].nodeType == 11) {
+            if (elem[0].tagName === "FORM" || elem[0].nodeType === 11) {
                 return null;
             }
             if (elem && elem.hasClass("item-input")) {
@@ -180,10 +127,8 @@
             if (!object) {
                 return true;
             }
-            if (object instanceof Array && object.length === 0) {
-                return true;
-            }
-            return false;
+            return object instanceof Array && object.length === 0;
+
         };
 
 
@@ -205,6 +150,13 @@
                 pattern: "用户名必须输入字母、数字、下划线,以字母开头",
                 w5cuniquecheck: "输入用户名已经存在，请重新输入"
             },
+            telephone:{
+                required: "不能为空",
+                pattern:"格式不正确"
+            },
+            verificationCode: {
+                required: "不能为空"
+            },
 
             password: {
                 required: "密码不能为空",
@@ -218,11 +170,7 @@
             number: {
                 required: "数字不能为空"
             },
-            personName: {
-                required: "姓名不能为空",
-                minlength: "姓名长度不能小于{minlength}",
-                maxlength: "姓名长度不能大于{maxlength}"
-            },
+
             idNumber: {
                 pattern: "身份证格式不正确",
                 required: "身份证号不能为空"
@@ -329,28 +277,6 @@
                     }
                 })
 
-            .state('app.nurseStudy',
-                {
-                    url: '/nurseStudy',
-                    views: {
-                        'tab-nurse': {
-                            templateUrl: MobilePublic.getServerUrl('app/nurseStudy/NurseStudy.html'),
-                            controller: 'nurseStudy',
-                            controllerAs: 'vm',
-                            resolve: {
-                                loadPlugin: function ($ocLazyLoad) {
-                                    return $ocLazyLoad.load([
-                                        {
-                                            files: [
-                                                MobilePublic.getServerUrl('app/nurseStudy/NurseStudyController.js')
-                                            ]
-                                        }
-                                    ]);
-                                }
-                            }
-                        }
-                    }
-                })
         ;
 
 

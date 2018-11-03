@@ -16,6 +16,8 @@
         ,'oc.lazyLoad'
         ,'w5c.validator'
         ,"highcharts-ng"
+        ,'angular-jwt'
+        ,'jsonFormatter'
     ]);
 
 })(this.angular);

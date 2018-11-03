@@ -30,21 +30,11 @@
         //删除图片
         function logout() {
             var account = auth.getObject("account");
-            var logoutData={
-                "userId": account.staffId,
-                "systemTime":""
-            };
 
-            var proc = Restangular.all('mobileLogout');
-            proc.post(logoutData).then(function(ret) {
-                $ionicHistory.clearCache();
-                auth.clear();
-                $state.go('login');
-            }, function() {
-                $ionicHistory.clearCache();
-                auth.clear();
-                $state.go('login');
-            });
+            $ionicHistory.clearCache();
+            auth.clear();
+            $state.go('login');
+
         }
         vm.clearHistory = function(){
             $ionicHistory.clearCache();

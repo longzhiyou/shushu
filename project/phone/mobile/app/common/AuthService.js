@@ -45,20 +45,17 @@
         function init() {
 
             var account = get("account");
-            auth.authenticated = account ? true : false;
+            auth.authenticated = !!account;
         }
 
         function authenticate(credentials, callback) {
 
-            var login = Restangular.all('mobileLogin');
+            var login = Restangular.all('/auth/login');
             login.post(credentials).then(function(account) {
                 setObject("account",account);
-                if (account.userUuid) {
-                    localStorage.setItem("token",account.userUuid);
-                    auth.authenticated = true;
-                }else {
-                    auth.authenticated = false;
-                }
+                sessionStorage.setItem("token",account.token);
+                localStorage.setItem("token",account.token);
+                auth.authenticated = true;
 
                 callback && callback(auth.authenticated);
             }, function() {
