@@ -1,16 +1,20 @@
 <ion-view class="bar-positive" view-title="主页">
-    <ion-nav-buttons side="right">
-        <button
-                 class="button button-balanced">
-          分析
-        </button>
-    </ion-nav-buttons>
    <ion-content>
-      <h4>内容</h4>
+
+
+       <div class="list">
+           <label class="item item-input">
+               <input type="text" ng-model="vm.strBaZi" placeholder="输入八字">
+           </label>
+
+       </div>
+       <button  class="button button-block button-balanced" ng-click="vm.analyze()" >分析</button>
+
+
 
 
        <div class="row">
-           <json-formatter json="vm.sizhuAnalyze" open="1"></json-formatter>
+           <json-formatter json="vm.gufa" open="1"></json-formatter>
        </div>
 
    </ion-content>

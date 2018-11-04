@@ -16,7 +16,7 @@
                         ,$ionicConfigProvider
                         ,RestangularProvider
                         ,toastrConfig
-                        ,ionicDatePickerProvider
+                        // ,ionicDatePickerProvider
                         ,w5cValidatorProvider
                         ,jwtOptionsProvider
                         ,$httpProvider
@@ -29,7 +29,9 @@
         jwtOptionsProvider.config({
             authPrefix: '',
             tokenGetter: function() {
+                localStorage.setItem("token","eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImNyZWF0ZWQiOjE1NDEzMDI5NDk5NzIsImV4cCI6MTU3MjgzODk0OX0.dtSXlwP6DiqCUpxYz1RNL5vfWl4DRXyAyYuWCST3lzJSNv2BNK4JupEh5qhNzI8S72JjHhAsj7U5WNEx4Jt9AQ");
                 var token = localStorage.getItem('token');
+
                 if (!token) {
                     token = sessionStorage.getItem('token');
                 }
@@ -70,7 +72,7 @@
             closeOnSelect: false,
             disableWeekdays: []
         };
-        ionicDatePickerProvider.configDatePicker(datePickerObj);
+        // ionicDatePickerProvider.configDatePicker(datePickerObj);
 
         angular.extend(toastrConfig, {
             positionClass: 'toast-bottom-center'

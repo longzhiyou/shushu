@@ -28,7 +28,7 @@
              		// console.log("Login succeeded");
 
              		// vm.error = false;
-                    baseDataService.init();
+                    // baseDataService.init();
                     $state.go('app.home');
              	} else {
              		// console.log("Login failed");

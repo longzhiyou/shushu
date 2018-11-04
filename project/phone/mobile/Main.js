@@ -6,7 +6,7 @@ var MobilePublic = MobilePublic || {};
 MobilePublic.Domains = ["47.105.164.246"];
 
 
- MobilePublic.Url = "http://localhost:88/mobile/";
+ MobilePublic.Url = "http://localhost:8181/mobile/";
  MobilePublic.Api = "http://47.105.164.246/api/";
 
 //默认是远程获取
