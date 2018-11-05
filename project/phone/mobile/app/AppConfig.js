@@ -16,7 +16,7 @@
                         ,$ionicConfigProvider
                         ,RestangularProvider
                         ,toastrConfig
-                        // ,ionicDatePickerProvider
+                        ,ionicDatePickerProvider
                         ,w5cValidatorProvider
                         ,jwtOptionsProvider
                         ,$httpProvider
