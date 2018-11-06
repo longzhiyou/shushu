@@ -11,7 +11,7 @@
         ,'ngCordova'
         , 'toastr'
         , 'ionicValidateWithToast'
-        // ,'ionic-datepicker'
+        ,'ionic-datepicker'
         ,'restangular'
         ,'oc.lazyLoad'
         ,'w5c.validator'
