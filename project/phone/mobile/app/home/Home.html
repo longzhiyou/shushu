@@ -1,12 +1,27 @@
 <ion-view class="bar-positive" view-title="主页">
+
+
+
    <ion-content scroll="false">
 
-       <div class="list item-input-inset">
+       <div class="bar bar-header item-input-inset">
            <label class="item-input-wrapper">
+               <i class="icon ion-ios-search placeholder-icon"></i>
                <input type="text" ng-model="vm.strBaZi" placeholder="输入八字">
            </label>
-           <button  class="button button-small button-balanced" ng-click="vm.analyze()" >分析</button>
+           <button class="button button-balanced" ng-click="vm.analyze()" >
+               分析
+           </button>
        </div>
+
+       <!--<div class="list item-input-inset">-->
+           <!--<label class="item-input-wrapper">-->
+               <!--<input type="text" ng-model="vm.strBaZi" placeholder="输入八字">-->
+           <!--</label>-->
+           <!--<button  class="button button-small button-balanced" ng-click="vm.analyze()" >分析</button>-->
+       <!--</div>-->
+
+
 
        <div class="row">
            <div class="col">
