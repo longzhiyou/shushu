@@ -2724,17 +2724,20 @@
                 "象": {
                     "纳音":nayinquxiang[vm.nianzhu],
                 },
+
+
+            };
+            vm.analyzeResult["今法"] = {
                 "调侯用神": tiaohou[vm.rigan + vm.yuezhi],
-
+                "日柱":{
+                    "御定子平": {"日干":yudingzipingrigan[vm.rigan],"日柱":yudingzipingrizhu[vm.rizhu]},
+                    "管见子平日干": guanjianzipingrigan[vm.rigan],
+                    "十干喜忌总纲": shiganxijizonggang[vm.rigan],
+                    "十干体相": shigantixiang[vm.rigan],
+                    "滴天髓十干":ditiansuirigan[vm.rigan],
+                },
             };
 
-            vm.analyzeResult["日柱"] = {
-                "御定子平": {"日干":yudingzipingrigan[vm.rigan],"日柱":yudingzipingrizhu[vm.rizhu]},
-                "管见子平日干": guanjianzipingrigan[vm.rigan],
-                "十干喜忌总纲": shiganxijizonggang[vm.rigan],
-                "十干体相": shigantixiang[vm.rigan],
-                "滴天髓十干":ditiansuirigan[vm.rigan],
-            };
 
             vm.analyzeResult["大运"] = {
                 "虚一待用": ["发于沉滞之中，有非常之庆，起于贫贱之间，有不次之用，当在岁运相遇也。 ", "谓金、木、水、火而无土", "或乙、辛、丁而无癸", "或甲、丙、庚而无壬", "或辰、戌、丑而无未", "或卯、酉、午而无子", "或寅、申、亥而无巳", "有天乙而无天官", "有官印而无食神", "有甲戊而无庚，有丙丁而虚乙", "至于六合、四库、三合，交互见贵，见禄之类，待其岁运，补其不足，则气数备。"],
