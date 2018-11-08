@@ -2686,7 +2686,7 @@
         function analyze() {
             pasebazi(vm.strBaZi);
 
-            vm.analyzeResult = {
+            vm.analyzeResult["古法"] ={
                 "五虎遁": wuhudun[vm.niangan],
                 "太岁十二杀":jiaqianshensha(vm.nianzhi),
                 "四贵位":["四贵","四平","四忌"],

@@ -55,6 +55,8 @@
         RestangularProvider.setBaseUrl(MobilePublic.Api);
 
 
+        // $ionicConfigProvider.scrolling.jsScrolling(true);
+
         var datePickerObj = {
             inputDate: new Date(),
             titleLabel: '选择一个日期',

@@ -7,3 +7,15 @@
  white-space: normal !important;
  /*word-wrap: break-word;*/
 }
+
+.fixed-top {
+    background: #fff;
+    transition-duration: 0.4s;
+    border-bottom: 1px solid #e7eaec !important;
+    z-index: 2030;
+    position: fixed;
+    right: 0;
+    left: 0;
+    padding: 0;
+    top:0
+}
