@@ -3616,14 +3616,7 @@
 
         function analyze() {
             pasebazi(vm.strBaZi);
-            vm.analyzeResult["通例"] ={
-                "五虎遁": wuhudun[vm.niangan],
-                "长生诀": {
-                    "年天干五行": getwuxingchangshengje(getganwuxing(vm.niangan)),
-                    "年纳音": getnayinchangshengjue(getnayinwuxing(vm.nianzhu)),
-                },
-                "太岁十二杀":jiaqianshensha(vm.nianzhi),
-            };
+
             vm.analyzeResult["古法"] ={
 
                 "四贵位":[getwuxingchangshengje(getganwuxing(vm.niangan)),
@@ -3871,7 +3864,14 @@
 
             };
 
-
+            vm.analyzeResult["通例"] ={
+                "五虎遁": wuhudun[vm.niangan],
+                "长生诀": {
+                    "年天干五行": getwuxingchangshengje(getganwuxing(vm.niangan)),
+                    "年纳音": getnayinchangshengjue(getnayinwuxing(vm.nianzhu)),
+                },
+                "太岁十二杀":jiaqianshensha(vm.nianzhi),
+            };
             vm.analyzeResult["特例"]=getTeLi();
 
         }
