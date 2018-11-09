@@ -3618,14 +3618,14 @@
             vm.analyzeResult["通例"] ={
                 "五虎遁": wuhudun[vm.niangan],
                 "长生诀": {
-                    "年天干五行": getwuxingchangshengje(getganwuxing(vm.niangan)).toString(),
+                    "年天干五行": getwuxingchangshengje(getganwuxing(vm.niangan)),
                     "年纳音": getnayinchangshengjue(getnayinwuxing(vm.nianzhu)),
                 },
                 "太岁十二杀":jiaqianshensha(vm.nianzhi),
             };
             vm.analyzeResult["古法"] ={
 
-                "四贵位":[siguiwei[getganwuxing(vm.niangan)],
+                "四贵位":[getwuxingchangshengje(getganwuxing(vm.niangan)),
                     "凡看命，取【胎生旺库】为四贵，【死绝病败】为四忌，余为四平。",
                     "以【太岁干为主，配于五行】，取四贵、四平、四忌之位而分贵贱，遇贵多则贵，遇贱多则贱。",
                     "四贵主贵，亦有上下。生旺库为上，胎为次",
