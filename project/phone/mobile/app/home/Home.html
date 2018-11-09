@@ -1,7 +1,7 @@
-<ion-view class="bar-positive" view-title="主页">
+<ion-view class="bar-positive" >
 
 
-
+    <!--scroll="false"-->
    <ion-content scroll="false">
 
        <div class="bar bar-header item-input-inset">
@@ -14,37 +14,43 @@
            </button>
        </div>
 
-       <!--<div class="list item-input-inset">-->
-           <!--<label class="item-input-wrapper">-->
-               <!--<input type="text" ng-model="vm.strBaZi" placeholder="输入八字">-->
-           <!--</label>-->
-           <!--<button  class="button button-small button-balanced" ng-click="vm.analyze()" >分析</button>-->
-       <!--</div>-->
-
 
 
        <div class="row">
-           <div class="col">
-               <p> <span>{{vm.nianzhu}}</span></p>
+           <div class="col" >
+               <a ng-click="vm.openPopover(vm.nianzhu)">
+                   <p> <span>{{vm.nianzhu}}</span></p>
+               </a>
+
+
                <p><span  class="calm">{{vm.niannayin}}</span></p>
            </div>
            <div class="col">
-               <p> <span class="text-success">{{vm.yuezhu}}</span></p>
+               <a ng-click="vm.openPopover(vm.yuezhu)">
+                   <p> <span >{{vm.yuezhu}}</span></p>
+               </a>
+
                <p><span class="calm">{{vm.yuenayin}}</span></p>
            </div>
            <div class="col">
-               <p> <span class="text-success">{{vm.rizhu}}</span></p>
+               <a ng-click="vm.openPopover(vm.rizhu)">
+                   <p> <span>{{vm.rizhu}}</span></p>
+               </a>
+
                <p><span class="calm">{{vm.rinayin}}</span></p>
            </div>
            <div class="col">
-               <p> <span class="text-success">{{vm.shizhu}}</span></p>
+               <a ng-click="vm.openPopover(vm.shizhu)">
+                   <p> <span>{{vm.shizhu}}</span></p>
+               </a>
+
                <p><span class="calm">{{vm.shinayin}}</span></p>
            </div>
        </div>
 
 
        <ion-scroll style="height: 100%;">
-           <div style="white-space:normal;">
+           <div style="white-space:normal;min-height: 100000px">
                <json-formatter json="vm.analyzeResult" open="1"></json-formatter>
            </div>
        </ion-scroll>

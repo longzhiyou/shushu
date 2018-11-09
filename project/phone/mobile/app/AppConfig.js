@@ -77,7 +77,8 @@
         // ionicDatePickerProvider.configDatePicker(datePickerObj);
 
         angular.extend(toastrConfig, {
-            positionClass: 'toast-bottom-center'
+            // positionClass: 'toast-bottom-center'
+            positionClass: 'toast-top-full-width'
 
         });
         var showError = function(elem, errorMessages){
