@@ -13,34 +13,34 @@
     /* @ngInject */
     function HomeConfig($stateProvider) {
 
-        $stateProvider
-            //费用相关
-            .state('app.luming',
-                {
-                    url: '/luming',
-                    views: {
-                        'tab-home': {
-                            templateUrl: MobilePublic.getServerUrl('app/luming/LuMing.html'),
-                            controller: 'luMingController',
-                            controllerAs: 'vm',
-                            resolve: {
-                                loadPlugin: function ($ocLazyLoad) {
-                                    return $ocLazyLoad.load([
-                                        {
-                                            files: [
-                                                MobilePublic.getServerUrl('app/luming/LuMingController.js')
-                                            ]
-                                        }
-                                    ]);
-                                }
-                            }
-
-                        }
-                    }
-
-                })
-
-        ;
+        // $stateProvider
+        //     //费用相关
+        //     .state('app.luming',
+        //         {
+        //             url: '/luming',
+        //             views: {
+        //                 'tab-home': {
+        //                     templateUrl: MobilePublic.getServerUrl('app/luming/LuMing.html'),
+        //                     controller: 'luMingController',
+        //                     controllerAs: 'vm',
+        //                     resolve: {
+        //                         loadPlugin: function ($ocLazyLoad) {
+        //                             return $ocLazyLoad.load([
+        //                                 {
+        //                                     files: [
+        //                                         MobilePublic.getServerUrl('app/luming/LuMingController.js')
+        //                                     ]
+        //                                 }
+        //                             ]);
+        //                         }
+        //                     }
+        //
+        //                 }
+        //             }
+        //
+        //         })
+        //
+        // ;
 
   
     }
