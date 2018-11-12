@@ -281,6 +281,31 @@
                         }
                     }
                 })
+            .state('app.information',
+                {
+                    url: '/information',
+                    views: {
+                        'tab-information': {
+                            templateUrl: MobilePublic.getServerUrl('app/information/Information.html'),
+                            controller: 'informationController',
+                            controllerAs: 'vm',
+                            resolve: {
+                                loadPlugin: function ($ocLazyLoad) {
+                                    return $ocLazyLoad.load([
+                                        {
+                                            files: [
+                                                MobilePublic.getServerUrl('app/information/InformationConfig.js'),
+                                                MobilePublic.getServerUrl('app/information/InformationController.js')
+                                            ]
+                                        }
+                                    ]);
+                                }
+                            }
+                        }
+                    }
+                })
+
+
 
         ;
 
