@@ -4199,7 +4199,7 @@
             vm.analyzeResult["象法"] ={
                 "年柱":{
                     "吉凶":jiazijixiong[vm.nianzhu],
-                    "纳音性质":jiazinayinxingzhi[vm.nianzhu],
+                    "性质":jiazinayinxingzhi[vm.nianzhu],
                     "总论":nayinquxiang[vm.nianzhu],
 
                 },
@@ -4210,6 +4210,7 @@
                     "十干体相": shigantixiang[vm.rigan],
                     "滴天髓十干":ditiansuirigan[vm.rigan],
                 },
+                "三命通日月": "",
             };
             vm.analyzeResult["古法"] ={
 
@@ -4376,6 +4377,7 @@
                     "拦江网": lanjiangwang[vm.rigan + vm.yuezhi],
                     "定格局诀": dinggeju[vm.rigan + vm.yuezhi],
                     "子平真诠": zipingzhenquan[dingge[vm.rigan + vm.yuezhi]],
+                    "三命通会格局": "",
                     "管见子平": guanjianziping[dingge[vm.rigan + vm.yuezhi]],
                 },
 
