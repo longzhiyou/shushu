@@ -4395,6 +4395,34 @@
         function analyze() {
             pasebazi(vm.strBaZi);
 
+            vm.analyzeResult["重点"]={
+                "冲":{
+                    "关注":[
+                        "纳音",
+                        "神煞",
+                    ],
+                    "年月":[
+                        "年柱为原点",
+                    ],
+                    "年日":[
+                        "年柱为原点",
+                    ],
+                    "年时":[
+                        "年柱为原点",
+                    ],
+                    "月日":[
+                        "日为原点",
+                    ],
+                    "月时":[
+                        "",
+                    ],
+                    "日时":[
+                        "日为原点",
+                    ],
+                },
+                "特例":getTeLi(),
+            };
+
             vm.analyzeResult["象法"] ={
                 "年柱":{
                     "吉凶":jiazijixiong[vm.nianzhu],
@@ -4672,7 +4700,7 @@
                 },
                 "太岁十二杀":jiaqianshensha(vm.nianzhi),
             };
-            vm.analyzeResult["特例"]=getTeLi();
+
 
         }
 
