@@ -4695,6 +4695,18 @@
 
             };
 
+            vm.analyzeResult["流年"] = {
+                "干合晦气": "",
+                "撞命杀": "流年与日柱或时同，日重",
+                "截杀入命": "寅午戌流年，年支是亥",
+                "丧门吊客入命": "子命，流年遇寅，虚",
+            };
+
+
+            vm.analyzeResult["小运"] = {
+
+            };
+
             vm.analyzeResult["通例"] ={
                 "五虎遁": wuhudun[vm.niangan],
                 "长生诀": {
@@ -4702,6 +4714,7 @@
                     "年纳音": getnayinchangshengjue(getnayinwuxing(vm.nianzhu)),
                 },
                 "太岁十二杀":jiaqianshensha(vm.nianzhi),
+                "丧门吊客":"对冲地支的另外三合,如子命，冲午，则寅戌是",
             };
 
 

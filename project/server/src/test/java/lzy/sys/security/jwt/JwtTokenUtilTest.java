@@ -23,7 +23,7 @@ public class JwtTokenUtilTest {
     public void generateToken(){
 
         JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
-        String tokenByUsername = jwtTokenUtil.generateTokenByUsername("lzy");
+        String tokenByUsername = jwtTokenUtil.generateTokenByUsername("admin");
         logger.info("tokenByUsername:"+tokenByUsername);
 
     }
