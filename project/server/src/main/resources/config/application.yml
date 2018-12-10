@@ -1,11 +1,11 @@
 
 server:
-  port: ${port:3002}
+  port: ${port:6002}
 
 management:
   context-path: /admin
   security:
-    enabled: false
+    enabled: true
 
 
 #mysql

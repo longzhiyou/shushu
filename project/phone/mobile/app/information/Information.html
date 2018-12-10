@@ -3,9 +3,15 @@
    <ion-content >
 
        <ion-list>
-           <ion-item ng-repeat="item in vm.items">
-               {{item}}
-           </ion-item>
+           <!--<ion-item ng-repeat="item in vm.items">-->
+               <!--<p ng-bind-html="item | trustHtml"></p>-->
+           <!--</ion-item>-->
+
+           <div class="item item-body" ng-repeat="item in vm.items">
+
+               <p ng-bind-html="item | trustHtml"></p>
+
+           </div>
 
        </ion-list>
 
