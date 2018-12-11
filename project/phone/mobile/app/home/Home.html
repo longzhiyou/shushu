@@ -5,10 +5,16 @@
    <ion-content scroll="false">
 
        <div class="bar bar-header item-input-inset">
+           <select ng-model="vm.genderSelected">
+               <option value="男" selected="selected">男</option>
+               <option value="女">女</option>
+           </select>
            <label class="item-input-wrapper">
                <i class="icon ion-ios-search placeholder-icon"></i>
                <input type="text" ng-model="vm.strBaZi" placeholder="输入八字">
+
            </label>
+
            <button class="button button-balanced" ng-click="vm.analyze()" >
                分析
            </button>
