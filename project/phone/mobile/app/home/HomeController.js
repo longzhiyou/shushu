@@ -4401,6 +4401,7 @@
             pasebazi(vm.strBaZi);
 
             vm.analyzeResult["重点"]={
+                "特例":getTeLi(),
                 "冲":{
                     "关注":[
                         "纳音",
@@ -4425,7 +4426,7 @@
                         "日为原点",
                     ],
                 },
-                "特例":getTeLi(),
+
             };
 
             vm.analyzeResult["象法"] ={
