@@ -4387,87 +4387,223 @@
 
 
 
+        /**
+         *  十二支分配地理
+
+         * [2018-12-28 add by longzhiyou]
+         */
+        var shierzhidili = {
+
+            "子": "子为墨池。子在正北方，属水，色象墨，故有墨池之象。凡命逢子年生者，时喜见癸亥，谓之水归大海，又谓之双鱼游墨，必为文章士矣。",
+            "午": "午为烽堠。午正位于南，属火、土，其色赤黄，名其曰烽堠者，此也；又午为马，烽堠乃戎马兵火之处所也。午生人时利见辰，真龙出则凡马空矣，谓之马化龙驹。",
+            "卯": "卯为琼林。卯系乙木，居位正东，于时为仲春，万物生焉，色若琅之青，故曰琼林。卯年遇己未时者，是为兔入月宫之象，主大贵。",
+            "酉": "酉为寺钟。酉属金，位近戍亥，戍亥者，天门也，钟，金属也，寺钟敲则响彻天门；又酉居正西，寺则西方佛界也。酉见寅吉，谓之钟鸣谷应。",
+
+            "寅": "寅为广谷。寅乃艮方，艮为山，戊土长生于是而广谷之义著矣。然寅宫有虎，寅生人而时戊辰者，谓之虎啸而谷风生，威震万里。",
+            "申": "申为名都。坤为地，其体无疆，非名都不足以喻之。申，坤也，都者；帝王所居；申宫壬水生，又与艮山对，是水绕山环也。凡命爱申年亥时，乃地天交泰。",
+            "巳": "巳为大驿。大驿者，人烟凑集，道路通达之地。巳中有丙火戊土，是其象也，又巳前有午马，故曰大驿。巳生喜得辰时， 蛇化轻龙，于格为千里龙驹。",
+            "亥": "亥为悬河。天河之水，奔流不回，故曰悬河，亥即天门，又属水，非悬河之象乎？亥年建生，日时见寅、辰二字，是乃水拱雷门。",
+
+            "辰": "辰为草泽。夫泽，水所钟也，辰在东方之次，为水库，故为草为泽；辰逢壬戍、癸亥即龙归大海格。",
+            "戌": "戌为烧原。戌月在九秋，草木尽萎，田家焚烧而耕，又戌属土，是以称名烧原，故戌与辰地皆贵人所不临也。戌生逢卯， 号曰春入烧痕。",
+            "丑": "丑为柳岸。丑中有水有金，岸者，土也，所以止水也，故谓柳岸。丑人时见己未，乃月照柳梢，极为上格。",
+            "未": "未为花园。花园属之未，不属之卯，何也？卯乃木旺，自成林麓；未乃木库，如人筑墙垣以护百花也，以百花言未中有杂气耳；未年人双飞格，最妙，如辛未见戊戍，两干不杂是也。",
+        };
 
         function getTeLi(){
-            var teli ={};
+            var mapResult ={};
 
-            //填写内容
-            // if (nianZhu=="甲子") {
-            //     ruleValue="癸亥"
-            //     matchStr ="以甲子见癸亥，是不用火逢空."
-            //     if (shiZhu==ruleValue) {
-            //         mapResult["【珠藏渊海格】时柱"]=matchStr
-            //     }
-            //     if (riZhu==ruleValue) {
-            //         mapResult["【珠藏渊海格】日柱"]=matchStr
-            //     }
-            //
-            //     ruleValue="己未"
-            //     matchStr ="是欲合化互贵"
-            //     if (shiZhu==ruleValue) {
-            //         mapResult["【蚌珠照月格】时柱"]=matchStr
-            //     }
-            //     if (riZhu==ruleValue) {
-            //         mapResult["【蚌珠照月格】日柱"]=matchStr
-            //     }
-            //
-            //     if (listMingZhu.contains("戊寅")&&listMingZhu.contains("庚午")) {
-            //
-            //         mapResult["甲子见戊寅、庚午"]="是土生金。又天干逢三奇，此等格局，无有不贵。"
-            //     }
-            // }
-            //
-            // if (nianZhu=="乙丑") {
-            //     if (listMingZhu.contains("丙寅")&&listMingZhu.contains("丁卯")) {
-            //
-            //         mapResult["乙丑见丙寅、丁卯"]="是火制金。又天干逢三奇，此等格局，无有不贵。"
-            //     }
-            // }
-            //
-            // if (nianZhu=="壬寅") {
-            //     ruleValue="戊寅"
-            //     matchStr ="金命而遇戊寅"
-            //     if (shiZhu==ruleValue) {
-            //         mapResult["【昆山片玉格】时柱"]=matchStr
-            //     }
-            //     if (riZhu==ruleValue) {
-            //         mapResult["【昆山片玉格】日柱"]=matchStr
-            //     }
-            // }
-            // if (nianZhu=="癸卯") {
-            //     ruleValue="己卯"
-            //     matchStr ="癸卯而遇己卯，玉兔东升格"
-            //     if (shiZhu==ruleValue) {
-            //         mapResult["【玉兔东升格】时柱"]=matchStr
-            //     }
-            //     if (riZhu==ruleValue) {
-            //         mapResult["【玉兔东升格】日柱"]=matchStr
-            //     }
-            // }
-            //
-            // if (["庚辰","辛巳"].contains(nianZhu)) {
-            //     matchStr ="庚辰辛巳白蜡金 妙选有哨风猛虎格，以此金日时遇辛巳或乙巳是也。"
-            //     if (rishizhu.contains("辛巳")||rishizhu.contains("乙巳")) {
-            //         mapResult["【哨风猛虎格】"]=matchStr
-            //     }
-            //
-            //
-            // }
+           var nianZhu = vm.nianzhu;
+           var yueZhu = vm.yuezhu;
+           var riZhu = vm.rizhu;
+           var shiZhu = vm.shizhu;
+           var listMingZhu = [vm.nianzhu,vm.yuezhu,vm.rizhu,vm.shizhu];
+            var rishizhu = [vm.rizhu,vm.shizhu];
+            var rishizhi = [vm.rizhi,vm.shizhi];
+           var listMingZhi = [vm.nianzhi,vm.yuezhi,vm.rizhi,vm.shizhi];
+            var ruleValue="";
+            var matchStr ="";
+
+
+            //十二支分配地理
+            if (vm.nianzhi=="子") {
+                if (vm.shizhu==="癸亥") {
+                    mapResult["【双鱼游墨】"]="凡命逢子年生者，时喜见癸亥，谓之水归大海，又谓之双鱼游墨，必为文章士矣。子为墨池。子在正北方，属水，色象墨，故有墨池之象。";
+                }
+
+            }else if (vm.nianzhi=="午") {
+                if (vm.shizhi==="辰") {
+                    mapResult["【马化龙驹】"]="午生人时利见辰，真龙出则凡马空矣，谓之马化龙驹。午为烽堠。午正位于南，属火、土，其色赤黄，名其曰烽堠者，此也；又午为马，烽堠乃戎马兵火之处所也。";
+                }
+            }else if (vm.nianzhi=="卯") {
+                if (vm.shizhu==="己未") {
+                    mapResult["【兔入月宫】"]="卯年遇己未时者，是为兔入月宫之象，主大贵。卯为琼林。卯系乙木，居位正东，于时为仲春，万物生焉，色若琅之青，故曰琼林。"
+                }
+            }else if (vm.nianzhi=="酉") {
+                if (vm.shizhi==="寅") {
+                    mapResult["【钟鸣谷应】"]="酉见寅吉，谓之钟鸣谷应。酉为寺钟。酉属金，位近戍亥，戍亥者，天门也，钟，金属也，寺钟敲则响彻天门；又酉居正西，寺则西方佛界也。";
+                }
+            }
+
+            else if (vm.nianzhi=="寅") {
+                if (vm.shizhu==="戊辰") {
+                    mapResult["【虎啸而谷风生】"]="然寅宫有虎，寅生人而时戊辰者，谓之虎啸而谷风生，威震万里。寅为广谷。寅乃艮方，艮为山，戊土长生于是而广谷之义著矣。";
+                }
+            }else if (vm.nianzhi=="申") {
+                if (vm.shizhi==="亥") {
+                    mapResult["【地天交泰】"]="凡命爱申年亥时，乃地天交泰。申为名都。坤为地，其体无疆，非名都不足以喻之。申，坤也，都者；帝王所居；申宫壬水生，又与艮山对，是水绕山环也。";
+                }
+            }else if (vm.nianzhi=="巳") {
+                if (vm.shizhi==="辰") {
+                    mapResult["【千里龙驹】"]="巳生喜得辰时，蛇化轻龙，于格为千里龙驹。巳为大驿。大驿者，人烟凑集，道路通达之地。巳中有丙火戊土，是其象也，又巳前有午马，故曰大驿。";
+                }
+            }else if (vm.nianzhi=="亥") {
+                if ( (vm.rizhi==="寅"&&vm.shizhi==="辰") ||vm.rizhi==="辰"&&vm.shizhi==="寅") {
+                    mapResult["【水拱雷门】"]="亥年建生，日时见寅、辰二字，是乃水拱雷门。亥为悬河。天河之水，奔流不回，故曰悬河，亥即天门，又属水，非悬河之象乎？";
+                }
+            }
+
+            else if (vm.nianzhi=="辰") {
+                if (vm.shizhu==="壬戌"||vm.shizhu==="癸亥") {
+                    mapResult["【龙归大海格】"]="辰逢壬戍、癸亥即龙归大海格。辰为草泽。夫泽，水所钟也，辰在东方之次，为水库，故为草为泽；";
+                }
+            }else if (vm.nianzhi=="戌") {
+                if (vm.shizhi==="卯") {
+                    mapResult["【春入烧痕】"]="戌生逢卯， 号曰春入烧痕。戌为烧原。戌月在九秋，草木尽萎，田家焚烧而耕，又戌属土，是以称名烧原，故戌与辰地皆贵人所不临也。";
+                }
+            }else if (vm.nianzhi=="丑") {
+                if (vm.shizhu==="己未") {
+                    mapResult["【乃月照柳梢，极为上格】"]="丑人时见己未，乃月照柳梢，极为上格。丑为柳岸。丑中有水有金，岸者，土也，所以止水也，故谓柳岸。";
+                }
+            }else if (vm.nianzhu=="辛未") {
+                if (vm.shizhu==="戊戌") {
+                    mapResult["【双飞格】"]="未年人双飞格，最妙，如辛未见戊戍，两干不杂是也。未为花园。花园属之未，不属之卯，何也？卯乃木旺，自成林麓；未乃木库，如人筑墙垣以护百花也，以百花言未中有杂气耳；";
+                }
+            }
+
+
+
+            //妙选
+            if (nianZhu=="甲子") {
+                 ruleValue="癸亥"
+                 matchStr ="以甲子见癸亥，是不用火逢空."
+                if (shiZhu==ruleValue) {
+                    mapResult["【珠藏渊海格】时柱"]=matchStr
+                }
+                if (riZhu==ruleValue) {
+                    mapResult["【珠藏渊海格】日柱"]=matchStr
+                }
+
+                ruleValue="己未"
+                matchStr ="是欲合化互贵"
+                if (shiZhu==ruleValue) {
+                    mapResult["【蚌珠照月格】时柱"]=matchStr
+                }
+                if (riZhu==ruleValue) {
+                    mapResult["【蚌珠照月格】日柱"]=matchStr
+                }
+
+                if (listMingZhu.contains("戊寅")&&listMingZhu.contains("庚午")) {
+
+                    mapResult["甲子见戊寅、庚午"]="是土生金。又天干逢三奇，此等格局，无有不贵。"
+                }
+            }
+
+            if (nianZhu=="乙丑") {
+                if (listMingZhu.contains("丙寅")&&listMingZhu.contains("丁卯")) {
+
+                    mapResult["乙丑见丙寅、丁卯"]="是火制金。又天干逢三奇，此等格局，无有不贵。"
+                }
+            }
+
+            if (nianZhu=="壬寅") {
+                ruleValue="戊寅"
+                matchStr ="金命而遇戊寅"
+                if (shiZhu==ruleValue) {
+                    mapResult["【昆山片玉格】时柱"]=matchStr
+                }
+                if (riZhu==ruleValue) {
+                    mapResult["【昆山片玉格】日柱"]=matchStr
+                }
+            }
+            if (nianZhu=="癸卯") {
+                ruleValue="己卯"
+                matchStr ="癸卯而遇己卯，玉兔东升格"
+                if (shiZhu==ruleValue) {
+                    mapResult["【玉兔东升格】时柱"]=matchStr
+                }
+                if (riZhu==ruleValue) {
+                    mapResult["【玉兔东升格】日柱"]=matchStr
+                }
+            }
+
+            if (["庚辰","辛巳"].contains(nianZhu)) {
+                matchStr ="庚辰辛巳白蜡金 妙选有哨风猛虎格，以此金日时遇辛巳或乙巳是也。"
+                if (rishizhu.contains("辛巳")||rishizhu.contains("乙巳")) {
+                    mapResult["【哨风猛虎格】"]=matchStr
+                }
+            }
+
+            if (["戊子","己丑"].contains(nianZhu)) {
+                matchStr ="有烈风雷雨格，即霹雳见天河是也";
+                if (rishizhu.contains("丙午")||rishizhu.contains("丁未")) {
+                    mapResult["【烈风雷雨格】"]=matchStr
+                }
+                matchStr ="有雷霆得门格，即戊子、己丑日时遇卯是也。";
+                if (rishizhi.contains("卯")||rishizhu.contains("卯")) {
+                    mapResult["【雷霆得门格】"]=matchStr
+                }
+            }
+
+            if (["戊子"].contains(nianZhu)) {
+                matchStr ="有天地中分格，即戊子见戊午是也";
+                if (rishizhu.contains("戊午")) {
+                    mapResult["【天地中分格】"]=matchStr
+                }
+            }
+
+            if (["甲辰","乙已"].contains(nianZhu)) {
+                matchStr ="暗灯添油：甲辰、乙巳人夜生而月日时胎有水。水以井泉、涧下为真油，长流假油，妙选有暗灯添油格，即此理也";
+                if (rishizhu.contains("甲申")||rishizhu.contains("乙酉")
+                    ||rishizhu.contains("丙子")||rishizhu.contains("丁丑")
+                    ||rishizhu.contains("壬辰")||rishizhu.contains("癸巳")
+                ) {
+                    mapResult["【暗灯添油格】"]=matchStr
+                }
+
+                matchStr ="有火土入堂格 以此火怕风，日时遇丙戌丁亥屋上土，则灯在屋中，更得添油，尤贵。";
+                if (rishizhu.contains("丙戌")||rishizhu.contains("丁亥")
+                ) {
+                    mapResult["【火土入堂格】"]=matchStr
+                }
+
+            }
+
+            if (["甲辰"].contains(nianZhu)) {
+                matchStr ="有魁星格、指南格，以甲辰生人，日时遇午未为是";
+                if (rishizhi.contains("午")||rishizhi.contains("未")) {
+                    mapResult["【魁星格、指南格】"]=matchStr
+                }
+            }
+
+            matchStr ="戊午遇卯，已未遇酉，为日月分秀格，而卯以乙卯、辛卯为正，已卯、丁卯次之，酉以乙酉、癸酉为正，已酉、丁酉次之";
+            if ("戊午"===nianZhu) {
+                if (rishizhi.contains("卯")) {
+                    mapResult["【日月分秀格】"]=matchStr;
+                }
+            }else if ("已未"===nianZhu) {
+                if (rishizhi.contains("酉")) {
+                    mapResult["【日月分秀格】"]=matchStr;
+                }
+            }
+
 
             /**
-             * [戊子己丑霹雳火]
-             * 再考妙选，
-             * 有烈风雷雨格，即霹雳见天河是也，有天地中分格，即戊子见戊午是也，有雷霆得门格，即
-             * 戊子己丑日时遇卯是也。
-             *[甲辰乙已覆灯火]
-             * 水以井泉、涧下为真油，长流
-             * 假油，妙选有暗灯添油格，即此理也；再考妙选，有魁星格、指南格，以甲辰生人，日时遇午未为是；有火土入堂格，
-             * 以此火怕风，日时遇丙戌丁亥屋上土，则灯在屋中，更得添油，尤贵。
-             *
              * [戊午己未天上火]
-             * 考妙选，戊午遇卯，三命通会/明·万民英著
+             * 考妙选，戊午遇卯，
              * 已未遇酉，为日月分秀格，而卯以乙卯、辛卯为正，已卯、丁卯次之，酉以乙酉、癸酉为正，
-             * 已酉、丁酉次之；有日出扶桑格，即日分秀，再见已午日时；有日轮当表格，以戊午生于午，
+             * 已酉、丁酉次之；
+             * 有日出扶桑格，即日分秀，再见已午日时；有日轮当表格，以戊午生于午，
              * 日逢已午日，又以戊午见戊子为坎离正位；有月生沧海格，即月分秀，而酉得乙癸是也；有
              * 月照寒潭格，是取壬癸亥子，纳音属水为潭，然必秋生为贵；有月桂芬芳格，是已未生人，
              * 柱有三、四木拱集，与桂林一枝，同桂林以少为贵，芬芳以多为贵，义各有所取也。再考凶
@@ -4481,16 +4617,15 @@
              */
 
 
-            return teli;
+            return mapResult;
 
         }
         vm.analyzeResult = {};
 
         function analyze() {
             pasebazi(vm.strBaZi);
-
+            vm.analyzeResult["特例"]=getTeLi();
             vm.analyzeResult["重点"]={
-                "特例":getTeLi(),
                 "冲":{
                     "关注":[
                         "纳音",
@@ -4531,6 +4666,8 @@
                     "十干喜忌总纲": shiganxijizonggang[vm.rigan],
                     "十干体相": shigantixiang[vm.rigan],
                     "滴天髓十干":ditiansuirigan[vm.rigan],
+                    "十二支分配地理":shierzhidili[vm.rizhi],
+
                 },
                 "三命通日月": "",
             };
