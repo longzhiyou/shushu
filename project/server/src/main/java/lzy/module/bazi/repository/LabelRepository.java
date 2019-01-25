@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 
-public interface LabelRepository extends JpaRepository<Label, Long> {
+public interface LabelRepository extends JpaRepository<Label, Integer> {
 
     @Query(value = "select new Label(t.id, t.title) " +
             "from Label t ")
