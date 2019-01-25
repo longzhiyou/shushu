@@ -1,0 +1,89 @@
+
+<div class="panel panel-default with-scroll">
+  <div class="panel-body">
+
+    <div class="row">
+    <div class="col-md-6">
+    <div class="form-group">
+    <ui-select multiple ng-model="vm.multipleSelectItems"
+    ng-disabled="false"
+    search-enabled="true"
+    append-to-body="true"
+    class="form-control">
+    <ui-select-match placeholder="检索条件">
+    {{$item.title}}
+    </ui-select-match>
+    <ui-select-choices repeat="multipleItem in vm.labels | filter: $select.search">
+    {{multipleItem.title}}
+    </ui-select-choices>
+    </ui-select>
+
+
+    </div>
+
+    </div>
+    <div class="col-md-2">
+    <button type="button" ng-click="vm.matchRule()"
+    class="btn  btn-primary">
+    匹配
+    </button>
+    </div>
+
+    </div>
+
+    <table class="table table-bordered table-hover table-condensed"
+           st-persist="rulesTable"
+           st-pipe="vm.callServer"
+           st-table="vm.labels"
+    >
+      <thead>
+      <tr>
+        <th colspan="5">
+          <input st-search="match" placeholder="global search" class="input-sm form-control" type="search"/>
+        </th>
+
+      </tr>
+      <tr>
+        <th></th>
+        <th>名称</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="item in vm.rules">
+
+        <td>{{ $index+1 }}</td>
+        <td>
+          <a>
+            {{ item.title }}
+          </a>
+        </td>
+
+        <td>
+          <button type="button" ng-click="vm.edit(item)"
+                  class="btn btn-sm btn-primary ">
+            <i class="fa fa-edit"></i>
+            修改
+          </button>
+          <button type="button" ng-click="vm.destroy(item)"
+                  class="btn btn-sm btn-danger ">
+            <i class="fa fa-trash-o"></i>
+            刪除
+          </button>
+        </td>
+
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="7" class="text-center">
+          <div st-pagination="" st-items-by-page="10" ></div>
+        </td>
+      </tr>
+      </tfoot>
+
+    </table>
+
+  </div>
+</div>
+

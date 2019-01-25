@@ -79,10 +79,12 @@ public class BaZiService {
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
                 logger.error("matchRule:NoSuchMethodException");
+                result = null;
             }
         } catch (ScriptException e) {
             e.printStackTrace();
             logger.error("ScriptException:"+e.getMessage());
+            result = null;
         }
         return result;
 

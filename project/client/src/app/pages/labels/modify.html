@@ -1,0 +1,70 @@
+
+
+<div
+        ba-panel
+        ba-panel-title="信息"
+        ba-panel-class="with-scroll panel-info"
+>
+    <form novalidate name="validateForm" w5c-form-validate >
+
+    <div class="row">
+
+        <div class="form-group">
+            <label class="control-label">标题</label>
+            <input type="text" class="form-control"  placeholder=""
+                   ng-model="vm.rule.title"
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">描述</label>
+            <input type="text" class="form-control"  placeholder=""
+                   ng-model="vm.rule.description"
+                   >
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">算法</label>
+            <textarea  rows="25" class="form-control"
+                       style="height:auto;"
+                   ng-model="vm.rule.algorithm">
+
+            </textarea>
+        </div>
+
+        <div class="form-group">
+            <div ng-if="vm.id===0">
+                <button class="btn btn-primary"
+                        ng-disabled="validateForm.$invalid"
+                        ng-click="vm.add()"
+                >
+                    新增并继续
+                </button>
+
+                <button class="btn btn-default"
+                        type="submit"
+                        ng-disabled="validateForm.$invalid"
+                        ng-click="vm.add(true)">新增
+                </button>
+                <button class="btn btn-default" ng-click="vm.back()">
+                    返回
+                </button>
+
+            </div>
+            <div ng-if="vm.id>0">
+                <button class="btn btn-primary"
+                        ng-disabled="validateForm.$invalid"
+                        ng-click="vm.save()">保存</button>
+                <button class="btn btn-default" ng-click="vm.back()">
+                    返回
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    </form>
+</div>
+
+
+
