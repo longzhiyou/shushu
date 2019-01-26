@@ -5,48 +5,43 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.rules')
-      .controller('rulesIndexCtrl', indexCtrl);
+  angular.module('BlurAdmin.pages.labels')
+      .controller('labelsIndexCtrl', indexCtrl);
 
   /** @ngInject */
-  function indexCtrl($state, Restangular,warningModalService,halService) {
+  function indexCtrl($state, Restangular,warningModalService) {
 
     var vm = this;
-
-    vm.halService = halService;
+      vm.multipleSelectItems = [];
 
     vm.edit = edit;
     vm.destroy = destroy;
+     vm.clickFilter=clickFilter;
+
+     vm.labels = [];
+      vm.customers = [];
+
+     function clickFilter() {
+
+         var ids=[];
+         for(var i  = 0; i < vm.multipleSelectItems.length; i++) {
+             ids.push(vm.multipleSelectItems[i].id);
+         }
+         var filter  = JSON.stringify(ids);
+
+         Restangular.all('labels/filter').getList({ids: filter}).then(function(response) {
+             vm.customers = response;
+
+         }, function(error) {
+
+         });
+     }
+
+      function getLabels() {
 
 
-     vm.rules = [];
-      vm.callServer = function callServer(tableState) {
-
-          var number = tableState.pagination.number || 10;  // Number of entries showed per page.
-
-          var start = tableState.pagination.start || 0;
-
-          var match = "";
-          if (tableState.search.predicateObject&&tableState.search.predicateObject["match"]) {
-              match =tableState.search.predicateObject["match"];
-          }
-
-
-          var pagination = {
-              page:start/number,
-              size:number,
-              match:match
-          };
-
-          Restangular.all('rules').customGET("search/filter",pagination).then(function(response) {
-
-
-              vm.rules = halService.getList("rules",response);
-
-              tableState.pagination.numberOfPages = response.page.totalPages;//set the number of pages so the pagination can update
-              tableState.pagination.totalItemCount = response.page.totalElements;
-
-
+          Restangular.all('labels').getList().then(function(response) {
+              vm.labels = response;
 
           }, function(error) {
 
@@ -58,23 +53,18 @@
 
     function edit(item){
 
-      $state.go('rules.edit',{
-          id:halService.getId(item)
-      });
     }
 
     function destroy(item){
 
-        warningModalService.open(item).result.then(function(item) {
-            //以后直接复制
-            Restangular.one('rules',halService.getId(item)).remove().then(
-                function(hal) {
-                    vm.loadData();
-            });
-
-        });
-
     }
+
+
+      function init(){
+
+        getLabels();
+      }
+      init();
 
 
 

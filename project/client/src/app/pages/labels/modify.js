@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.rules')
+  angular.module('BlurAdmin.pages.labels')
       .controller('rulesModifyCtrl', ModifyCtrl);
 
   /** @ngInject */

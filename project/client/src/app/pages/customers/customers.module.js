@@ -19,7 +19,7 @@
           title: '客户管理',
           sidebarMeta: {
             icon: 'fa fa-user',
-            order: 1
+            order: 0
           }
         }).state('customers.index', {
           url: '',

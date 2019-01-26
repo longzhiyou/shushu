@@ -31,26 +31,26 @@
                 order: 0
           }
         })
-        .state('labels.new', {
-            url: '/new',
-            templateUrl: 'app/pages/labels/modify.html',
-            controller: 'labelsModifyCtrl',
-            controllerAs: 'vm',
-            title: '新增标签',
-            sidebarMeta: {
-                order: 1
-            }
-
-        })
-        .state('labels.edit', {
-            url: '/:id/edit',
-
-            templateUrl: 'app/pages/labels/modify.html',
-            controller: 'labelsModifyCtrl',
-            controllerAs: 'vm',
-            title: '编辑标签'
-
-        })
+        // .state('labels.new', {
+        //     url: '/new',
+        //     templateUrl: 'app/pages/labels/modify.html',
+        //     controller: 'labelsModifyCtrl',
+        //     controllerAs: 'vm',
+        //     title: '新增标签',
+        //     sidebarMeta: {
+        //         order: 1
+        //     }
+        //
+        // })
+        // .state('labels.edit', {
+        //     url: '/:id/edit',
+        //
+        //     templateUrl: 'app/pages/labels/modify.html',
+        //     controller: 'labelsModifyCtrl',
+        //     controllerAs: 'vm',
+        //     title: '编辑标签'
+        //
+        // })
 
 
     ;
