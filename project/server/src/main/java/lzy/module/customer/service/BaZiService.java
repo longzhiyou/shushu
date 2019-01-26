@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import sun.tools.tree.IfStatement;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
@@ -65,6 +66,9 @@ public class BaZiService {
             return null;
     }
     public Object parseRule(BaZi baZi, String ruleAlgorithm) {
+
+        if (baZi==null)
+            return null;
 
         Object result = null;
 

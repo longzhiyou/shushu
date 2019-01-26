@@ -3,11 +3,12 @@ package lzy.module.bazi.entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lzy.common.entity.BaseEntity;
 import lzy.common.entity.BaseIdEntity;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 /**
  * 八字规则
@@ -20,7 +21,11 @@ import javax.persistence.Entity;
 @EqualsAndHashCode(callSuper=true)
 @Data
 @Entity
-public class Label extends BaseIdEntity {
+public class Label extends BaseEntity {
+
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
+   private Integer id;
 
    private String title;
    private String subject;
@@ -31,7 +36,7 @@ public class Label extends BaseIdEntity {
    private String algorithm;
    private boolean enable;
 
-   public Label(Long id, String title) {
+   public Label(Integer id, String title) {
       this.setId(id);
       this.title = title;
    }
