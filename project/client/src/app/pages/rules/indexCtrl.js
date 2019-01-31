@@ -13,6 +13,12 @@
 
     var vm = this;
 
+     vm.typeList=[
+         {title: '全部', value: 0},
+         {title: '分析', value: 1},
+         {title: '过滤', value: 2}
+     ];
+
     vm.halService = halService;
 
     vm.edit = edit;

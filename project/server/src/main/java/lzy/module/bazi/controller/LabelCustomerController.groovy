@@ -1,6 +1,8 @@
 package lzy.module.bazi.controller
 
+import lzy.module.bazi.entity.Rule
 import lzy.module.bazi.repository.LabelRepository
+import lzy.module.bazi.repository.RuleRepository
 import lzy.module.customer.repository.CustomerRepository
 import lzy.module.customer.service.BaZiService
 import lzy.utils.JsonMapper
@@ -29,6 +31,9 @@ public class LabelCustomerController {
     private LabelRepository labelRepository;
 
     @Autowired
+    private RuleRepository ruleRepository;
+
+    @Autowired
     BaZiService baZiService;
 
     @Autowired
@@ -38,6 +43,14 @@ public class LabelCustomerController {
     ResponseEntity index() {
 
         return ResponseEntity.ok(labelRepository.combox())
+
+    }
+
+    @GetMapping(value = "/comboxs")
+    public ResponseEntity comboxs() {
+
+        return ResponseEntity.ok(ruleRepository.findAll());
+
 
     }
 
