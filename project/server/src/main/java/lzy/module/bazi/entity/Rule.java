@@ -1,5 +1,6 @@
 package lzy.module.bazi.entity;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,10 @@ public class Rule extends BaseIdEntity {
    private String title;
    private String subject;
    private String description;
+
+   //类型 0-全部 1-分析 2-过滤
+   @Builder.Default
+   private Integer type = 0;
 
 //   @Lob
    @Column(columnDefinition = "TEXT")
