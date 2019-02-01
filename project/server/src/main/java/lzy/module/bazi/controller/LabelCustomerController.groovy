@@ -42,7 +42,7 @@ public class LabelCustomerController {
     @GetMapping()
     ResponseEntity index() {
 
-        return ResponseEntity.ok(labelRepository.combox())
+        return ResponseEntity.ok(ruleRepository.combox())
 
     }
 
