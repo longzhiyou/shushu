@@ -44,7 +44,7 @@
               match:match
           };
 
-          Restangular.all('rules').customGET("search/filter",pagination).then(function(response) {
+          Restangular.all('hal/rules').customGET("search/filter",pagination).then(function(response) {
 
 
               vm.rules = halService.getList("rules",response);

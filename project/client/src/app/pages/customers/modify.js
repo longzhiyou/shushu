@@ -12,7 +12,7 @@
   function ModifyCtrl($stateParams, $state,Restangular,promptService,setting) {
 
     var vm = this;
-    vm.id=$stateParams.id>0?$stateParams.id:0;
+    vm.id=$stateParams.id;
 
 
 
@@ -54,7 +54,7 @@
     function save() {
         setSelect();
 
-        Restangular.one("customers",vm.id).customPUT(vm.customer).then(function(response) {
+        Restangular.one("hal/customers",vm.id).customPUT(vm.customer).then(function(response) {
             promptService.success(setting.saveSuccess);
         }, function(error) {
             promptService.failure(setting.saveError);
@@ -67,7 +67,7 @@
     vm.add= function(goIndex) {
         setSelect();
         // vm.customer.customerId = 1;
-          Restangular.all('customers').post(vm.customer).then(function(response) {
+          Restangular.all('hal/customers').post(vm.customer).then(function(response) {
               // console.log( customer );
               if (goIndex) {
                   $state.go('customers.index');
@@ -85,8 +85,8 @@
 
     function init(){
         uiInit();
-        if (vm.id>0) {
-            Restangular.one("customers",vm.id).get().then(function(hal) {
+        if (vm.id) {
+            Restangular.one("hal/customers",vm.id).get().then(function(hal) {
                 vm.customer = hal;
                 vm.genderSelected = getSelectedGender(hal.gender);
 
