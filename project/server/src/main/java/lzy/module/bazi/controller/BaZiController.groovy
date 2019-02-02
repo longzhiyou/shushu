@@ -84,6 +84,9 @@ class BaZiController {
                 for (customer in customers){
 
                     BaZi baZi = baZiService.getBaZi(customer.getBazi())
+                    if (baZi==null) {
+                        continue
+                    }
 
                     def count=0
                     for (rule in rules){
@@ -103,21 +106,10 @@ class BaZiController {
             }
 
         }
-//
-//        List<Resource> list = new ArrayList<>()
-//        for (item in customers){
-//            Resource resource = new Resource<>(item)
-//            resource.add(entityLinks.linkToSingleResource(Customer.class, item.getCustomerId()))
-//            list.add(resource)
-//        }
 
-        return ResponseEntity.ok(customerResourceAssembler.toResources(customers))
+        return ResponseEntity.ok(customers)
 //        return  list
 
-
-
-
-       
 
     }
 }

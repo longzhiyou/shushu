@@ -58,7 +58,16 @@
             title: '详情'
 
         })
-
+        .state('customers.rule', {
+            url: '/rule',
+            templateUrl: 'app/pages/customers/rule.html',
+            controller: 'customersRuleIndexCtrl',
+            controllerAs: 'vm',
+            title: '规则检索',
+            sidebarMeta: {
+                order: 1
+            }
+        })
 
     ;
     $urlRouterProvider.when('/customers','/customers/index');

@@ -12,7 +12,7 @@ management:
 spring:
   data:
     rest:
-      basePath: /api
+      basePath: /api/hal
   output:
     ansi:
       enabled: detect

@@ -9,3 +9,6 @@
 - admin 模板
     - [blur-admin](http://akveo.github.io/blur-admin/)
 
+### 问题
+- After update to Node 11.0.0 running Gulp exits with 'ReferenceError: internalBinding is not defined'
+- npm install natives@1.1.6 

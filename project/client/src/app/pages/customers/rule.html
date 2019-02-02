@@ -12,7 +12,7 @@
                         <ui-select-match placeholder="检索条件">
                             {{$item.title}}
                         </ui-select-match>
-                        <ui-select-choices repeat="multipleItem in vm.labels | filter: $select.search">
+                        <ui-select-choices repeat="multipleItem in vm.rules | filter: $select.search">
                             {{multipleItem.title}}
                         </ui-select-choices>
                     </ui-select>

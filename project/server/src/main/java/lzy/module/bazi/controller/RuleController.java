@@ -1,5 +1,6 @@
 package lzy.module.bazi.controller;
 
+import lzy.common.CommonDefine;
 import lzy.module.bazi.entity.Rule;
 import lzy.module.bazi.repository.RuleRepository;
 import org.apache.log4j.Logger;
@@ -9,6 +10,7 @@ import org.springframework.data.rest.webmvc.support.RepositoryEntityLinks;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -17,8 +19,8 @@ import java.util.List;
  * 设备管理控制器
  * [2017-10-12 add by longzhiyou]
  */
-@RepositoryRestController
-@RequestMapping(value = "/rules")
+@RestController
+@RequestMapping(value = CommonDefine.BASE_URI+"/rules")
 @Transactional
 public class RuleController {
 
@@ -27,14 +29,12 @@ public class RuleController {
     @Autowired
     private RuleRepository ruleRepository;
 
-    @Autowired
-    RepositoryEntityLinks entityLinks;
+//    @Autowired
+//    RepositoryEntityLinks entityLinks;
 
-    @GetMapping(value = "/comboxs")
-    public ResponseEntity comboxs() {
-        List<Rule> comboxRules = ruleRepository.findAll();
-
-        return ResponseEntity.ok(comboxRules);
+    @GetMapping(value = "/combox")
+    public ResponseEntity combox() {
+        return ResponseEntity.ok(ruleRepository.combox());
 
 
     }

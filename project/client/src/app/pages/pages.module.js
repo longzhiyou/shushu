@@ -8,7 +8,7 @@
   angular.module('BlurAdmin.pages', [
 
       'BlurAdmin.pages.rules',
-      'BlurAdmin.pages.labels',
+      // 'BlurAdmin.pages.labels',
       'BlurAdmin.pages.customers'
 
   ])

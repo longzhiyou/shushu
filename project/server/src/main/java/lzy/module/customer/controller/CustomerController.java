@@ -1,8 +1,9 @@
 package lzy.module.customer.controller;
 
+import lzy.common.CommonDefine;
 import org.apache.log4j.Logger;
-import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.Transactional;
 
@@ -10,9 +11,9 @@ import javax.transaction.Transactional;
  * 设备管理控制器
  * [2017-10-12 add by longzhiyou]
  */
-//@RestController
-@RepositoryRestController
-@RequestMapping(value = "/customers")
+@RestController
+//@RepositoryRestController
+@RequestMapping(value = CommonDefine.BASE_URI+"/customers")
 @Transactional
 public class CustomerController {
 

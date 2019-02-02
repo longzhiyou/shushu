@@ -44,7 +44,8 @@
   },
   "scripts": {
     "postinstall": "bower install"
-
   },
-  "dependencies": {}
+  "dependencies": {
+    "natives": "^1.1.6"
+  }
 }
